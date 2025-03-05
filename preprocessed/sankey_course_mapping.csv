@@ -1,0 +1,300 @@
+source,target,value
+Travel Company 1,CN101: Introduction to Computer Programming,1
+Travel Company 1,CN230: Database Systems,1
+Travel Company 1,CN311: Operating Systems,1
+Travel Company 1,CN321: Data Communication and Computer Networks I,1
+Travel Company 1,SF211: Object-oriented programming,1
+Travel Company 1,SF220: Introduction to Software Engineering,1
+Travel Company 1,SF222: Software Engineering Models and Analysis,1
+Travel Company 1,SF231: Data Structures and Algorithms,1
+Travel Company 1,SF331: Software Architecture and Design,1
+Travel Company 1,SF332: Software Testing and Quality Assurance,1
+Travel Company 1,SF334: Web Application Development,1
+Travel Company 1,SF340: Software Configuration Management,1
+Travel Company 1,SF351: Web Application Security,1
+Tech/Software Company 1,CN101: Introduction to Computer Programming,1
+Tech/Software Company 1,CN210: Fundamental of Computer Architecture,1
+Tech/Software Company 1,CN230: Database Systems,1
+Tech/Software Company 1,CN311: Operating Systems,1
+Tech/Software Company 1,SF211: Object-oriented programming,1
+Tech/Software Company 1,SF220: Introduction to Software Engineering,1
+Tech/Software Company 1,SF222: Software Engineering Models and Analysis,1
+Tech/Software Company 1,SF231: Data Structures and Algorithms,1
+Tech/Software Company 1,SF330: Software Requirements and Specification,1
+Tech/Software Company 1,SF332: Software Testing and Quality Assurance,1
+Tech/Software Company 1,SF333: Mobile Device Application Development,1
+Tech/Software Company 1,SF340: Software Configuration Management,1
+Tech/Software Company 1,SF351: Web Application Security,1
+Tech/Software Company 2,CN101: Introduction to Computer Programming,1
+Tech/Software Company 2,CN204: Probability Theory and Random Processes,1
+Tech/Software Company 2,CN240: Data Science for Signal Processing,1
+Tech/Software Company 2,CN340: Machine Learning,1
+Tech/Software Company 2,CN341: Deep Learning,1
+Tech/Software Company 2,MA111: Fundamentals of Calculus,1
+Tech/Software Company 2,SF230: Linear Algebra and Numerical Methods,1
+Tech/Software Company 2,SF231: Data Structures and Algorithms,1
+Tech/Software Company 2,SF250: Probability Theory and Statistics,1
+Tech/Software Company 2,SF251: Introduction to Data Science,1
+Tech/Software Company 2,SF332: Software Testing and Quality Assurance,1
+Tech/Software Company 13,CN101: Introduction to Computer Programming,1
+Tech/Software Company 13,CN230: Database Systems,1
+Tech/Software Company 13,CN321: Data Communication and Computer Networks I,1
+Tech/Software Company 13,SF211: Object-oriented programming,1
+Tech/Software Company 13,SF220: Introduction to Software Engineering,1
+Tech/Software Company 13,SF222: Software Engineering Models and Analysis,1
+Tech/Software Company 13,SF231: Data Structures and Algorithms,1
+Tech/Software Company 13,SF331: Software Architecture and Design,1
+Tech/Software Company 13,SF334: Web Application Development,1
+Tech/Software Company 13,SF340: Software Configuration Management,1
+Tech/Software Company 13,SF351: Web Application Security,1
+Tech/Software Company 3,CN101: Introduction to Computer Programming,1
+Tech/Software Company 3,SF211: Object-oriented programming,1
+Tech/Software Company 3,SF220: Introduction to Software Engineering,1
+Tech/Software Company 3,SF222: Software Engineering Models and Analysis,1
+Tech/Software Company 3,SF231: Data Structures and Algorithms,1
+Tech/Software Company 3,SF333: Mobile Device Application Development,1
+Tech/Software Company 3,SF334: Web Application Development,1
+Consulting Company 1,CN101: Introduction to Computer Programming,1
+Consulting Company 1,CN230: Database Systems,1
+Consulting Company 1,SF220: Introduction to Software Engineering,1
+Consulting Company 1,SF222: Software Engineering Models and Analysis,1
+Consulting Company 1,SF231: Data Structures and Algorithms,1
+Consulting Company 1,SF330: Software Requirements and Specification,1
+Consulting Company 1,SF331: Software Architecture and Design,1
+Consulting Company 1,SF332: Software Testing and Quality Assurance,1
+Consulting Company 1,SF333: Mobile Device Application Development,1
+Consulting Company 1,SF334: Web Application Development,1
+Consulting Company 1,SF340: Software Configuration Management,1
+Consulting Company 1,SF351: Web Application Security,1
+Manufacturing/Industrial Company 1,CN101: Introduction to Computer Programming,1
+Manufacturing/Industrial Company 1,SF211: Object-oriented programming,1
+Manufacturing/Industrial Company 1,SF220: Introduction to Software Engineering,1
+Manufacturing/Industrial Company 1,SF222: Software Engineering Models and Analysis,1
+Manufacturing/Industrial Company 1,SF231: Data Structures and Algorithms,1
+Manufacturing/Industrial Company 1,SF330: Software Requirements and Specification,1
+Manufacturing/Industrial Company 1,SF331: Software Architecture and Design,1
+Manufacturing/Industrial Company 1,SF334: Web Application Development,1
+Manufacturing/Industrial Company 1,SF340: Software Configuration Management,1
+Tech/Software Company 4,CN101: Introduction to Computer Programming,1
+Tech/Software Company 4,CN230: Database Systems,1
+Tech/Software Company 4,SF211: Object-oriented programming,1
+Tech/Software Company 4,SF220: Introduction to Software Engineering,1
+Tech/Software Company 4,SF222: Software Engineering Models and Analysis,1
+Tech/Software Company 4,SF231: Data Structures and Algorithms,1
+Tech/Software Company 4,SF331: Software Architecture and Design,1
+Tech/Software Company 4,SF333: Mobile Device Application Development,1
+Tech/Software Company 4,SF334: Web Application Development,1
+Financial Services/Banking Company 1,CN101: Introduction to Computer Programming,1
+Financial Services/Banking Company 1,CN230: Database Systems,1
+Financial Services/Banking Company 1,CN321: Data Communication and Computer Networks I,1
+Financial Services/Banking Company 1,CN416: Cloud Computing,1
+Financial Services/Banking Company 1,SF211: Object-oriented programming,1
+Financial Services/Banking Company 1,SF220: Introduction to Software Engineering,1
+Financial Services/Banking Company 1,SF222: Software Engineering Models and Analysis,1
+Financial Services/Banking Company 1,SF231: Data Structures and Algorithms,1
+Financial Services/Banking Company 1,SF331: Software Architecture and Design,1
+Financial Services/Banking Company 1,SF332: Software Testing and Quality Assurance,1
+Financial Services/Banking Company 1,SF334: Web Application Development,1
+Financial Services/Banking Company 1,SF340: Software Configuration Management,1
+Financial Services/Banking Company 1,SF351: Web Application Security,1
+Tech/Software Company 5,CN101: Introduction to Computer Programming,1
+Tech/Software Company 5,SF211: Object-oriented programming,1
+Tech/Software Company 5,SF220: Introduction to Software Engineering,1
+Tech/Software Company 5,SF222: Software Engineering Models and Analysis,1
+Tech/Software Company 5,SF231: Data Structures and Algorithms,1
+Tech/Software Company 5,SF331: Software Architecture and Design,1
+Tech/Software Company 5,SF333: Mobile Device Application Development,1
+Tech/Software Company 5,SF334: Web Application Development,1
+Tech/Software Company 5,SF340: Software Configuration Management,1
+Financial Services/Banking Company 2,CN101: Introduction to Computer Programming,1
+Financial Services/Banking Company 2,CN210: Fundamental of Computer Architecture,1
+Financial Services/Banking Company 2,CN230: Database Systems,1
+Financial Services/Banking Company 2,CN310: Computer Server Configuration,1
+Financial Services/Banking Company 2,CN311: Operating Systems,1
+Financial Services/Banking Company 2,CN321: Data Communication and Computer Networks I,1
+Financial Services/Banking Company 2,CN416: Cloud Computing,1
+Financial Services/Banking Company 2,SF220: Introduction to Software Engineering,1
+Financial Services/Banking Company 2,SF340: Software Configuration Management,1
+Financial Services/Banking Company 2,SF351: Web Application Security,1
+Tech/Software Company 6,CN101: Introduction to Computer Programming,1
+Tech/Software Company 6,CN230: Database Systems,1
+Tech/Software Company 6,CN321: Data Communication and Computer Networks I,1
+Tech/Software Company 6,SF211: Object-oriented programming,1
+Tech/Software Company 6,SF220: Introduction to Software Engineering,1
+Tech/Software Company 6,SF222: Software Engineering Models and Analysis,1
+Tech/Software Company 6,SF231: Data Structures and Algorithms,1
+Tech/Software Company 6,SF331: Software Architecture and Design,1
+Tech/Software Company 6,SF334: Web Application Development,1
+Tech/Software Company 6,SF340: Software Configuration Management,1
+Manufacturing/Industrial Company 2,CN101: Introduction to Computer Programming,1
+Manufacturing/Industrial Company 2,CN230: Database Systems,1
+Manufacturing/Industrial Company 2,CN321: Data Communication and Computer Networks I,1
+Manufacturing/Industrial Company 2,SF211: Object-oriented programming,1
+Manufacturing/Industrial Company 2,SF220: Introduction to Software Engineering,1
+Manufacturing/Industrial Company 2,SF222: Software Engineering Models and Analysis,1
+Manufacturing/Industrial Company 2,SF231: Data Structures and Algorithms,1
+Manufacturing/Industrial Company 2,SF331: Software Architecture and Design,1
+Manufacturing/Industrial Company 2,SF334: Web Application Development,1
+Manufacturing/Industrial Company 2,SF340: Software Configuration Management,1
+Manufacturing/Industrial Company 2,SF351: Web Application Security,1
+Financial Services/Fintech Company 1,CN101: Introduction to Computer Programming,1
+Financial Services/Fintech Company 1,"LAS101: Critical Thinking, Reading, and Writing",1
+Financial Services/Fintech Company 1,SF220: Introduction to Software Engineering,1
+Financial Services/Fintech Company 1,SF222: Software Engineering Models and Analysis,1
+Financial Services/Fintech Company 1,SF250: Probability Theory and Statistics,1
+Financial Services/Fintech Company 1,SF330: Software Requirements and Specification,1
+Financial Services/Fintech Company 1,SF331: Software Architecture and Design,1
+Financial Services/Fintech Company 1,SF332: Software Testing and Quality Assurance,1
+Financial Services/Fintech Company 1,SF334: Web Application Development,1
+Financial Services/Fintech Company 2,CN101: Introduction to Computer Programming,1
+Financial Services/Fintech Company 2,CN230: Database Systems,1
+Financial Services/Fintech Company 2,CN321: Data Communication and Computer Networks I,1
+Financial Services/Fintech Company 2,CN418: Big Data Engineering management,1
+Financial Services/Fintech Company 2,SF211: Object-oriented programming,1
+Financial Services/Fintech Company 2,SF220: Introduction to Software Engineering,1
+Financial Services/Fintech Company 2,SF222: Software Engineering Models and Analysis,1
+Financial Services/Fintech Company 2,SF231: Data Structures and Algorithms,1
+Financial Services/Fintech Company 2,SF332: Software Testing and Quality Assurance,1
+Financial Services/Fintech Company 2,SF334: Web Application Development,1
+Financial Services/Fintech Company 2,SF340: Software Configuration Management,1
+Financial Services/Banking Company 3,CN101: Introduction to Computer Programming,1
+Financial Services/Banking Company 3,CN230: Database Systems,1
+Financial Services/Banking Company 3,CN310: Computer Server Configuration,1
+Financial Services/Banking Company 3,CN321: Data Communication and Computer Networks I,1
+Financial Services/Banking Company 3,DE321: Technology Entrepreneurship,1
+Financial Services/Banking Company 3,SF211: Object-oriented programming,1
+Financial Services/Banking Company 3,SF220: Introduction to Software Engineering,1
+Financial Services/Banking Company 3,SF222: Software Engineering Models and Analysis,1
+Financial Services/Banking Company 3,SF331: Software Architecture and Design,1
+Financial Services/Banking Company 3,SF334: Web Application Development,1
+Financial Services/Banking Company 3,SF340: Software Configuration Management,1
+Tech/Software Company 14,CN101: Introduction to Computer Programming,1
+Tech/Software Company 14,CN230: Database Systems,1
+Tech/Software Company 14,CN311: Operating Systems,1
+Tech/Software Company 14,CN321: Data Communication and Computer Networks I,1
+Tech/Software Company 14,CN416: Cloud Computing,1
+Tech/Software Company 14,SF211: Object-oriented programming,1
+Tech/Software Company 14,SF220: Introduction to Software Engineering,1
+Tech/Software Company 14,SF222: Software Engineering Models and Analysis,1
+Tech/Software Company 14,SF331: Software Architecture and Design,1
+Tech/Software Company 14,SF334: Web Application Development,1
+Tech/Software Company 14,SF340: Software Configuration Management,1
+Tech/Software Company 14,SF351: Web Application Security,1
+Tech/Software Company 7,CN101: Introduction to Computer Programming,1
+Tech/Software Company 7,CN230: Database Systems,1
+Tech/Software Company 7,CN311: Operating Systems,1
+Tech/Software Company 7,CN321: Data Communication and Computer Networks I,1
+Tech/Software Company 7,CN416: Cloud Computing,1
+Tech/Software Company 7,SF211: Object-oriented programming,1
+Tech/Software Company 7,SF220: Introduction to Software Engineering,1
+Tech/Software Company 7,SF331: Software Architecture and Design,1
+Tech/Software Company 7,SF332: Software Testing and Quality Assurance,1
+Tech/Software Company 7,SF334: Web Application Development,1
+Tech/Software Company 7,SF340: Software Configuration Management,1
+Marketing Company 1,CN101: Introduction to Computer Programming,1
+Marketing Company 1,CN230: Database Systems,1
+Marketing Company 1,CN321: Data Communication and Computer Networks I,1
+Marketing Company 1,CN416: Cloud Computing,1
+Marketing Company 1,SF211: Object-oriented programming,1
+Marketing Company 1,SF220: Introduction to Software Engineering,1
+Marketing Company 1,SF222: Software Engineering Models and Analysis,1
+Marketing Company 1,SF331: Software Architecture and Design,1
+Marketing Company 1,SF332: Software Testing and Quality Assurance,1
+Marketing Company 1,SF334: Web Application Development,1
+Marketing Company 1,SF340: Software Configuration Management,1
+Tech/Software Company 8,CN101: Introduction to Computer Programming,1
+Tech/Software Company 8,CN240: Data Science for Signal Processing,1
+Tech/Software Company 8,CN311: Operating Systems,1
+Tech/Software Company 8,CN340: Machine Learning,1
+Tech/Software Company 8,CN341: Deep Learning,1
+Tech/Software Company 8,CN416: Cloud Computing,1
+Tech/Software Company 8,CN418: Big Data Engineering management,1
+Tech/Software Company 8,SF211: Object-oriented programming,1
+Tech/Software Company 8,SF220: Introduction to Software Engineering,1
+Tech/Software Company 8,SF231: Data Structures and Algorithms,1
+Tech/Software Company 8,SF340: Software Configuration Management,1
+Tech/Software Company 9,CN101: Introduction to Computer Programming,1
+Tech/Software Company 9,CN230: Database Systems,1
+Tech/Software Company 9,CN311: Operating Systems,1
+Tech/Software Company 9,CN321: Data Communication and Computer Networks I,1
+Tech/Software Company 9,SF211: Object-oriented programming,1
+Tech/Software Company 9,SF220: Introduction to Software Engineering,1
+Tech/Software Company 9,SF222: Software Engineering Models and Analysis,1
+Tech/Software Company 9,SF331: Software Architecture and Design,1
+Tech/Software Company 9,SF332: Software Testing and Quality Assurance,1
+Tech/Software Company 9,SF334: Web Application Development,1
+Tech/Software Company 9,SF340: Software Configuration Management,1
+Manufacturing/Industrial Company 3,CN101: Introduction to Computer Programming,1
+Manufacturing/Industrial Company 3,CN230: Database Systems,1
+Manufacturing/Industrial Company 3,CN310: Computer Server Configuration,1
+Manufacturing/Industrial Company 3,CN321: Data Communication and Computer Networks I,1
+Manufacturing/Industrial Company 3,CN416: Cloud Computing,1
+Manufacturing/Industrial Company 3,CN418: Big Data Engineering management,1
+Manufacturing/Industrial Company 3,SF220: Introduction to Software Engineering,1
+Manufacturing/Industrial Company 3,SF222: Software Engineering Models and Analysis,1
+Manufacturing/Industrial Company 3,SF331: Software Architecture and Design,1
+Manufacturing/Industrial Company 3,SF340: Software Configuration Management,1
+Financial Services/Banking Company 4,CN101: Introduction to Computer Programming,1
+Financial Services/Banking Company 4,CN230: Database Systems,1
+Financial Services/Banking Company 4,CN321: Data Communication and Computer Networks I,1
+Financial Services/Banking Company 4,SF211: Object-oriented programming,1
+Financial Services/Banking Company 4,SF220: Introduction to Software Engineering,1
+Financial Services/Banking Company 4,SF221: Software Process,1
+Financial Services/Banking Company 4,SF231: Data Structures and Algorithms,1
+Financial Services/Banking Company 4,SF331: Software Architecture and Design,1
+Financial Services/Banking Company 4,SF332: Software Testing and Quality Assurance,1
+Financial Services/Banking Company 4,SF334: Web Application Development,1
+Financial Services/Banking Company 4,SF340: Software Configuration Management,1
+Financial Services/Banking Company 4,SF351: Web Application Security,1
+Tech/Software Company 10,CN101: Introduction to Computer Programming,1
+Tech/Software Company 10,CN230: Database Systems,1
+Tech/Software Company 10,CN311: Operating Systems,1
+Tech/Software Company 10,CN321: Data Communication and Computer Networks I,1
+Tech/Software Company 10,CN416: Cloud Computing,1
+Tech/Software Company 10,SF211: Object-oriented programming,1
+Tech/Software Company 10,SF220: Introduction to Software Engineering,1
+Tech/Software Company 10,SF222: Software Engineering Models and Analysis,1
+Tech/Software Company 10,SF334: Web Application Development,1
+Tech/Software Company 10,SF340: Software Configuration Management,1
+Tech/Software Company 10,SF351: Web Application Security,1
+Financial Services/Banking Company 5,CN101: Introduction to Computer Programming,1
+Financial Services/Banking Company 5,CN230: Database Systems,1
+Financial Services/Banking Company 5,CN310: Computer Server Configuration,1
+Financial Services/Banking Company 5,CN311: Operating Systems,1
+Financial Services/Banking Company 5,CN321: Data Communication and Computer Networks I,1
+Financial Services/Banking Company 5,DE321: Technology Entrepreneurship,1
+Financial Services/Banking Company 5,SF211: Object-oriented programming,1
+Financial Services/Banking Company 5,SF220: Introduction to Software Engineering,1
+Financial Services/Banking Company 5,SF331: Software Architecture and Design,1
+Financial Services/Banking Company 5,SF332: Software Testing and Quality Assurance,1
+Financial Services/Banking Company 5,SF334: Web Application Development,1
+Financial Services/Banking Company 5,SF340: Software Configuration Management,1
+Tech/Software Company 11,CN101: Introduction to Computer Programming,1
+Tech/Software Company 11,SF211: Object-oriented programming,1
+Tech/Software Company 11,SF220: Introduction to Software Engineering,1
+Tech/Software Company 11,SF222: Software Engineering Models and Analysis,1
+Tech/Software Company 11,SF331: Software Architecture and Design,1
+Tech/Software Company 11,SF334: Web Application Development,1
+Tech/Software Company 11,SF340: Software Configuration Management,1
+Tech/Software Company 11,TU236: Basic 3D Production & Animation,1
+Financial Services/Banking Company 6,CN101: Introduction to Computer Programming,1
+Financial Services/Banking Company 6,CN230: Database Systems,1
+Financial Services/Banking Company 6,CN321: Data Communication and Computer Networks I,1
+Financial Services/Banking Company 6,CN418: Big Data Engineering management,1
+Financial Services/Banking Company 6,SF211: Object-oriented programming,1
+Financial Services/Banking Company 6,SF220: Introduction to Software Engineering,1
+Financial Services/Banking Company 6,SF231: Data Structures and Algorithms,1
+Financial Services/Banking Company 6,SF331: Software Architecture and Design,1
+Financial Services/Banking Company 6,SF332: Software Testing and Quality Assurance,1
+Financial Services/Banking Company 6,SF334: Web Application Development,1
+Financial Services/Banking Company 6,SF340: Software Configuration Management,1
+Tech/Software Company 12,CN101: Introduction to Computer Programming,1
+Tech/Software Company 12,CN230: Database Systems,1
+Tech/Software Company 12,CN321: Data Communication and Computer Networks I,1
+Tech/Software Company 12,SF211: Object-oriented programming,1
+Tech/Software Company 12,SF220: Introduction to Software Engineering,1
+Tech/Software Company 12,SF222: Software Engineering Models and Analysis,1
+Tech/Software Company 12,SF331: Software Architecture and Design,1
+Tech/Software Company 12,SF333: Mobile Device Application Development,1
+Tech/Software Company 12,SF334: Web Application Development,1
+Tech/Software Company 12,SF351: Web Application Security,1

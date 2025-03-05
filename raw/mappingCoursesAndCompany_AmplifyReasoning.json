@@ -1,0 +1,3833 @@
+{
+    "Acuitmesh Co.,Ltd": [
+      {
+        "Topic Learning": [
+          "Client-server implementation",
+          "Software security mechanisms",
+          "Common vulnerabilities of web-based applications",
+          "Protection methods",
+          "Software testing fundamentals",
+          "Test techniques",
+          "Test evaluation",
+          "Software configuration management",
+          "Development of specification documents from requirements",
+          "Software maintenance fundamentals"
+        ],
+        "Advanced Topic Reasoning": [
+          "Client-server implementation from SF333 is clearly relevant as the intern's logs show extensive work with web application scanning and complex server-side tool configurations. They specifically worked on setting up Docker containers, Nessus scanning tools, and Sonarqube, which all require deep understanding of client-server architectures and interactions",
+          
+          "Software security mechanisms from SF351 is highly applicable since the intern actively contributed cybersecurity knowledge content on Medium.com and performed comprehensive web application vulnerability assessments. This demonstrates practical application of security principles taught in the course",
+          
+          "Common vulnerabilities of web-based applications from SF351 is directly aligned with the intern's daily tasks of performing VA (Vulnerability Assessment) scans. The logs show repeated work with security scanning tools like Nessus specifically targeting web applications, indicating hands-on experience identifying and analyzing web vulnerabilities",
+          
+          "Protection methods from SF351 is evidenced through the intern's extensive security code review activities and source code scanning tasks. They used specialized tools like Sonarqube and Sonarcloud to analyze code security, demonstrating practical application of protection methodologies",
+          
+          "Software testing fundamentals from SF332 is demonstrated through the intern's systematic approach to different types of security testing, including vulnerability scanning, code reviews, and environment testing across various platforms (MacOS, Windows, Linux)",
+          
+          "Test techniques from SF332 is heavily utilized as shown by the intern's work conducting both automated VA scanning and manual code reviews, requiring understanding of different testing methodologies",
+          
+          "Test evaluation from SF332 is evident in the logs where the intern had to analyze VA scan results, evaluate code review findings, and document their assessments in reports",
+          
+          "Software configuration management from SF340 is clearly demonstrated through their extensive work with Docker configurations, environment setup tasks, and managing different operating system environments including MacOS, Windows, and Linux through VirtualBox",
+          
+          "Development of specification documents from SF330 is shown through their consistent report writing activities and documentation of security findings",
+          
+          "Software maintenance fundamentals from SF340 is exemplified by their troubleshooting activities, such as resolving Docker detection issues and fixing bugs in Nessus and Sonarqube configurations"
+        ],
+        "Fundamental Topics Required": [
+          "Computer programming",
+          "Basic machine instructions",
+          "Class and Object concepts",
+          "Encapsulation",
+          "Data structures fundamentals",
+          "Algorithm analysis",
+          "Software development process and life cycles",
+          "Software modeling and its principles",
+          "Database access and manipulation",
+          "Operating system design and implementation"
+        ],
+        "Fundamental Topic Reasoning": [
+          "Computer programming from CN101 forms the essential foundation for their security testing work. The logs show they needed to understand programming concepts to effectively review code and configure security scanning tools",
+          
+          "Basic machine instructions from CN210 was crucial for their work with different operating systems and virtualization platforms like VirtualBox, requiring understanding of system-level operations",
+          
+          "Class and Object concepts from SF211 were necessary for working with modern security testing frameworks like Sonarqube, which analyzes object-oriented code structures",
+          
+          "Encapsulation from SF211 knowledge was vital for their security code reviews, as proper encapsulation is a key aspect of secure coding practices they needed to evaluate",
+          
+          "Data structures from SF231 proved essential for their work with security tools and code analysis, particularly when dealing with complex scanning results and code repositories",
+          
+          "Algorithm analysis from SF231 was important for understanding and configuring scanning algorithms in tools like Nessus and Sonarqube",
+          
+          "Software development process from SF220 provided crucial context for their security testing work, helping them understand where and when security assessments fit in the development lifecycle",
+          
+          "Software modeling from SF222 knowledge helped them understand system architectures they were testing, particularly when setting up complex environments with Docker and multiple tools",
+          
+          "Database concepts from CN230 were necessary for understanding data security aspects during their vulnerability assessments and code reviews",
+          
+          "Operating system concepts from CN311 were clearly crucial as shown by their work across multiple operating systems (MacOS, Windows, Linux) and their ability to troubleshoot OS-specific issues"
+        ],
+        "Course Progression": {
+          "Level 1 (Fundamentals)": [
+            "CN101: Introduction to Computer Programming",
+            "CN210: Fundamental of Computer Architecture",
+            "SF211: Object-oriented programming (Prereq: CN101)",
+            "CN230: Database Systems"
+          ],
+          "Level 2 (Intermediate)": [
+            "SF220: Introduction to Software Engineering",
+            "SF222: Software Engineering Models and Analysis",
+            "SF231: Data Structures and Algorithms (Prereq: SF211)",
+            "CN311: Operating Systems"
+          ],
+          "Level 3 (Advanced/Applied)": [
+            "SF330: Software Requirements and Specification",
+            "SF332: Software Testing and Quality Assurance (Prereq: SF331)",
+            "SF333: Mobile Device Application Development (Prereq: SF211)",
+            "SF340: Software Configuration Management and Maintenance (Prereq: SF330)",
+            "SF351: Web Application Security"
+          ]
+        },
+        "Log Activities Coverage": {
+          "Web app scanning": "Covered by SF351 and SF332",
+          "Cybersecurity knowledge writing": "Covered by SF351",
+          "VA scanning": "Covered by SF351 and SF332",
+          "Environment setup": "Covered by SF340",
+          "Docker configuration": "Covered by SF340 and SF333",
+          "Code reviews": "Covered by SF351 and SF332",
+          "Report writing": "Covered by SF330",
+          "Nessus and Sonarqube setup": "Covered by SF340",
+          "Bug fixing": "Covered by SF340",
+          "Tool installation": "Covered by SF340"
+        }
+      }
+    ],
+    "AGODA SERVICES COMPANY LIMITED": [
+    {
+      "Topic Learning": [
+        "Database access and manipulation through the web",
+        "Server-side web application development",
+        "Client-server implementation",
+        "Software testing techniques",
+        "Performance analysis and optimization",
+        "Software security mechanisms",
+        "Software configuration management",
+        "Software architecture design",
+        "API implementation and testing",
+        "Parallel computing concepts",
+        "React-based interface development"
+      ],
+      "Advanced Topic Reasoning": [
+        "Database manipulation from CN230 and SF334 is heavily emphasized through the intern's work on Stored Procedure Analysis and database investigations. The logs show direct involvement with database performance optimization and analysis tasks, requiring deep understanding of database operations and query optimization",
+        
+        "Server-side development from SF334 is demonstrated through extensive work with APIs and backend services. The logs show regular API testing activities and backend service maintenance, indicating practical application of server-side development principles",
+        
+        "Client-server implementation from SF333 is evident through their comprehensive API testing and integration work. They performed systematic testing of APIs and worked on fixing blocking jobs, showing understanding of client-server architecture",
+        
+        "Testing techniques from SF332 are prominently displayed in their systematic API testing and production testing activities. The logs show regular engagement in testing across different environments and scenarios, demonstrating application of various testing methodologies",
+        
+        "Performance analysis from SF331 is clearly demonstrated through their detailed work on parallel performance analysis and thread pool investigations. The logs show multiple instances of investigating thread pool exhaustion and analyzing parallel job performance",
+        
+        "Security mechanisms from SF351 are extensively applied through their involvement in SOX Audit work and participation in secure code warrior training. This shows practical application of security principles and compliance requirements",
+        
+        "Configuration management from SF340 is demonstrated through their systematic approach to machine setup and environment configuration tasks. The logs show regular work on setting up development environments and resolving version compatibility issues",
+        
+        "Architecture design principles from SF331 are evidenced by their regular participation in advanced architect meetings, showing exposure to high-level system design discussions and architectural decision-making",
+        
+        "API testing concepts from SF332 and SF334 are thoroughly applied through their extensive API testing work, including systematic testing of various endpoints and debugging of API-related issues",
+        
+        "React development from SF334 is demonstrated through their completion of React exercises, showing practical application of modern web development frameworks"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming fundamentals",
+        "Data structures and algorithms",
+        "Operating system concepts",
+        "Database fundamentals",
+        "Software engineering principles",
+        "Object-oriented programming",
+        "Network protocols",
+        "Version control systems",
+        "Software modeling and analysis",
+        "Basic web technologies"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer programming from CN101 forms the foundation for their daily coding tasks and continuous learning of new programming languages. The logs show regular engagement with coding activities and language learning sessions",
+        
+        "Data structures from SF231 is crucial for their work with efficient code implementation and analysis, particularly evident in their thread pool management and parallel processing tasks",
+        
+        "Operating systems from CN311 is essential for their work with thread management and system configuration. The logs show regular interaction with system-level operations and environment setup",
+        
+        "Database concepts from CN230 is fundamental for their stored procedure analysis work and database operations, showing practical application of database principles",
+        
+        "Software engineering from SF220 provides the framework for their project management and development processes, evident in their systematic approach to training and development tasks",
+        
+        "Object-oriented programming from SF211 is necessary for their work with modern development frameworks, particularly evident in their React development tasks and API implementations",
+        
+        "Network protocols from CN321 are essential for their extensive API testing and client-server communication work, showing practical application of networking concepts",
+        
+        "Version control from SF220 is demonstrated through their work with repositories and code management, particularly evident in tasks involving VS Code/Rider and repository cloning",
+        
+        "Software modeling from SF222 is applied in their participation in architecture discussions and system design meetings, showing understanding of system modeling principles",
+        
+        "Web technologies from SF334 form the basis for their React development work and interaction with web services, demonstrated through their API testing and web application development tasks"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming (Prereq: CN101)",
+          "CN230: Database Systems",
+          "SF220: Introduction to Software Engineering"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "SF231: Data Structures and Algorithms (Prereq: SF211)",
+          "CN311: Operating Systems",
+          "CN321: Data Communication and Computer Networks I"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design (Prereq: SF222)",
+          "SF332: Software Testing and Quality Assurance (Prereq: SF331)",
+          "SF334: Web Application Development (Prereq: CN101)",
+          "SF340: Software Configuration Management and Maintenance",
+          "SF351: Web Application Security"
+        ]
+      },
+      "Log Activities Coverage": {
+        "SOX Audit": "Covered by SF351 (security mechanisms)",
+        "API Testing": "Covered by SF332 and SF334",
+        "Thread Pool Analysis": "Covered by CN311 and SF230",
+        "Training Checklist": "Covered by multiple fundamental courses",
+        "Machine Setup": "Covered by SF340 and CN311",
+        "React Exercises": "Covered by SF334",
+        "Stored Procedure Analysis": "Covered by CN230",
+        "Architecture Meetings": "Covered by SF331",
+        "Code Security": "Covered by SF351",
+        "Parallel Performance": "Covered by SF230/CN240",
+        "Environment Configuration": "Covered by SF340",
+        "Version Control": "Covered by SF220",
+        "Programming Language Learning": "Covered by CN101 and SF211"
+      }
+    }
+  ],
+  "Axons Corporate": [
+    {
+      "Topic Learning": [
+        "Development and application of adaptive algorithms",
+        "Supervised learning",
+        "Machine learning fundamentals",
+        "Software testing techniques",
+        "Test evaluation",
+        "Pattern recognition basics for data science"
+      ],
+      "Advanced Topic Reasoning": [
+        "Development of adaptive algorithms from CN340 is strongly demonstrated through the intern's participation in the Machine Learning Workshop, where they would have learned and practiced implementing self-adjusting algorithms and ML models. This aligns directly with the course's focus on 'Development and application of adaptive algorithms'",
+    
+        "Supervised learning from CN340 is particularly relevant as it's a fundamental concept covered in machine learning workshops. The course's coverage of 'Supervised learning' provides the theoretical foundation needed for practical ML workshop exercises",
+    
+        "Machine learning fundamentals from CN340 are extensively applied during the workshop sessions. The course's comprehensive coverage of ML concepts directly supports the hands-on learning activities mentioned in the logs",
+    
+        "Software testing techniques from SF332 are directly applied through their Code Testing activities. This aligns with the course's focus on 'Test techniques' and practical testing implementation",
+    
+        "Test evaluation from SF332 is demonstrated through their code testing tasks, requiring understanding of how to assess and validate test results, which is a key component of the course's 'Test evaluation' module",
+    
+        "Pattern recognition from CN240 is particularly relevant to their machine learning workshop participation, as it's a fundamental concept in ML that builds on the course's coverage of 'Pattern recognition basics for data science'"
+      ],
+      "Fundamental Topics Required": [
+        "Probability theory and statistics",
+        "Linear algebra fundamentals",
+        "Computer programming basics",
+        "Data structures and algorithms",
+        "Calculus concepts",
+        "Software testing fundamentals"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Probability theory from SF250/CN204 provides the essential mathematical foundation for understanding machine learning concepts. The courses' coverage of probability distributions and statistical inference is crucial for ML workshop activities",
+    
+        "Linear algebra from SF230 is fundamental for machine learning algorithms and computations. The course's topics like 'Vector spaces, linear independence, dimensions' directly support understanding of ML concepts",
+    
+        "Computer programming from CN101 is essential for their code testing activities and ML workshop participation, requiring solid programming fundamentals as taught in the course",
+    
+        "Data structures from SF231 is crucial for implementing efficient algorithms in both testing and machine learning contexts. The course's coverage of fundamental data structures supports their practical work",
+    
+        "Calculus from MA111 provides the mathematical foundation necessary for understanding machine learning optimization techniques, particularly relevant to the ML workshop's advanced topics",
+    
+        "Testing fundamentals from SF332 directly support their code testing activities, providing the theoretical basis for understanding testing methodologies and best practices"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "MA111: Fundamentals of Calculus",
+          "SF250: Probability Theory and Statistics",
+          "SF230: Linear Algebra and Numerical Methods"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF231: Data Structures and Algorithms (Prereq: SF211)",
+          "CN204: Probability Theory and Random Processes",
+          "SF332: Software Testing and Quality Assurance",
+          "CN240: Data Science for Signal Processing (Prereq: CN204)"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "CN340: Machine Learning (Prereq: CN240)",
+          "CN341: Deep Learning (Prereq: CN340)",
+          "SF251: Introduction to Data Science"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Code Testing": "Covered by SF332 (software testing techniques)",
+        "Machine Learning Workshop": "Covered by CN340, CN240, and SF251",
+        "Team Collaboration": "Covered by software engineering principles from SF220"
+      },
+      "Additional Required Skills": {
+        "Mathematical Foundation": [
+          "Linear algebra concepts",
+          "Probability and statistics",
+          "Calculus and optimization"
+        ],
+        "Programming Skills": [
+          "Python programming",
+          "Data manipulation",
+          "Algorithm implementation"
+        ],
+        "Software Engineering Practices": [
+          "Code testing",
+          "Version control",
+          "Documentation"
+        ]
+      }
+    }
+  ],
+  "Bangkok Smartcard System Company Limited": [
+    {
+      "Topic Learning": [
+        "Database access and manipulation through the web",
+        "Server-side web application development",
+        "Software architecture and design",
+        "API development and integration",
+        "Database design and implementation",
+        "Version control systems",
+        "Modern web frameworks",
+        "Type systems in programming",
+        "Software configuration management"
+      ],
+      "Advanced Topic Reasoning": [
+        "Database manipulation from CN230 and SF334 is extensively demonstrated through their hands-on work with PostgreSQL integration and table creation. The logs show active involvement in database connectivity, table creation following ER diagrams, and implementation of database migrations, directly applying the 'Use and design of database' concepts from CN230",
+    
+        "Server-side development from SF334 is clearly evidenced through their implementation of NestJS and Fastify frameworks. The logs show progression from learning these frameworks to implementing them for API development, demonstrating practical application of 'Server-side web application development'",
+    
+        "Architecture design from SF331 is demonstrated through their thoughtful framework selection and API design process. The logs show consideration of different frameworks (NestJS, Fastify, Express.js) and their integration, reflecting the course's emphasis on 'Software structure and architecture'",
+    
+        "API development from SF334 is extensively shown through their work on REST API implementation, including converting JavaScript APIs to TypeScript and creating GET endpoints, directly applying 'Server-side web application development' principles",
+    
+        "Database design from CN230 is thoroughly demonstrated through their work with ER diagram implementation and table creation. The logs show systematic approach to database structure implementation, aligning with 'Schema design' concepts",
+    
+        "Version control from SF340 is evidenced through their systematic use of GitLab, including repository setup and branch management. This directly applies 'Software configuration management' principles",
+    
+        "Web frameworks from SF334 is demonstrated through their extensive work with NestJS, Express.js, and Fastify, showing practical application of modern web development frameworks",
+    
+        "Type systems from SF211 is clearly shown in their JavaScript to TypeScript conversion work, demonstrating understanding of strong typing and object-oriented principles",
+    
+        "Configuration management from SF340 is evidenced by their handling of environment variables and configuration issues, showing practical application of 'Software configuration management' concepts"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming fundamentals",
+        "Database systems basics",
+        "Object-oriented programming",
+        "Data structures and algorithms",
+        "Web technologies fundamentals",
+        "Software engineering principles",
+        "Network protocols",
+        "System design basics"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer programming from CN101 forms the essential foundation for their work with multiple programming languages (JavaScript, TypeScript, Golang) and frameworks, demonstrating application of core programming concepts",
+    
+        "Database systems from CN230 is crucial for their extensive work with PostgreSQL, including database design, connectivity, and query implementation. This directly applies the course's focus on database fundamentals",
+    
+        "Object-oriented programming from SF211 is heavily utilized in their work with TypeScript and modern frameworks, demonstrating application of OOP principles in a real-world context",
+    
+        "Data structures from SF231 is essential for their API implementation work, particularly in handling data transformations and database operations efficiently",
+    
+        "Web fundamentals from SF334 provides the crucial foundation for their understanding and implementation of web frameworks and APIs, as shown in their daily development tasks",
+    
+        "Software engineering from SF220 is demonstrated through their systematic approach to project structure, documentation reading, and problem-solving methodology",
+    
+        "Network protocols from CN321 is fundamental to their API development work, particularly in understanding client-server communication patterns",
+    
+        "System design from SF222 is evident in their participation in architecture decisions and framework selection processes, showing application of design principles"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming (Prereq: CN101)",
+          "CN230: Database Systems",
+          "SF220: Introduction to Software Engineering"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "SF231: Data Structures and Algorithms (Prereq: SF211)",
+          "CN321: Data Communication and Computer Networks I",
+          "SF334: Web Application Development (Prereq: CN101)"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design (Prereq: SF222)",
+          "SF340: Software Configuration Management and Maintenance",
+          "SF351: Web Application Security"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Database Work": {
+          "Activities": [
+            "PostgreSQL integration",
+            "Database connection setup",
+            "Table creation from ER diagrams",
+            "Database migration"
+          ],
+          "Courses": ["CN230", "SF334"]
+        },
+        "Backend Development": {
+          "Activities": [
+            "NestJS framework usage",
+            "Fastify implementation",
+            "Express.js study",
+            "Golang exploration"
+          ],
+          "Courses": ["SF334", "SF331"]
+        },
+        "API Development": {
+          "Activities": [
+            "GET API implementation",
+            "API design and testing",
+            "Service creation"
+          ],
+          "Courses": ["SF334", "CN321"]
+        },
+        "Code Migration": {
+          "Activities": [
+            "JS to TS conversion",
+            "Code refactoring",
+            "Framework migration"
+          ],
+          "Courses": ["SF211", "SF334"]
+        },
+        "Environment Setup": {
+          "Activities": [
+            "GitLab configuration",
+            "Node.js setup",
+            "Environment variable management"
+          ],
+          "Courses": ["SF340"]
+        }
+      },
+      "Technical Stack Coverage": {
+        "Languages": [
+          "TypeScript",
+          "JavaScript",
+          "Golang"
+        ],
+        "Frameworks": [
+          "NestJS",
+          "Fastify",
+          "Express.js"
+        ],
+        "Databases": [
+          "PostgreSQL"
+        ],
+        "Tools": [
+          "GitLab",
+          "Node.js"
+        ]
+      }
+    }
+  ],
+  "Bangkok Web Solution": [
+    {
+      "Topic Learning": [
+        "Web application development fundamentals",
+        "User interface design for web applications",
+        "Basic HTML and Cascading Style Sheets",
+        "Frontend frameworks implementation",
+        "Responsive web design",
+        "Component-based web development"
+      ],
+      "Advanced Topic Reasoning": [
+        "Web application fundamentals from SF334 are directly applied through their task of developing complete webpage layouts. The logs show they're working on creating full web pages, demonstrating practical application of 'Introduction to web application programming principles'",
+    
+        "UI design principles from SF334 are extensively demonstrated through their work on navbar and hero section creation. This shows practical implementation of the course's 'User interface design' concepts, particularly in creating key navigational and landing page elements",
+    
+        "HTML/CSS usage from SF334 is evidenced in their basic web page structuring work. The course's coverage of 'Basic HTML and Cascading Style Sheets' provides the foundation for their webpage development tasks",
+    
+        "Frontend framework implementation from SF334 is clearly demonstrated through their systematic learning and application of Bootstrap 5. This aligns with the course's focus on modern web development frameworks and best practices",
+    
+        "Responsive design from SF334 is applied through their Bootstrap implementation work. The logs show they're learning and implementing Bootstrap's responsive classes, demonstrating understanding of mobile-first design principles",
+    
+        "Component-based development from SF334 is demonstrated through their work on creating modular components like the navbar. This shows application of modern web development practices focusing on reusable components"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming basics",
+        "Web technologies fundamentals",
+        "Basic design principles",
+        "Document Object Model",
+        "Version control basics",
+        "Software development processes"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer programming from CN101 provides the essential foundation for their web development work. The course's programming fundamentals enable them to understand and implement web development concepts effectively",
+    
+        "Web technologies basics from SF334 are crucial for their HTML/CSS work. The course's comprehensive coverage of web fundamentals supports their practical webpage development tasks",
+    
+        "Design principles from SF222 are applied in their UI/UX implementation work, particularly evident in their approach to creating user interface elements with Bootstrap. This demonstrates application of 'Basic principles to design good software'",
+    
+        "DOM understanding from SF334 is essential for their web page structure work, as evidenced by their ability to create and manipulate webpage elements. This builds on the course's web development fundamentals",
+    
+        "Version control from SF220 provides the foundation for project management practices, though not explicitly mentioned in logs, it's essential for web development workflow",
+    
+        "Software processes from SF220 are clearly important for their understanding of company workflows and development processes, as shown in their initial focus on learning company procedures"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming (Prereq: CN101)",
+          "SF220: Introduction to Software Engineering"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "SF231: Data Structures and Algorithms (Prereq: SF211)"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF334: Web Application Development (Prereq: CN101)",
+          "SF333: Mobile Device Application Development (for responsive design concepts)"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Company Process Learning": {
+          "Activities": ["Study company workflow"],
+          "Courses": ["SF220"]
+        },
+        "Web Development": {
+          "Activities": [
+            "Complete webpage development",
+            "Bootstrap 5 implementation",
+            "Navbar creation",
+            "Hero section development"
+          ],
+          "Courses": ["SF334"]
+        },
+        "Frontend Framework": {
+          "Activities": [
+            "Bootstrap 5 study",
+            "Bootstrap class implementation",
+            "Component development"
+          ],
+          "Courses": ["SF334"]
+        }
+      },
+      "Technical Stack Coverage": {
+        "Frontend Frameworks": [
+          "Bootstrap 5"
+        ],
+        "Languages": [
+          "HTML",
+          "CSS"
+        ],
+        "Components": [
+          "Navbar",
+          "Hero section"
+        ]
+      },
+      "Additional Skills Required": {
+        "Design Skills": [
+          "UI component layout",
+          "Responsive design principles",
+          "Visual hierarchy understanding"
+        ],
+        "Development Practices": [
+          "Component-based development",
+          "CSS framework usage",
+          "Responsive design implementation"
+        ],
+        "Professional Skills": [
+          "Company workflow understanding",
+          "Self-learning capability",
+          "Practice and iteration"
+        ]
+      }
+    }
+  ],
+  "Bluebik Group PLC": [
+    {
+      "Topic Learning": [
+        "Software testing and quality assurance",
+        "Software requirements and specification",
+        "Project management",
+        "Database management and analysis",
+        "System design and architecture",
+        "API testing and integration",
+        "Enterprise systems and ERP",
+        "Mobile application testing",
+        "User mapping and workflow analysis",
+        "Software configuration management"
+      ],
+      "Advanced Topic Reasoning": [
+        "Software testing from SF332 is extensively demonstrated through their systematic approach to test case creation, execution of regression testing, and defect tracking in Jira. The logs show regular involvement in testing activities across different features and platforms, demonstrating thorough application of testing methodologies",
+    
+        "Requirements analysis from SF330 is clearly evidenced through their detailed work on feature specification and user mapping activities. The logs show systematic documentation of requirements and creation of detailed workflow diagrams for project management features",
+    
+        "Project management from SF220 is demonstrated through their creation of comprehensive workflow diagrams and systematic feature planning. Their work includes organizing test cases, coordinating with teams, and planning feature implementations",
+    
+        "Database management from CN230 is applied through their work with SAP HANA analysis and DBeaver usage. The logs show hands-on experience with enterprise-level database systems and data analysis tools",
+    
+        "System architecture from SF331 is demonstrated through their detailed analysis of ERP systems and their components. The logs show understanding of complex enterprise system architectures and their interactions",
+    
+        "API testing from SF334 and SF332 is evidenced through their use of Postman for API testing and verification. This shows practical application of web service testing principles",
+    
+        "Enterprise systems understanding from SF331 is shown through their extensive work with SAP systems, including backend testing and integration verification",
+    
+        "Mobile testing from SF333 is demonstrated through their systematic testing of applications across both iOS and Android platforms, showing understanding of mobile-specific testing considerations",
+    
+        "User mapping from SF330 is extensively demonstrated through their detailed workflow analysis and documentation of user interactions within the system",
+    
+        "Configuration management from SF340 is shown through their work with environment setup and management of different testing environments"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming basics",
+        "Database fundamentals",
+        "Software engineering principles",
+        "System analysis and design",
+        "Project management basics",
+        "Testing methodologies",
+        "Web technologies",
+        "Version control systems"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer programming from CN101 provides the essential foundation for understanding and working with test scripts and automation tools. The logs show regular interaction with various technical systems requiring programming knowledge",
+    
+        "Database fundamentals from CN230 are crucial for their work with SAP HANA and database testing activities. This includes understanding database structures and query operations",
+    
+        "Software engineering from SF220 is fundamental to their understanding of the project lifecycle, as shown in their systematic approach to feature development and testing",
+    
+        "System analysis from SF222 is clearly applied in their workflow analysis and feature specification work, demonstrating understanding of system modeling and documentation",
+    
+        "Project management from SF220 is essential for their coordination with different teams and systematic planning of testing activities, as evidenced by their regular participation in team meetings",
+    
+        "Testing basics from SF332 form the foundation for their QA activities, including test case design, execution, and defect tracking",
+    
+        "Web technologies from SF334 are crucial for their API testing work and understanding of web-based enterprise systems",
+    
+        "Version control from SF220 is important for their project collaboration and documentation management, though not explicitly mentioned in logs"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "CN230: Database Systems",
+          "SF220: Introduction to Software Engineering",
+          "SF222: Software Engineering Models and Analysis"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF231: Data Structures and Algorithms (Prereq: SF211)",
+          "SF330: Software Requirements and Specification",
+          "SF334: Web Application Development",
+          "SF340: Software Configuration Management and Maintenance"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design",
+          "SF332: Software Testing and Quality Assurance",
+          "SF333: Mobile Device Application Development",
+          "SF351: Web Application Security"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Testing Activities": {
+          "Test Case Management": "Creating and reviewing test cases (DX-20518)",
+          "Regression Testing": "Foundation, Deal features testing",
+          "Mobile Testing": "iOS and Android platform testing",
+          "SAP Testing": "Backend system testing",
+          "API Testing": "Using Postman for API verification"
+        },
+        "Analysis and Design": {
+          "Workflow Analysis": "Creating flow charts and diagrams",
+          "User Mapping": "Project management workflow mapping",
+          "Feature Design": "ERP system feature specification",
+          "Requirements Gathering": "User requirement analysis"
+        },
+        "Project Management": {
+          "Documentation": "Test result documentation",
+          "Team Collaboration": "Working with SAP team",
+          "Defect Management": "Following up on defects (DX-20982, DX-20956)"
+        },
+        "System Work": {
+          "ERP Systems": "Super ERP system analysis",
+          "Database Work": "DBeaver usage, SAP HANA",
+          "Mobile Applications": "xplORe system testing"
+        }
+      },
+      "Technical Tools Coverage": {
+        "Testing Tools": [
+          "Jira",
+          "Postman",
+          "DBeaver"
+        ],
+        "Systems": [
+          "SAP HANA",
+          "xplORe",
+          "Super ERP"
+        ],
+        "Platforms": [
+          "iOS",
+          "Android"
+        ],
+        "Documentation": [
+          "Flow charts",
+          "User mapping",
+          "Feature specifications"
+        ]
+      }
+    }
+  ],
+  "Boonrawd Brewery": [
+    {
+      "Topic Learning": [
+        "Software architecture and design",
+        "Web framework implementation",
+        "Software requirements analysis",
+        "System analysis and legacy systems",
+        "Software configuration management",
+        "Technology stack evaluation",
+        "Development tools and environments"
+      ],
+      "Advanced Topic Reasoning": [
+        "Software architecture from SF331 is prominently demonstrated through their systematic analysis of system structures. The logs show dedicated time spent understanding the architecture and existing system components, directly applying the course's focus on 'Software structure and architecture'",
+    
+        "Web frameworks from SF334 is extensively evidenced through their dedicated study of company-specific frameworks and technologies. This aligns with the course's coverage of 'Server-side web application development' and modern web frameworks",
+    
+        "Requirements analysis from SF330 is demonstrated through their involvement in requirement gathering activities with senior team members. This shows practical application of 'Development of specification documents from requirements'",
+    
+        "System analysis from SF222 is clearly shown in their detailed study of legacy system structures. The logs indicate systematic approach to understanding existing systems, applying 'Models (Information modeling, Behavioral modeling, and structural modeling)'",
+    
+        "Configuration management from SF340 is evidenced through their methodical approach to technology stack setup and implementation. The logs show careful consideration of required tools and technologies, demonstrating 'Software configuration management' principles",
+    
+        "Technology evaluation from SF331 is demonstrated through their R&D work on required frameworks and technologies. This shows practical application of 'Software design strategies and methods' in evaluating technical solutions",
+    
+        "Development environment from SF340 is shown through their systematic study and setup of development tools, applying configuration management principles in a practical context"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming fundamentals",
+        "Software engineering principles",
+        "Web development basics",
+        "System design concepts",
+        "Development methodologies",
+        "Version control systems",
+        "Object-oriented programming"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer programming from CN101 forms the essential foundation for their work in understanding development stacks and frameworks. The course's programming fundamentals enable them to grasp complex technical environments",
+    
+        "Software engineering from SF220 is crucial for their understanding of system architecture and development processes. The logs show application of 'Scientific foundation for software engineering' principles",
+    
+        "Web development from SF334 is fundamental to their framework comprehension work, particularly in understanding modern web technologies and development approaches",
+    
+        "System design from SF222 is clearly applied in their analysis of system structures and architectures, demonstrating understanding of 'Basic principles to design good software'",
+    
+        "Development methods from SF220 provides the foundation for their project approach understanding, showing application of 'Methods, techniques, and tools used for software engineering process'",
+    
+        "Version control from SF220 is essential for collaborative development work, though not explicitly mentioned in logs but necessary for modern development environments",
+    
+        "OOP concepts from SF211 are crucial for understanding modern frameworks, particularly in working with object-oriented architectures and design patterns"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming (Prereq: CN101)",
+          "SF220: Introduction to Software Engineering"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "SF231: Data Structures and Algorithms (Prereq: SF211)",
+          "SF334: Web Application Development"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF330: Software Requirements and Specification",
+          "SF331: Software Architecture and Design",
+          "SF340: Software Configuration Management and Maintenance"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Technology Learning": {
+          "Stack Study": "Understanding company's technology stack",
+          "Framework Learning": "Study of required frameworks",
+          "Tool Exploration": "Learning development tools"
+        },
+        "System Analysis": {
+          "Legacy System": "Studying existing system structure",
+          "Architecture": "Understanding system architecture"
+        },
+        "Project Preparation": {
+          "Requirements": "Receiving and analyzing requirements",
+          "Setup": "Downloading and configuring necessary stacks"
+        },
+        "Research": {
+          "R&D": "Research on required frameworks and technologies"
+        }
+      },
+      "Professional Skills Development": {
+        "Technical Skills": [
+          "Framework proficiency",
+          "Tool mastery",
+          "Stack understanding"
+        ],
+        "Analysis Skills": [
+          "System structure analysis",
+          "Requirements interpretation",
+          "Technology evaluation"
+        ],
+        "Research Skills": [
+          "Technical research",
+          "Framework investigation",
+          "Tool assessment"
+        ]
+      }
+    }
+  ],
+  "Digital Commerce Co., Ltd": [
+    {
+      "Topic Learning": [
+        "Frontend web development",
+        "React component architecture",
+        "JavaScript programming",
+        "Web application routing",
+        "CRUD operations",
+        "Component-based development",
+        "UI/UX implementation",
+        "Document generation",
+        "Search functionality",
+        "Layout design principles"
+      ],
+      "Advanced Topic Reasoning": [
+        "Frontend development from SF334 is extensively demonstrated through their comprehensive React implementation work. The logs show progressive learning and application of modern frontend development concepts, directly applying 'Server-side web application development' principles",
+    
+        "Component architecture from SF334 is clearly shown in their systematic management of React components. Their work includes creating, managing, and implementing reusable components, demonstrating understanding of 'Basic HTML and Cascading Style Sheets' at an advanced level",
+    
+        "JavaScript programming from SF334 is evidenced through their dedicated learning activities focused on JS. The logs show systematic progress in understanding and implementing JavaScript features, particularly in a React context",
+    
+        "Routing from SF334 is demonstrated through their implementation of route management in React applications. This shows practical application of web application architecture principles",
+    
+        "CRUD operations from SF334 and CN230 are thoroughly demonstrated in their mini project development. The logs show successful implementation of Create, Read, Update, Delete functionalities, combining database and web development concepts",
+    
+        "Component development from SF334 is shown through their systematic approach to component separation and reuse. The logs detail their study and implementation of component architecture principles",
+    
+        "UI/UX from SF334 is evidenced by their detailed work on table styling and layout optimization. This demonstrates practical application of user interface design principles",
+    
+        "Document handling from SF334 is shown in their work with PDF generation through pure HTML, demonstrating understanding of document processing in web applications",
+    
+        "Search implementation from SF231 and SF334 is demonstrated through their creation of a searchbar, combining data structure concepts with frontend functionality",
+    
+        "Layout design from SF334 is shown through their systematic approach to page layout organization, demonstrating understanding of web design principles"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming basics",
+        "Web technologies fundamentals",
+        "Object-oriented programming",
+        "Data structures and algorithms",
+        "HTML and CSS basics",
+        "Software design patterns",
+        "Version control systems",
+        "Database fundamentals"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer programming from CN101 forms the essential foundation for their JavaScript development work. The course's programming fundamentals enable them to grasp advanced JavaScript concepts efficiently",
+    
+        "Web technologies from SF334 provide the crucial foundation for their web development work, particularly evident in their HTML/CSS implementations and React development",
+    
+        "OOP concepts from SF211 are heavily utilized in their component-based architecture work with React, demonstrating application of object-oriented principles in frontend development",
+    
+        "Data structures from SF231 are essential for their work with efficient data handling in React applications, particularly evident in their CRUD and search implementations",
+    
+        "HTML/CSS from SF334 is fundamental to their layout and styling work, as shown in their table styling and page layout tasks",
+    
+        "Design patterns from SF222 are crucial for their understanding and implementation of React architecture, demonstrating application of software design principles",
+    
+        "Version control from SF220 is essential for their project collaboration, though not explicitly mentioned in logs but necessary for modern development workflows",
+    
+        "Database concepts from CN230 are fundamental to their CRUD operations implementation, showing understanding of data persistence and manipulation"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming (Prereq: CN101)",
+          "SF220: Introduction to Software Engineering"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "SF231: Data Structures and Algorithms (Prereq: SF211)",
+          "CN230: Database Systems"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF334: Web Application Development (Prereq: CN101)",
+          "SF333: Mobile Device Application Development",
+          "SF331: Software Architecture and Design"
+        ]
+      },
+      "Log Activities Coverage": {
+        "React Development": {
+          "Component Work": [
+            "Component creation and management",
+            "Component separation",
+            "Boilerplate study",
+            "Pure component implementation"
+          ],
+          "Routing": [
+            "Route setup",
+            "Navigation implementation"
+          ],
+          "State Management": [
+            "CRUD operations",
+            "Data handling"
+          ]
+        },
+        "UI Development": {
+          "Layout": [
+            "Page layout organization",
+            "Table styling",
+            "Search bar implementation"
+          ],
+          "Document Generation": [
+            "HTML to PDF conversion",
+            "PDF template creation"
+          ]
+        },
+        "Learning Activities": {
+          "Framework Study": [
+            "React fundamentals",
+            "JavaScript mastery",
+            "Company boilerplate understanding"
+          ]
+        }
+      },
+      "Technical Stack Coverage": {
+        "Frontend": [
+          "React.js",
+          "JavaScript",
+          "HTML5",
+          "CSS3"
+        ],
+        "Development Tools": [
+          "React Router",
+          "Company Boilerplate",
+          "PDF Generation Tools"
+        ],
+        "Concepts": [
+          "Component Architecture",
+          "State Management",
+          "Routing",
+          "Layout Design"
+        ]
+      }
+    }
+  ],
+  "Finnomena": [
+    {
+      "Topic Learning": [
+        "Backend development with Golang",
+        "Frontend frameworks (Vue.js, Nuxt.js)",
+        "Database systems and SQL",
+        "API development and testing",
+        "Software testing methodologies",
+        "Docker containerization",
+        "Message queuing systems",
+        "Cloud storage integration",
+        "Service Level Agreement implementation",
+        "Continuous Integration/Deployment",
+        "REST API architecture",
+        "Test case design and execution"
+      ],
+      "Advanced Topic Reasoning": [
+        "Backend development from SF334 is extensively demonstrated through their deep involvement with Golang REST API implementation. The logs show systematic learning and practical application in building backend services, directly applying 'Server-side web application development' principles",
+    
+        "Frontend frameworks from SF334 is clearly evidenced through their comprehensive work with Vue.js and Nuxt.js. The logs show dedicated time spent learning and implementing modern frontend frameworks, demonstrating practical application of web development concepts",
+    
+        "Database systems from CN230 is thoroughly demonstrated through their work on MySQL and complex data migration tasks from Google Cloud Storage to database. This shows practical application of 'Data-intensive systems' concepts",
+    
+        "API development from SF334 is prominently shown through their extensive work with REST APIs and Postman testing. The logs detail their involvement in both creating and testing APIs, demonstrating full-stack development capabilities",
+    
+        "Testing methodologies from SF332 is comprehensively evidenced through their systematic approach to test case creation and Service Level Agreement (SLA) testing across frontend and backend systems",
+    
+        "Containerization from SF340 is demonstrated through their work with Docker setup and configuration, showing practical application of modern deployment technologies",
+    
+        "Message queuing from CN321 is shown through their participation in Pub/Sub knowledge sharing sessions and implementation work, demonstrating understanding of distributed systems",
+    
+        "Cloud storage from CN416 is evidenced through their work with Google Cloud Storage integration and migration tasks, showing practical cloud computing skills",
+    
+        "SLA implementation from SF332 is thoroughly demonstrated through their systematic work on both frontend and backend SLA development and testing",
+    
+        "CI/CD from SF340 is shown through their regular interaction with GitLab for code deployment and version control, demonstrating modern DevOps practices",
+    
+        "Architecture design from SF331 is evidenced through their study and implementation of N-tier Architecture, showing understanding of complex system design"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming fundamentals",
+        "Data structures and algorithms",
+        "Database management systems",
+        "Network protocols",
+        "Software engineering principles",
+        "Version control systems",
+        "Web development basics",
+        "System design concepts"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer programming from CN101 forms the essential foundation for their extensive work with Golang and JavaScript. The logs show continuous learning and application of multiple programming languages",
+    
+        "Data structures from SF231 is crucial for their efficient API implementation work, particularly evident in their backend development tasks",
+    
+        "Database management from CN230 is fundamental to their work with MySQL and data migration tasks, showing practical application of database concepts",
+    
+        "Network protocols from CN321 is essential for their work with APIs and Pub/Sub systems, demonstrating understanding of distributed system communications",
+    
+        "Software engineering from SF220 is clearly applied in their use of project management tools like Jira and their participation in sprint planning and grooming sessions",
+    
+        "Version control from SF220 is demonstrated through their regular use of GitLab for code collaboration and version control",
+    
+        "Web development from SF334 provides the crucial foundation for their full-stack development work, including both frontend and backend tasks",
+    
+        "System design from SF222 is fundamental to their understanding and implementation of complex architectures, particularly evident in their N-tier Architecture study"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming (Prereq: CN101)",
+          "SF220: Introduction to Software Engineering",
+          "CN230: Database Systems"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "SF231: Data Structures and Algorithms",
+          "CN321: Data Communication and Computer Networks I",
+          "SF334: Web Application Development"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design",
+          "SF332: Software Testing and Quality Assurance",
+          "SF340: Software Configuration Management",
+          "CN416: Cloud Computing",
+          "SF351: Web Application Security"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Development Work": {
+          "Backend": [
+            "Golang REST API development",
+            "Database migrations",
+            "API endpoint implementation",
+            "Server-side development"
+          ],
+          "Frontend": [
+            "Vue.js implementation",
+            "Nuxt.js framework usage",
+            "SLA frontend development"
+          ],
+          "Database": [
+            "MySQL operations",
+            "Database migrations",
+            "GCS integration"
+          ]
+        },
+        "Testing Activities": {
+          "Test Case Development": [
+            "SLA test cases",
+            "Feature testing",
+            "API testing"
+          ],
+          "Tools": [
+            "Postman usage",
+            "Cypress setup"
+          ]
+        },
+        "DevOps": {
+          "Containerization": "Docker setup and usage",
+          "Version Control": "GitLab integration",
+          "Cloud": "Google Cloud Storage work"
+        },
+        "Project Management": {
+          "Tools": [
+            "Jira workflow",
+            "Confluence usage"
+          ],
+          "Meetings": [
+            "Sprint planning",
+            "Sprint grooming",
+            "Knowledge sharing sessions"
+          ]
+        }
+      }
+    }
+  ],
+  "Forviz Co., Ltd": [
+    {
+      "Topic Learning": [
+        "Frontend framework implementation",
+        "React component architecture",
+        "Modern CSS frameworks and preprocessors",
+        "Mobile application development",
+        "State management in React",
+        "Component styling approaches",
+        "Performance optimization",
+        "Animation and motion design",
+        "Version control and deployment",
+        "UI/UX implementation"
+      ],
+      "Advanced Topic Reasoning": [
+        "Frontend frameworks from SF334 is extensively demonstrated through their comprehensive work with React and Vite. The logs show systematic progression from basic React concepts to advanced implementations, directly applying 'Server-side web application development' principles",
+    
+        "Component architecture from SF334 is thoroughly demonstrated through their detailed work with React components. The logs show progression from basic components to advanced concepts like Props and component lifecycle management, showing deep understanding of component-based development",
+    
+        "CSS frameworks from SF334 is clearly evidenced through their sophisticated use of SCSS and Tailwind CSS. Their logs show progression from basic CSS to advanced styling frameworks, demonstrating modern frontend styling capabilities",
+    
+        "Mobile development from SF333 is demonstrated through their work with React Native and Android Studio integration. The logs show practical application of 'Mobile device application development' principles",
+    
+        "State management from SF334 is extensively shown through their advanced usage of useState and useEffect hooks. The logs detail their understanding of state management and lifecycle methods in modern web applications",
+    
+        "Styling from SF334 is demonstrated through their implementation of Styled Components, showing progression from basic CSS to component-level styling approaches",
+    
+        "Performance optimization from SF331 is evidenced by their sophisticated use of useMemo and useCallback for preventing unnecessary renders, showing deep understanding of frontend performance concepts",
+    
+        "Animation from SF334 is demonstrated through their implementation of Framer Motion library, showing advanced understanding of web animation principles",
+    
+        "Deployment from SF340 is shown through their systematic use of GitLab and Netlify for continuous deployment, demonstrating understanding of modern deployment workflows",
+    
+        "UI/UX from SF334 is thoroughly demonstrated through their complex projects like Netflix clone and calculator, showing practical application of user interface design principles"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming basics",
+        "Web technologies fundamentals",
+        "Object-oriented programming",
+        "Data structures and algorithms",
+        "Software design patterns",
+        "Version control systems",
+        "UI/UX principles",
+        "JavaScript fundamentals"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer programming from CN101 forms the essential foundation for their JavaScript development and programming logic implementation. The logs show regular application of core programming concepts in their daily tasks",
+    
+        "Web technologies from SF334 provide the crucial foundation for their HTML and CSS work, particularly evident in their progression from basic styling to advanced frameworks",
+    
+        "OOP from SF211 is heavily utilized in their component-based architecture work, demonstrating application of object-oriented principles in frontend development",
+    
+        "Data structures from SF231 is essential for their efficient state management implementations, particularly evident in their work with React hooks and state management",
+    
+        "Design patterns from SF222 is crucial for their understanding and implementation of React architectural patterns, showing application of software design principles",
+    
+        "Version control from SF220 is demonstrated through their systematic use of GitLab for code collaboration and version management",
+    
+        "UI/UX from SF334 provides the fundamental principles for their frontend development work, evidenced by their attention to user interface design in projects",
+    
+        "JavaScript from SF334 forms the core foundation for their React development work, showing deep understanding of modern JavaScript concepts"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming (Prereq: CN101)",
+          "SF220: Introduction to Software Engineering"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "SF231: Data Structures and Algorithms",
+          "SF334: Web Application Development"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design",
+          "SF333: Mobile Device Application Development",
+          "SF340: Software Configuration Management"
+        ]
+      },
+      "Log Activities Coverage": {
+        "React Development": {
+          "Components": [
+            "Custom component creation",
+            "Props management",
+            "React Hooks implementation",
+            "Performance optimization"
+          ],
+          "Projects": {
+            "Netflix Clone": [
+              "UI implementation",
+              "Responsive design",
+              "Component architecture"
+            ],
+            "Calculator": [
+              "Advanced functionality",
+              "Log management",
+              "Animation integration",
+              "Trigonometric functions"
+            ],
+            "Todo List": [
+              "State management",
+              "CRUD operations",
+              "Mobile adaptation"
+            ]
+          }
+        },
+        "Styling Technologies": {
+          "Frameworks": [
+            "Tailwind CSS",
+            "SCSS",
+            "Styled Components",
+            "MUI Library"
+          ],
+          "Techniques": [
+            "CSS organization",
+            "Responsive design",
+            "Component styling",
+            "Animation implementation"
+          ]
+        },
+        "Development Tools": {
+          "Build Tools": [
+            "Vite",
+            "Node.js"
+          ],
+          "Version Control": [
+            "GitLab"
+          ],
+          "Deployment": [
+            "Netlify"
+          ],
+          "Development Environment": [
+            "Android Studio",
+            "React Native setup"
+          ]
+        },
+        "Performance Optimization": {
+          "Techniques": [
+            "useMemo implementation",
+            "useCallback usage",
+            "Debouncing",
+            "Resource optimization"
+          ]
+        }
+      },
+      "Technical Skills Gained": {
+        "Libraries": [
+          "Lodash",
+          "Framer Motion",
+          "Material-UI",
+          "Styled Components"
+        ],
+        "Concepts": [
+          "Component lifecycle",
+          "State management",
+          "Performance optimization",
+          "Mobile-first design"
+        ]
+      }
+    }
+  ],
+  "Government Savings Bank": [
+    {
+      "Topic Learning": [
+        "Network administration",
+        "Domain management",
+        "System administration",
+        "Network printer configuration",
+        "Server management",
+        "Data recovery",
+        "System imaging and cloning",
+        "IP configuration",
+        "Network security",
+        "Enterprise IT infrastructure"
+      ],
+      "Advanced Topic Reasoning": [
+        "Network administration from CN321 is extensively demonstrated through their comprehensive work with domain and IP configurations. The logs show regular hands-on experience configuring network settings and troubleshooting connectivity issues, directly applying 'Network Layer Protocols' concepts",
+    
+        "Domain management from CN311 is thoroughly demonstrated through their work with server-client setup. Their logs show systematic approach to domain joining and management, applying 'Operating system design and implementation' principles",
+    
+        "System administration from CN311 is evidenced through their extensive Windows system management activities. The logs detail regular work with system configurations and management tasks, showing application of 'Process management' concepts",
+    
+        "Printer configuration from CN321 is clearly shown through their detailed work with network printer setup, including MAC address management and IP configuration. This demonstrates practical application of network device management",
+    
+        "Server management from CN310 is demonstrated through their work with server access management and data distribution. The logs show regular interaction with central servers, applying 'Server configuration modification' principles",
+    
+        "Data recovery from CN311 is evidenced through their work with flash drive boot recovery operations, showing practical application of 'File systems' knowledge",
+    
+        "System imaging from CN311 is thoroughly demonstrated through their regular work cloning PCs and notebooks, showing understanding of system deployment and management",
+    
+        "IP configuration from CN321 is extensively shown through their detailed work with network setup and management, demonstrating practical application of 'Network Layer Protocols'",
+    
+        "Network security from SF351 is demonstrated through their work with access management and admin credentials, showing application of 'Key security mechanisms'",
+    
+        "Infrastructure management from CN310 is evidenced through their comprehensive enterprise-wide system work, demonstrating understanding of large-scale system administration"
+      ],
+      "Fundamental Topics Required": [
+        "Computer networks fundamentals",
+        "Operating systems concepts",
+        "Computer architecture basics",
+        "Network protocols",
+        "System security principles",
+        "Database management systems",
+        "Server configuration basics",
+        "Hardware fundamentals"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer networks from CN321 forms the essential foundation for their extensive network configuration work. The logs show regular application of networking fundamentals across various tasks",
+    
+        "Operating systems from CN311 is crucial for their system administration duties, particularly evident in their work with Windows systems and domain management",
+    
+        "Computer architecture from CN210 is fundamental to their hardware understanding, supporting their work with various computer systems and peripherals",
+    
+        "Network protocols from CN321 is essential for their domain management work, showing practical application of networking concepts",
+    
+        "Security principles from SF351 are clearly applied in their work with access control and system security management",
+    
+        "Database concepts from CN230 are important for their work with server data management and data recovery operations",
+    
+        "Server basics from CN310 are fundamental to their enterprise server work, particularly evident in their interaction with central servers",
+    
+        "Hardware concepts from CN210 are crucial for their work with printer configuration and PC management, showing understanding of computer components"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "CN210: Fundamental of Computer Architecture",
+          "CN230: Database Systems",
+          "SF220: Introduction to Software Engineering"
+        ],
+        "Level 2 (Intermediate)": [
+          "CN310: Computer Server Configuration",
+          "CN311: Operating Systems",
+          "CN321: Data Communication and Computer Networks I"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF351: Web Application Security",
+          "CN416: Cloud Computing",
+          "SF340: Software Configuration Management"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Network Administration": {
+          "Domain Management": [
+            "Domain joining and configuration",
+            "Server access setup",
+            "User authentication"
+          ],
+          "IP Configuration": [
+            "Printer IP setup",
+            "Network connectivity",
+            "IP address management"
+          ]
+        },
+        "System Administration": {
+          "Image Management": [
+            "System cloning",
+            "Notebook imaging",
+            "OS installation"
+          ],
+          "Hardware Setup": [
+            "Printer configuration",
+            "MAC address management",
+            "Hardware troubleshooting"
+          ]
+        },
+        "Server Operations": {
+          "Access Management": [
+            "Admin account setup",
+            "User permissions",
+            "Server connectivity"
+          ],
+          "Data Management": [
+            "Data recovery",
+            "Software distribution",
+            "Server data access"
+          ]
+        }
+      },
+      "Technical Skills Gained": {
+        "Tools": [
+          "Windows Server",
+          "Network management tools",
+          "System imaging software",
+          "Data recovery tools"
+        ],
+        "Protocols": [
+          "TCP/IP",
+          "Domain protocols",
+          "Network printing protocols"
+        ],
+        "Administrative": [
+          "User management",
+          "System configuration",
+          "Network troubleshooting"
+        ]
+      }
+    }
+  ],
+  "House of dev technology": [
+    {
+      "Topic Learning": [
+        "Backend API development",
+        "Database design and management",
+        "Node.js and Express framework",
+        "ORM implementation (Sequelize)",
+        "RESTful API architecture",
+        "Data modeling",
+        "QR code integration",
+        "Random number generation",
+        "Event-driven programming",
+        "Client-server communication"
+      ],
+      "Advanced Topic Reasoning": [
+        "Backend API development from SF334 is extensively demonstrated through their work creating API endpoints for the Martech project. The logs show progressive learning and implementation of 'Server-side web application development' principles while building various API endpoints under tight deadlines",
+    
+        "Database design from CN230 is thoroughly demonstrated through their work designing and implementing database structures. Their logs show hands-on experience with 'Schema design' and database modeling, particularly evident in their comprehensive database design for the booth interaction system",
+    
+        "Node.js usage from SF334 is clearly evidenced through their implementation of Express framework. The logs show their journey learning and applying Node.js concepts, directly relating to 'Server-side web application development'",
+    
+        "ORM concepts from CN230 are demonstrated through their work with Sequelize, showing practical application of 'Data models' principles despite initial challenges with the technology",
+    
+        "RESTful architecture from SF331 is shown through their systematic approach to API design, demonstrating understanding of 'Software structure and architecture' concepts in a practical context",
+    
+        "Data modeling from CN230 is evidenced through their comprehensive database schema design work for the customer interaction system, showing application of 'Data-intensive systems' concepts",
+    
+        "QR integration from SF334 is demonstrated through their implementation of QR code API endpoints, showing practical application of external system integration",
+    
+        "Random generation from SF231 is shown through their implementation of prize distribution system, demonstrating practical application of algorithmic concepts",
+    
+        "Event handling from SF334 is evidenced through their development of booth interaction systems, showing understanding of real-time web application concepts",
+    
+        "Client-server from CN321 is demonstrated through their work coordinating frontend-backend communication, showing practical application of network architecture principles"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming basics",
+        "Database fundamentals",
+        "Web development concepts",
+        "Data structures",
+        "Network protocols",
+        "Software design patterns",
+        "System architecture",
+        "JavaScript fundamentals"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer programming from CN101 forms the essential foundation for their Node.js development work. The logs show their struggle and progression with core programming concepts while building backend systems",
+    
+        "Database fundamentals from CN230 are crucial for their data management work, particularly evident in their efforts to learn and implement database operations despite limited prior experience",
+    
+        "Web development from SF334 provides the essential framework for their API creation work, demonstrating application of web development principles in a professional context",
+    
+        "Data structures from SF231 are fundamental to their efficient data handling implementations, particularly evident in their work with database operations and API responses",
+    
+        "Network protocols from CN321 are essential for their API communication work, showing understanding of client-server interactions",
+    
+        "Design patterns from SF222 are crucial for their backend architecture work, demonstrated through their systematic approach to API design",
+    
+        "System architecture from SF331 provides the foundation for their service design work, particularly evident in their overall system planning",
+    
+        "JavaScript from SF334 is fundamental to their Node.js development work, showing progression in understanding and implementing JavaScript-based backend systems"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "CN230: Database Systems",
+          "SF220: Introduction to Software Engineering"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "SF231: Data Structures and Algorithms",
+          "CN321: Data Communication and Computer Networks I"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design",
+          "SF334: Web Application Development",
+          "SF340: Software Configuration Management"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Backend Development": {
+          "API Creation": [
+            "Create endpoints implementation",
+            "GET endpoints development",
+            "QR code data handling",
+            "Prize distribution system"
+          ],
+          "Database Work": {
+            "Schema Design": [
+              "Table structure creation",
+              "Relationship modeling",
+              "Data type definition"
+            ],
+            "ORM Implementation": [
+              "Sequelize configuration",
+              "Model definition",
+              "Query building"
+            ]
+          }
+        },
+        "Project Specifics": {
+          "Martech Expo 2024": [
+            "Booth interaction system",
+            "Prize randomization",
+            "Customer data storage",
+            "Game character display"
+          ]
+        }
+      },
+      "Technical Stack Coverage": {
+        "Backend": [
+          "Node.js",
+          "Express.js",
+          "Sequelize ORM"
+        ],
+        "Database": [
+          "SQL",
+          "Database design principles"
+        ],
+        "Integration": [
+          "QR code systems",
+          "Frontend communication",
+          "API endpoints"
+        ]
+      },
+      "Learning Challenges": {
+        "Technical": [
+          "Database knowledge gaps",
+          "ORM learning curve",
+          "API design complexity"
+        ],
+        "Project Management": [
+          "Tight deadlines",
+          "Self-learning requirements",
+          "Project scope understanding"
+        ]
+      }
+    }
+  ],
+  "Infinitas by Krungthai": [
+    {
+      "Topic Learning": [
+        "UX Research methodologies",
+        "Information Architecture",
+        "Usability Heuristics",
+        "User Interview techniques",
+        "Digital banking UX",
+        "User Research analysis",
+        "UX documentation",
+        "User-centered design principles",
+        "Interview data synthesis",
+        "Research planning and execution"
+      ],
+      "Advanced Topic Reasoning": [
+        "UX Research from SF334 is extensively demonstrated through their systematic study and implementation of research methods. The logs show detailed engagement with user experience research methodologies, directly applying 'User interface design' principles",
+    
+        "Information Architecture from SF331 is thoroughly demonstrated through their detailed IA mapping work. The logs show practical application of 'Software structure and architecture' concepts in organizing digital information spaces",
+    
+        "Usability Heuristics from SF334 is comprehensively evidenced through their analysis of Nielsen's 10 heuristics. Their logs show deep engagement with usability principles and practical application in evaluating user interfaces",
+    
+        "Interview techniques from SF330 is clearly demonstrated through their systematic approach to team member interviews. The logs show careful preparation of interview questions and adaptation of techniques based on 'Requirements analysis' principles",
+    
+        "Digital banking UX from SF334 is demonstrated through their detailed analysis of Krungthai NEXT app, showing practical application of interface design principles in a financial context",
+    
+        "Research analysis from SF330 is evidenced through their systematic processing of interview data and creation of summaries, demonstrating 'Development of specification documents from requirements'",
+    
+        "Documentation from SF220 is shown through their creation of DX Teambook and other project documentation, applying software engineering documentation principles",
+    
+        "User-centered design from SF334 is demonstrated through their comprehensive analysis of Good/Bad UX examples, showing practical application of user interface design principles",
+    
+        "Data synthesis from SF330 is evidenced through their systematic approach to summarizing interview findings and creating actionable insights",
+    
+        "Research planning from SF220 is demonstrated through their systematic approach to interview scheduling and execution, showing project management skills"
+      ],
+      "Fundamental Topics Required": [
+        "Software design principles",
+        "Human-computer interaction",
+        "Research methodologies",
+        "Data analysis",
+        "Project management",
+        "Technical communication",
+        "Psychology basics",
+        "Information design"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Software design from SF222 provides the essential foundation for understanding UX principles. The logs show regular application of 'Basic principles to design good software' in UX context",
+    
+        "HCI concepts from SF334 are crucial for their usability analysis work, particularly evident in their evaluation of user interfaces and interaction patterns",
+    
+        "Research methods from SF220 are fundamental to their user research activities, showing systematic application of software engineering research principles",
+    
+        "Data analysis from SF250 is essential for their interview data processing work, demonstrating application of analytical methods to qualitative data",
+    
+        "Project management from SF220 is clearly demonstrated through their coordination of research activities and interview scheduling",
+    
+        "Technical communication from SF220 is fundamental to their documentation work, showing ability to create clear and effective technical documentation",
+    
+        "Psychology understanding from LAS101 is demonstrated through their analysis of user behavior and interaction patterns, showing application of critical thinking skills",
+    
+        "Information design from SF222 is crucial for their architecture mapping work, showing understanding of system modeling and documentation principles"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF220: Introduction to Software Engineering",
+          "LAS101: Critical Thinking, Reading, and Writing"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "SF250: Probability Theory and Statistics",
+          "SF334: Web Application Development"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF330: Software Requirements and Specification",
+          "SF331: Software Architecture and Design",
+          "SF332: Software Testing and Quality Assurance"
+        ]
+      },
+      "Log Activities Coverage": {
+        "UX Research": {
+          "Interview Process": [
+            "Interview planning",
+            "Question development",
+            "Dry run execution",
+            "Interview conducting",
+            "Data synthesis"
+          ],
+          "Analysis Work": [
+            "Good/Bad UX analysis",
+            "Usability heuristics evaluation",
+            "Information architecture mapping"
+          ]
+        },
+        "Documentation": {
+          "Research Planning": [
+            "Interview objectives",
+            "Goal setting",
+            "Question formulation"
+          ],
+          "Results Recording": [
+            "Interview summaries",
+            "Findings documentation",
+            "Progress reporting"
+          ]
+        },
+        "Project Specifics": {
+          "Banking Application": [
+            "Krungthai NEXT analysis",
+            "Digital banking UX evaluation"
+          ]
+        }
+      },
+      "Research Skills Development": {
+        "Interview Skills": [
+          "Question formulation",
+          "Interview scheduling",
+          "Data collection",
+          "Subject interaction"
+        ],
+        "Analysis Methods": [
+          "Heuristic evaluation",
+          "Information architecture",
+          "UX pattern recognition"
+        ],
+        "Documentation": [
+          "Research planning",
+          "Progress reporting",
+          "Findings synthesis"
+        ]
+      }
+    }
+  ],
+  "IRPC Public Company Limited": [
+    {
+      "Topic Learning": [
+        "Full-stack application development",
+        "Frontend frameworks (Angular)",
+        "Backend development (.NET)",
+        "Database design and management",
+        "UI/UX design principles",
+        "MVC architecture",
+        "CRUD operations",
+        "API development",
+        "Authentication systems",
+        "Component-based development",
+        "Application state management",
+        "Form validation and handling"
+      ],
+      "Advanced Topic Reasoning": [
+        "Full-stack development from SF334 is extensively demonstrated through their comprehensive work on Smart Dashboard and iClear projects. The logs show systematic progression from frontend to backend development, applying 'Server-side web application development' principles",
+    
+        "Angular framework from SF334 is thoroughly demonstrated through their detailed frontend development work. The logs show progression from basic component creation to complex state management and user interactions",
+    
+        ".NET backend from SF334 is clearly evidenced through their systematic API development work, showing practical application of backend development principles and database integration",
+    
+        "Database management from CN230 is comprehensively demonstrated through their implementation of CRUD operations. The logs show detailed work with database design and data manipulation, applying 'Data-intensive systems' concepts",
+    
+        "UI/UX design from SF334 is extensively shown through their detailed interface design work, including multiple iterations based on user feedback and requirements",
+    
+        "MVC patterns from SF331 is demonstrated through their systematic implementation of Model-View-Controller architecture, showing understanding of 'Software structure and architecture'",
+    
+        "CRUD operations from CN230 is thoroughly evidenced through their Master Data feature implementations, showing practical application of database manipulation concepts",
+    
+        "API development from SF334 is demonstrated through their creation of backend services and data endpoints, showing understanding of web service architecture",
+    
+        "Authentication from SF351 is shown through their implementation of login systems and user access management, applying security principles",
+    
+        "Component architecture from SF334 is evidenced through their systematic work with Angular components and reusable UI elements",
+    
+        "State management from SF334 is demonstrated through their handling of complex data flows and UI states",
+    
+        "Form handling from SF334 is shown through their implementation of validation and data input processing"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming basics",
+        "Object-oriented programming",
+        "Database fundamentals",
+        "Web development basics",
+        "Software architecture",
+        "Data structures",
+        "Network protocols",
+        "Software design patterns"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer programming from CN101 provides the essential foundation for their overall development work, particularly evident in their handling of multiple programming languages and paradigms",
+    
+        "OOP from SF211 is crucial for their work with C# and TypeScript, showing application of object-oriented principles in both frontend and backend development",
+    
+        "Database fundamentals from CN230 are fundamental to their data management work, particularly evident in their database design and query implementations",
+    
+        "Web development from SF334 forms the core foundation for their full-stack development work, showing comprehensive understanding of web technologies",
+    
+        "Software architecture from SF331 is essential for their system design work, particularly evident in their implementation of complex architectural patterns",
+    
+        "Data structures from SF231 are crucial for their efficient implementations of data handling and processing",
+    
+        "Network protocols from CN321 are fundamental to their API communication work, showing understanding of client-server interactions",
+    
+        "Design patterns from SF222 are essential for their implementation of clean architecture, showing understanding of software design principles"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "CN230: Database Systems",
+          "SF220: Introduction to Software Engineering"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "SF231: Data Structures and Algorithms",
+          "CN321: Data Communication and Computer Networks I"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design",
+          "SF334: Web Application Development",
+          "SF351: Web Application Security",
+          "SF340: Software Configuration Management"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Project Work": {
+          "Smart Dashboard": {
+            "Frontend": [
+              "UI implementation",
+              "Component development",
+              "Navigation implementation",
+              "Form handling"
+            ],
+            "Backend": [
+              "API development",
+              "Database integration",
+              "Business logic implementation"
+            ]
+          },
+          "iClear Project": {
+            "Features": [
+              "Convert Package functionality",
+              "Master Data management",
+              "Notification system",
+              "Data conversion tools"
+            ]
+          }
+        },
+        "UI/UX Development": {
+          "Components": [
+            "Login interface",
+            "Master Data screens",
+            "Notification system",
+            "Navigation design"
+          ],
+          "Interactions": [
+            "Form validations",
+            "Error handling",
+            "User feedback",
+            "Animation effects"
+          ]
+        },
+        "Database Work": {
+          "Operations": [
+            "CRUD implementation",
+            "Data modeling",
+            "Query optimization",
+            "Relationship management"
+          ]
+        }
+      },
+      "Technical Stack Coverage": {
+        "Frontend": [
+          "Angular",
+          "TypeScript",
+          "HTML/CSS",
+          "Angular Material"
+        ],
+        "Backend": [
+          ".NET",
+          "C#",
+          "REST APIs",
+          "MVC pattern"
+        ],
+        "Database": [
+          "SQL",
+          "Entity Framework",
+          "Data modeling"
+        ],
+        "Tools": [
+          "Figma",
+          "Visual Studio",
+          "Git",
+          "Development environments"
+        ]
+      }
+    }
+  ],
+  "KASIKORN Business-Technology Group": [
+    {
+      "Topic Learning": [
+        "Software testing methodologies",
+        "Test case execution",
+        "API development and debugging",
+        "Elasticsearch implementation",
+        "Test automation",
+        "Version control and deployment",
+        "Golang programming",
+        "API automation",
+        "Google Sheets integration",
+        "Code optimization",
+        "Enterprise software testing"
+      ],
+      "Advanced Topic Reasoning": [
+        "Software testing from SF332 is extensively demonstrated through their systematic test case execution work. The logs show detailed engagement with test cases and methodology, directly applying 'Test techniques' and 'Test evaluation' principles",
+    
+        "Test execution from SF332 is thoroughly demonstrated through their handling of over 300 test cases. The logs show systematic approach to testing, with clear progress tracking (80 cases, then 70 cases), showing practical application of 'Test levels'",
+    
+        "API development from SF334 is evidenced through their debugging work on the Intern-tupine API. Their logs show hands-on experience with 'Server-side web application development' principles",
+    
+        "Elasticsearch from CN418 is shown through their study of the system, connecting to 'Data management based on Hortonwork' concepts from big data engineering",
+    
+        "Test automation from SF332 is demonstrated through their work with API automation, though faced challenges with Google Sheets integration, showing application of automated testing principles",
+    
+        "Deployment from SF340 is clearly shown in their deployment tasks and bug fixing work, demonstrating 'Software configuration management' principles",
+    
+        "Golang from SF334 is evidenced through their practice with Leetcode problems, showing dedication to improving backend development skills",
+    
+        "API automation from SF334 is demonstrated through their attempt to create automated API fetching from Google Sheets, showing understanding of integration principles",
+    
+        "Integration from SF334 is shown through their work connecting APIs with external systems, demonstrating practical application of web service integration",
+    
+        "Code optimization from SF231 is evidenced through their bug fixing work, showing application of algorithm efficiency principles",
+    
+        "Enterprise testing from SF332 is demonstrated through their engagement with large-scale testing operations, showing understanding of enterprise-level quality assurance"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming basics",
+        "Data structures and algorithms",
+        "Software testing fundamentals",
+        "Web development concepts",
+        "Database fundamentals",
+        "Version control systems",
+        "API fundamentals",
+        "System design basics"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer programming from CN101 provides the essential foundation for their development and testing work. The logs show regular application of programming concepts in both testing and development tasks",
+    
+        "Data structures from SF231 are crucial for their efficient code implementation work, particularly evident in their API and automation tasks",
+    
+        "Testing fundamentals from SF332 form the core foundation for their extensive test case execution work, showing systematic application of testing principles",
+    
+        "Web development from SF334 is essential for their API work, particularly evident in their debugging and integration tasks",
+    
+        "Database concepts from CN230 are fundamental to their data handling work, though not explicitly mentioned but necessary for API and system testing",
+    
+        "Version control from SF220 is crucial for their code management activities, particularly important in an enterprise development environment",
+    
+        "API concepts from SF334 are essential for their integration work, showing understanding of web service architecture",
+    
+        "System design from SF222 is fundamental to their understanding of enterprise systems, particularly evident in their handling of large-scale testing projects"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "SF220: Introduction to Software Engineering",
+          "CN230: Database Systems"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "SF231: Data Structures and Algorithms",
+          "CN321: Data Communication and Computer Networks I"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF332: Software Testing and Quality Assurance",
+          "SF334: Web Application Development",
+          "SF340: Software Configuration Management",
+          "CN418: Big Data Engineering Management"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Testing Activities": {
+          "Test Execution": [
+            "300+ test case handling",
+            "Test case documentation review",
+            "Test execution planning",
+            "Results documentation"
+          ],
+          "Test Planning": [
+            "Test case review",
+            "Execution strategy",
+            "Documentation analysis"
+          ]
+        },
+        "Development Work": {
+          "API Development": [
+            "Bug fixing",
+            "Automation attempts",
+            "Google Sheets integration",
+            "API debugging"
+          ],
+          "Programming": [
+            "Golang practice",
+            "Algorithm solving",
+            "Code optimization"
+          ]
+        },
+        "System Learning": {
+          "Technologies": [
+            "Elasticsearch study",
+            "Enterprise systems",
+            "Integration tools"
+          ]
+        }
+      },
+      "Technical Stack Coverage": {
+        "Languages": [
+          "Golang",
+          "API protocols"
+        ],
+        "Tools": [
+          "Elasticsearch",
+          "Google Sheets",
+          "Version control systems",
+          "Testing frameworks"
+        ],
+        "Processes": [
+          "Test execution",
+          "Bug tracking",
+          "Documentation",
+          "Deployment"
+        ]
+      },
+      "Professional Skills": {
+        "Testing": [
+          "Test case analysis",
+          "Execution planning",
+          "Results documentation"
+        ],
+        "Development": [
+          "Code review",
+          "Bug fixing",
+          "System integration"
+        ],
+        "Documentation": [
+          "Technical documentation",
+          "Test case review",
+          "Results reporting"
+        ]
+      }
+    }
+  ],
+  "Krungthai Card Public Company Limited": [
+    {
+      "Topic Learning": [
+        "Spring Framework development",
+        "RESTful web services",
+        "Database integration",
+        "UX/UI analysis",
+        "Business model analysis",
+        "Spring Batch processing",
+        "JPA implementation",
+        "Server configuration",
+        "Competitive analysis",
+        "Database management",
+        "API development",
+        "Project configuration"
+      ],
+      "Advanced Topic Reasoning": [
+        "Spring Framework from SF334 is extensively demonstrated through their comprehensive work with Java Spring implementation. The logs show progressive learning and application of the framework, particularly in 'Server-side web application development' aspects",
+    
+        "RESTful services from SF334 is thoroughly demonstrated through their development of web services. The logs show detailed work with Building RESTful Web Services and URL parameter handling",
+    
+        "Database integration from CN230 is clearly evidenced through their work connecting multiple databases (MySQL, H2). The logs show their systematic approach to solving database connectivity issues, applying 'Data-intensive systems' concepts",
+    
+        "UX/UI analysis from SF334 is demonstrated through their detailed competitive analysis work. The logs show systematic evaluation of competitor interfaces and user experience features",
+    
+        "Business analysis from DE321 is shown through their comprehensive study of business models and market competition, applying 'Exploring and assessing business opportunities' principles",
+    
+        "Batch processing from SF334 is evidenced through their study and implementation of Spring Batch, showing understanding of enterprise-level processing",
+    
+        "JPA from CN230 is demonstrated through their implementation of database operations, showing practical application of object-relational mapping concepts",
+    
+        "Server config from CN310 is shown through their work with server setup and configuration, applying 'Server configuration modification' principles",
+    
+        "Competitive analysis from DE321 is thoroughly demonstrated through their market research and presentation work, showing application of 'Industry analysis and competitive advantage'",
+    
+        "Database management from CN230 is evidenced through their implementation of CRUD operations and database structure setup",
+    
+        "API development from SF334 is shown through their work with URL parameters and request handling, demonstrating RESTful API principles",
+    
+        "Configuration from SF340 is demonstrated through their systematic approach to project setup and environment configuration"
+      ],
+      "Fundamental Topics Required": [
+        "Java programming fundamentals",
+        "Database systems basics",
+        "Web development concepts",
+        "Software design patterns",
+        "Network protocols",
+        "System architecture",
+        "Version control systems",
+        "Business fundamentals"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Java programming from CN101/SF211 provides the essential foundation for their Spring development work. The logs show continuous learning and application of Java concepts",
+    
+        "Database systems from CN230 are crucial for their data operations work, particularly evident in their handling of different database systems",
+    
+        "Web development from SF334 is fundamental to their RESTful services work, showing understanding of web architecture principles",
+    
+        "Design patterns from SF222 are essential for their work with Spring framework, demonstrating understanding of software design principles",
+    
+        "Network protocols from CN321 are crucial for their web services development, showing understanding of network communication",
+    
+        "System architecture from SF331 is fundamental to their application design work, particularly evident in their framework implementation",
+    
+        "Version control from SF220 is essential for their project management though not explicitly mentioned but necessary in enterprise development",
+    
+        "Business concepts from DE321 are crucial for their competitive analysis work, showing understanding of business and market principles"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "SF220: Introduction to Software Engineering",
+          "CN230: Database Systems"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "CN321: Data Communication and Computer Networks I",
+          "DE321: Technology Entrepreneurship"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design",
+          "SF334: Web Application Development",
+          "SF340: Software Configuration Management",
+          "CN310: Computer Server Configuration"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Development Work": {
+          "Framework": [
+            "Spring Framework study",
+            "Spring Boot implementation",
+            "Spring Batch processing",
+            "JPA integration"
+          ],
+          "Database": [
+            "MySQL setup",
+            "H2 database configuration",
+            "CRUD operations",
+            "Database connectivity"
+          ],
+          "API": [
+            "RESTful services",
+            "URL parameter handling",
+            "API testing with Postman"
+          ]
+        },
+        "Analysis Work": {
+          "UX/UI": [
+            "Competitor analysis",
+            "Interface evaluation",
+            "User experience study"
+          ],
+          "Business": [
+            "Business model analysis",
+            "Market research",
+            "Competitive positioning"
+          ]
+        },
+        "Technical Setup": {
+          "Environment": [
+            "IDE configuration",
+            "Server setup",
+            "Project configuration",
+            "Database setup"
+          ]
+        }
+      },
+      "Technical Stack Coverage": {
+        "Frameworks": [
+          "Spring Framework",
+          "Spring Boot",
+          "Spring Batch",
+          "JPA"
+        ],
+        "Databases": [
+          "MySQL",
+          "H2",
+          "phpMyAdmin"
+        ],
+        "Tools": [
+          "IntelliJ IDEA",
+          "VS Code",
+          "Postman",
+          "XAMPP"
+        ]
+      }
+    }
+  ],
+  "MFEC Public Company Limited": [
+    {
+      "Topic Learning": [
+        "ServiceNow platform development",
+        "Interface design and implementation",
+        "API integration",
+        "Flow designer implementation",
+        "Client-side scripting",
+        "Service catalog development",
+        "Business process automation",
+        "Technical documentation",
+        "Database management",
+        "Docker containerization",
+        "Security awareness systems",
+        "Form validation"
+      ],
+      "Advanced Topic Reasoning": [
+        "ServiceNow development from SF334 is extensively demonstrated through their comprehensive work with service catalog implementation. The logs show systematic development of service requests and workflows, directly applying 'Server-side web application development' principles",
+    
+        "Interface design from SF334 is thoroughly demonstrated through their UI implementation work. The logs show detailed attention to interface sizing, layout, and user experience considerations",
+    
+        "API integration from SF334 is clearly evidenced through their work connecting data services and handling API challenges. Their logs show systematic approach to solving connectivity issues",
+    
+        "Flow design from SF331 is demonstrated through their implementation of approval processes. The logs show application of 'Software structure and architecture' principles in workflow design",
+    
+        "Client scripting from SF334 is extensively shown through their work on form validation, particularly evident in their email validation and form field processing implementations",
+    
+        "Service catalog from SF331 is comprehensively demonstrated through their request management work, showing understanding of enterprise service architecture",
+    
+        "Process automation from SF340 is evidenced through their systematic implementation of workflows, showing application of 'Software configuration management' principles",
+    
+        "Documentation from SF220 is thoroughly demonstrated through their creation of technical documentation for Viriyah project and other initiatives",
+    
+        "Database management from CN230 is shown through their work with table creation and data structure implementation, applying 'Data-intensive systems' concepts",
+    
+        "Containerization from CN416 is evidenced through their work with Docker setup in Ubuntu environment",
+    
+        "Security systems from SF351 is demonstrated through their work on the security awareness project, showing application of security principles",
+    
+        "Form handling from SF334 is shown through their detailed implementation of email validation and form processing features"
+      ],
+      "Fundamental Topics Required": [
+        "Web development basics",
+        "Database fundamentals",
+        "Software design principles",
+        "JavaScript programming",
+        "System architecture",
+        "Business process modeling",
+        "Documentation practices",
+        "Linux fundamentals"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Web development from SF334 forms the essential foundation for their interface development work. The logs show continuous application of web development principles",
+    
+        "Database from CN230 is crucial for their data management work, particularly evident in their table creation and data connection tasks",
+    
+        "Software design from SF222 is fundamental to their system architecture work, showing application of design principles in service development",
+    
+        "JavaScript from SF334 is essential for their client scripting work, particularly evident in their form validation implementations",
+    
+        "Architecture from SF331 is crucial for their flow design work, showing understanding of system architecture principles",
+    
+        "Process modeling from SF220 is fundamental to their workflow design activities, showing systematic approach to process implementation",
+    
+        "Documentation from SF220 provides the foundation for their technical writing tasks, particularly evident in their project documentation work",
+    
+        "Linux from CN311 is essential for their Docker implementation work, showing understanding of operating system concepts"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "SF220: Introduction to Software Engineering",
+          "CN230: Database Systems"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "CN311: Operating Systems",
+          "CN321: Data Communication and Computer Networks I"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design",
+          "SF334: Web Application Development",
+          "SF340: Software Configuration Management",
+          "SF351: Web Application Security",
+          "CN416: Cloud Computing"
+        ]
+      },
+      "Log Activities Coverage": {
+        "ServiceNow Development": {
+          "Service Catalog": [
+            "Request Name Card application",
+            "Flow designer implementation",
+            "Approval processes",
+            "Form validation"
+          ],
+          "Client Scripting": [
+            "Email validation",
+            "Form handling",
+            "Automated email generation"
+          ]
+        },
+        "UI Development": {
+          "Security Awareness Project": [
+            "Interface design",
+            "Data connection",
+            "API integration",
+            "Responsive design"
+          ],
+          "Tools": [
+            "Appsmith",
+            "Docker",
+            "Ubuntu"
+          ]
+        },
+        "Documentation": {
+          "Technical Writing": [
+            "Process documentation",
+            "User guides",
+            "System documentation"
+          ],
+          "Project Documents": [
+            "Asset management",
+            "Return requests",
+            "Change management"
+          ]
+        }
+      },
+      "Technical Stack Coverage": {
+        "Platforms": [
+          "ServiceNow",
+          "Appsmith",
+          "Docker"
+        ],
+        "Development": [
+          "JavaScript",
+          "API integration",
+          "Client scripting"
+        ],
+        "Tools": [
+          "Flow Designer",
+          "Service Catalog",
+          "VPN access"
+        ]
+      }
+    }
+  ],
+  "Multiverse Expert Co., Ltd": [
+    {
+      "Topic Learning": [
+        "Continuous Integration/Deployment",
+        "Container orchestration",
+        "Bug tracking and resolution",
+        "API development",
+        "File handling systems",
+        "Stream processing",
+        "Software testing",
+        "Sprint management",
+        "Docker containerization",
+        "Image management"
+      ],
+      "Advanced Topic Reasoning": [
+        "CI/CD from SF340 is extensively demonstrated through their systematic work with release deployment. The logs show hands-on experience with deployment processes and release management, applying 'Software configuration management' principles",
+    
+        "Container orchestration from CN416 is thoroughly evidenced through their detailed work with container management. The logs show systematic handling of container issues and implementations, applying 'Resource virtualization concepts'",
+    
+        "Bug resolution from SF332 is comprehensively demonstrated through their regular debugging tasks. The logs show systematic approach to identifying and fixing issues, applying 'Test evaluation' methodologies",
+    
+        "API development from SF334 is clearly shown through their work completing API implementations. The logs demonstrate practical application of 'Server-side web application development' principles",
+    
+        "File handling from SF334 is demonstrated through their implementation of file upload systems, showing understanding of complex file processing requirements",
+    
+        "Stream processing from SF334 is evidenced through their sophisticated handling of octet streams for file extensions, showing advanced understanding of data streaming concepts",
+    
+        "Testing from SF332 is demonstrated through their systematic code testing activities, showing application of 'Test techniques' and quality assurance principles",
+    
+        "Sprint management from SF220 is shown through their consistent execution of sprint tasks, demonstrating understanding of 'Scientific foundation for software engineering'",
+    
+        "Docker from CN416 is evidenced through their work with container image fixes, showing practical application of 'System implementation and management'",
+    
+        "Image management from CN416 is demonstrated through their systematic debugging of container images, showing deep understanding of containerization principles"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming fundamentals",
+        "Operating systems concepts",
+        "Software development lifecycle",
+        "Version control systems",
+        "Network protocols",
+        "System architecture",
+        "Testing methodologies",
+        "Cloud computing basics"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Programming from CN101 forms the essential foundation for their development tasks. The logs show regular application of programming principles in various contexts",
+    
+        "Operating systems from CN311 is crucial for their container work, particularly evident in their handling of container-related issues",
+    
+        "SDLC from SF220 provides the framework for their sprint management activities, showing understanding of software development lifecycle",
+    
+        "Version control from SF220 is essential for their deployment work, though not explicitly mentioned but necessary for release management",
+    
+        "Networks from CN321 is fundamental to their API development work, showing understanding of network communication principles",
+    
+        "Architecture from SF331 is crucial for their system design work, particularly evident in their container orchestration tasks",
+    
+        "Testing from SF332 provides the foundation for their quality assurance activities, showing systematic approach to testing",
+    
+        "Cloud from CN416 is essential for their containerization work, showing understanding of modern cloud technologies and practices"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "SF220: Introduction to Software Engineering",
+          "CN230: Database Systems"
+        ],
+        "Level 2 (Intermediate)": [
+          "CN311: Operating Systems",
+          "CN321: Data Communication and Computer Networks I",
+          "SF331: Software Architecture and Design"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF332: Software Testing and Quality Assurance",
+          "SF334: Web Application Development",
+          "SF340: Software Configuration Management",
+          "CN416: Cloud Computing"
+        ]
+      },
+      "Log Activities Coverage": {
+        "DevOps": {
+          "Deployment": [
+            "Release management",
+            "Container deployment",
+            "Image configuration",
+            "Deployment troubleshooting"
+          ],
+          "Container Management": [
+            "Docker configuration",
+            "Image debugging",
+            "Container orchestration"
+          ]
+        },
+        "Development": {
+          "API Work": [
+            "API implementation",
+            "File handling",
+            "Stream processing"
+          ],
+          "Testing": [
+            "Code testing",
+            "Bug fixing",
+            "Quality assurance"
+          ]
+        },
+        "Project Management": {
+          "Sprint Work": [
+            "Sprint execution",
+            "Task management",
+            "Progress tracking"
+          ]
+        }
+      },
+      "Technical Stack Coverage": {
+        "DevOps Tools": [
+          "Docker",
+          "Container services",
+          "Deployment tools"
+        ],
+        "Development": [
+          "API development",
+          "File handling",
+          "Testing frameworks"
+        ],
+        "Project Tools": [
+          "Sprint management",
+          "Version control",
+          "Bug tracking"
+        ]
+      },
+      "Problem-Solving Skills": {
+        "Deployment Issues": [
+          "Container image debugging",
+          "Deployment failure resolution",
+          "Configuration management"
+        ],
+        "Development Challenges": [
+          "File extension handling",
+          "Stream processing",
+          "Bug resolution"
+        ]
+      }
+    }
+  ],
+  "MyOrder Marketing Co., Ltd": [
+    {
+      "Topic Learning": [
+        "Bot development",
+        "Web crawling and scraping",
+        "Cloud deployment",
+        "Message queue systems",
+        "Containerization",
+        "System design",
+        "Asynchronous programming",
+        "API testing",
+        "CI/CD implementation",
+        "Database integration",
+        "Interactive bot features",
+        "Cloud services (Azure)"
+      ],
+      "Advanced Topic Reasoning": [
+        "Bot development from SF334 is extensively demonstrated through their comprehensive Slack bot implementation. The logs show systematic development of interactive features and bot functionalities, applying 'Server-side web application development' principles",
+    
+        "Web crawling from SF334 is thoroughly demonstrated through their work with Medium content scraping. The logs show evolution from API-based to HTML/XML-based crawling approaches, showing adaptability in implementation",
+    
+        "Cloud deployment from CN416 is evidenced through their systematic deployment to Azure. The logs show practical application of 'Cloud computing system deployment' concepts",
+    
+        "Message queues from CN321 is demonstrated through their implementation of RabbitMQ to solve timeout issues, showing understanding of distributed system communication",
+    
+        "Containerization from CN416 is shown through their work with Docker and Kubernetes, demonstrating application of 'Resource virtualization concepts'",
+    
+        "System design from SF331 is comprehensively demonstrated through their architectural design work, showing application of 'Software structure and architecture' principles",
+    
+        "Async programming from SF334 is evidenced through their implementation of async/await patterns, showing understanding of modern web development practices",
+    
+        "API testing from SF332 is demonstrated through their systematic implementation of unit tests and API tests, applying 'Test techniques' principles",
+    
+        "CI/CD from SF340 is shown through their work on deployment pipelines, demonstrating 'Software configuration management' understanding",
+    
+        "Database from CN230 is evidenced through their work on database integration challenges, showing application of 'Data-intensive systems' concepts",
+    
+        "Interactive features from SF334 is demonstrated through their development of bot features like bookmarking and popularity tracking",
+    
+        "Cloud services from CN416 is shown through their comprehensive implementation of Azure services, demonstrating cloud platform expertise"
+      ],
+      "Fundamental Topics Required": [
+        "Programming fundamentals",
+        "Web protocols",
+        "Database systems",
+        "Software architecture",
+        "Network communications",
+        "Testing methodologies",
+        "System design principles",
+        "Cloud computing basics"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Programming from CN101 provides the essential foundation for their bot development work. The logs show continuous application of programming concepts in complex implementations",
+    
+        "Web protocols from CN321 are crucial for their web crawling work, particularly evident in their handling of HTML and XML parsing",
+    
+        "Database from CN230 is fundamental to their data persistence implementation, showing understanding of database integration principles",
+    
+        "Architecture from SF331 is essential for their system design work, particularly evident in their redesign efforts",
+    
+        "Networks from CN321 forms the foundation for their bot communication implementations, showing understanding of network protocols",
+    
+        "Testing from SF332 provides the framework for their quality assurance work, showing systematic approach to testing",
+    
+        "System design from SF222 is crucial for their architecture planning, showing application of software design principles",
+    
+        "Cloud basics from CN416 are fundamental to their deployment work, showing understanding of cloud infrastructure concepts"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "CN230: Database Systems",
+          "SF220: Introduction to Software Engineering"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "CN321: Data Communication and Computer Networks I",
+          "SF331: Software Architecture and Design"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF332: Software Testing and Quality Assurance",
+          "SF334: Web Application Development",
+          "SF340: Software Configuration Management",
+          "CN416: Cloud Computing"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Bot Development": {
+          "Features": [
+            "Interactive responses",
+            "Bookmarks management",
+            "Popular posts",
+            "Following system",
+            "Scheduled notifications"
+          ],
+          "Integration": [
+            "Slack API integration",
+            "Medium data crawling",
+            "Profile management"
+          ]
+        },
+        "Infrastructure": {
+          "Cloud": [
+            "Azure deployment",
+            "Database connection",
+            "Server management"
+          ],
+          "Message Queue": [
+            "RabbitMQ implementation",
+            "Async processing",
+            "Timeout handling"
+          ],
+          "Containerization": [
+            "Docker setup",
+            "Kubernetes configuration",
+            "Container orchestration"
+          ]
+        },
+        "Development Practices": {
+          "Testing": [
+            "Unit testing",
+            "API testing",
+            "Integration testing"
+          ],
+          "Code Quality": [
+            "Code refactoring",
+            "System redesign",
+            "Bug fixing"
+          ]
+        }
+      },
+      "Technical Stack Coverage": {
+        "Technologies": [
+          "Slack API",
+          "RabbitMQ",
+          "Docker",
+          "Kubernetes",
+          "Azure Cloud",
+          "XML/HTML parsing"
+        ],
+        "Development": [
+          "Async/Await",
+          "Web crawling",
+          "API development"
+        ],
+        "Tools": [
+          "Jira",
+          "Miro",
+          "CI/CD tools"
+        ]
+      }
+    }
+  ],
+  "National Electronics and Computer Technology Center (NECTEC)": [
+    {
+      "Topic Learning": [
+        "Video processing techniques",
+        "Python environment management",
+        "Data analysis with Pandas",
+        "Scene detection algorithms",
+        "Large file handling",
+        "Object detection in video",
+        "Environment configuration",
+        "Cloud storage integration",
+        "Data processing pipelines"
+      ],
+      "Advanced Topic Reasoning": [
+        "Video processing from CN240 is extensively demonstrated through their implementation of PySceneDetect. The logs show systematic application of 'Signal processing' principles in handling video content and scene detection",
+    
+        "Environment management from SF340 is thoroughly demonstrated through their work with Miniconda setup. The logs show careful attention to environment configuration and package management, applying 'Software configuration management' principles",
+    
+        "Data analysis from CN240 is evidenced through their study of Pandas, showing progression towards 'Feature extraction' and data manipulation capabilities",
+    
+        "Scene detection from CN340 is comprehensively shown through their video splitting work, demonstrating application of 'Machine learning' principles for content analysis",
+    
+        "File handling from SF334 is demonstrated through their work with large video processing, showing practical application of 'Server-side web application development' concepts for media handling",
+    
+        "Object detection from CN341 is shown through their work in detecting weapons and cigarettes in videos, applying 'Deep learning architectures' principles",
+    
+        "Environment config from SF340 is evidenced through their systematic Python setup and package management, showing understanding of development environment configuration",
+    
+        "Storage integration from CN416 is demonstrated through their effective use of OneDrive for large file sharing, showing application of 'Cloud computing' concepts",
+    
+        "Data pipelines from CN418 is shown through their implementation of video processing workflows, applying 'Data intensive computing' principles"
+      ],
+      "Fundamental Topics Required": [
+        "Programming fundamentals",
+        "Data structures",
+        "Signal processing basics",
+        "File system operations",
+        "Computer vision concepts",
+        "Package management",
+        "Development environments",
+        "Version control systems"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Programming from CN101 provides the essential foundation for their Python development work. The logs show systematic application of programming concepts in video processing tasks",
+    
+        "Data structures from SF231 are crucial for their data handling work, particularly evident in their video processing implementations",
+    
+        "Signal processing from CN240 is fundamental to their video processing work, showing understanding of digital signal processing concepts",
+    
+        "File systems from CN311 are essential for their video file management work, demonstrating understanding of operating system file handling",
+    
+        "Computer vision from CN340 forms the core foundation for their scene detection work, showing application of machine learning principles",
+    
+        "Package management from SF340 is crucial for their environment setup tasks, showing understanding of software configuration principles",
+    
+        "Development environments from SF220 are fundamental to their tooling setup work, showing application of software engineering principles",
+    
+        "Version control from SF220 is essential for their code management, though not explicitly mentioned but necessary for development work"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "SF220: Introduction to Software Engineering",
+          "SF231: Data Structures and Algorithms"
+        ],
+        "Level 2 (Intermediate)": [
+          "CN240: Data Science for Signal Processing",
+          "CN311: Operating Systems",
+          "SF340: Software Configuration Management"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "CN340: Machine Learning",
+          "CN341: Deep Learning",
+          "CN416: Cloud Computing",
+          "CN418: Big Data Engineering Management"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Video Processing": {
+          "Scene Detection": [
+            "PySceneDetect implementation",
+            "Video splitting",
+            "Large file processing"
+          ],
+          "Object Detection": [
+            "Weapon detection",
+            "Cigarette detection",
+            "Video analysis"
+          ]
+        },
+        "Development Setup": {
+          "Environment": [
+            "Python installation",
+            "Miniconda setup",
+            "Package management"
+          ],
+          "Tools": [
+            "Jupyter notebooks",
+            "Python packages",
+            "Development tools"
+          ]
+        },
+        "Data Management": {
+          "File Handling": [
+            "Large video processing",
+            "Cloud storage usage",
+            "File sharing"
+          ],
+          "Data Analysis": [
+            "Pandas exploration",
+            "Data processing",
+            "Analysis pipelines"
+          ]
+        }
+      },
+      "Technical Stack Coverage": {
+        "Languages": [
+          "Python"
+        ],
+        "Libraries": [
+          "PySceneDetect",
+          "Pandas",
+          "Video processing libraries"
+        ],
+        "Tools": [
+          "Miniconda",
+          "Jupyter",
+          "OneDrive"
+        ]
+      },
+      "Learning Path": {
+        "Initial Skills": [
+          "Basic Python",
+          "Development environment setup"
+        ],
+        "Advanced Skills": [
+          "Video processing",
+          "Data analysis",
+          "Object detection"
+        ],
+        "Tooling": [
+          "Environment management",
+          "Package configuration",
+          "Cloud storage"
+        ]
+      }
+    }
+  ],
+  "Ngernturbo Co. Ltd": [
+    {
+      "Topic Learning": [
+        "Frontend development",
+        "GraphQL implementation",
+        "UI/UX design",
+        "Agile/Scrum methodologies",
+        "Component architecture",
+        "Print system integration",
+        "Data migration",
+        "Mock data implementation",
+        "Development environment setup",
+        "WSL configuration",
+        "CSS frameworks",
+        "Version control"
+      ],
+      "Advanced Topic Reasoning": [
+        "Frontend development from SF334 is extensively demonstrated through their work with React and Vue implementations. The logs show systematic application of modern frontend frameworks, applying 'Server-side web application development' principles",
+    
+        "GraphQL from SF334 is thoroughly demonstrated through their detailed research and implementation of GraphQL APIs, showing understanding of modern API architectures",
+    
+        "UI/UX from SF334 is comprehensively shown through their layout development work, demonstrating practical application of 'User interface design' principles",
+    
+        "Agile methods from SF220 is evidenced through their active participation in Scrum meetings and sprint reviews, showing application of 'Methods, techniques, and tools used for software engineering process'",
+    
+        "Component architecture from SF331 is demonstrated through their work refactoring class components, showing understanding of 'Software structure and architecture'",
+    
+        "Print integration from SF334 is shown through their work with PDF/HTML conversion and Tailwind CSS printing challenges, demonstrating complex browser integration",
+    
+        "Data migration from CN230 is evidenced through their systematic data transfer work, showing application of 'Data-intensive systems' concepts",
+    
+        "Mock data from SF332 is demonstrated through their comprehensive testing setup with GraphQL, applying 'Test techniques' principles",
+    
+        "Environment setup from SF340 is shown through their detailed configuration of WSL/Ubuntu environments, demonstrating 'Software configuration management'",
+    
+        "WSL from CN311 is evidenced through their Linux subsystem configuration work, showing understanding of 'Operating system design and implementation'",
+    
+        "CSS frameworks from SF334 is demonstrated through their implementation of Tailwind CSS, showing modern styling approaches",
+    
+        "Version control from SF220 is shown through their systematic project management and changelog creation"
+      ],
+      "Fundamental Topics Required": [
+        "Web development basics",
+        "Database fundamentals",
+        "Software development lifecycle",
+        "Linux fundamentals",
+        "API concepts",
+        "HTML/CSS basics",
+        "JavaScript fundamentals",
+        "Version control systems"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Web development from SF334 provides the essential foundation for their frontend work. The logs show continuous application of web development principles",
+    
+        "Database from CN230 is crucial for their data migration work, particularly evident in their data transfer implementations",
+    
+        "SDLC from SF220 is fundamental to their understanding and participation in Agile/Scrum processes, showing software development lifecycle knowledge",
+    
+        "Linux from CN311 is essential for their WSL configuration work, showing understanding of operating system principles",
+    
+        "API concepts from SF334 are crucial for their GraphQL work, showing understanding of modern API architectures",
+    
+        "HTML/CSS from SF334 provides the foundation for their layout development work, particularly evident in their UI implementations",
+    
+        "JavaScript from SF334 is fundamental to their React/Vue development work, showing understanding of modern JavaScript frameworks",
+    
+        "Version control from SF220 is essential for their collaboration and project management activities, though not explicitly detailed in logs"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "SF220: Introduction to Software Engineering",
+          "CN230: Database Systems"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "CN311: Operating Systems",
+          "CN321: Data Communication and Computer Networks I"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design",
+          "SF332: Software Testing and Quality Assurance",
+          "SF334: Web Application Development",
+          "SF340: Software Configuration Management"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Frontend Development": {
+          "Frameworks": [
+            "React components",
+            "Vue.js implementation",
+            "Tailwind CSS"
+          ],
+          "Features": [
+            "Print functionality",
+            "PDF generation",
+            "Layout design"
+          ]
+        },
+        "API Development": {
+          "GraphQL": [
+            "Query implementation",
+            "Mock data setup",
+            "API integration"
+          ],
+          "Data Management": [
+            "Data migration",
+            "Mock data creation",
+            "Data fetching optimization"
+          ]
+        },
+        "Development Practices": {
+          "Agile": [
+            "Scrum meetings",
+            "Sprint reviews",
+            "Solution reviews"
+          ],
+          "Environment": [
+            "WSL setup",
+            "Ubuntu configuration",
+            "NVM installation"
+          ]
+        }
+      },
+      "Technical Stack Coverage": {
+        "Frontend": [
+          "React",
+          "Vue.js",
+          "Tailwind CSS",
+          "SCSS"
+        ],
+        "APIs": [
+          "GraphQL",
+          "REST"
+        ],
+        "Tools": [
+          "WSL",
+          "Ubuntu",
+          "NVM"
+        ]
+      },
+      "Project Management": {
+        "Methodologies": [
+          "Agile",
+          "Scrum"
+        ],
+        "Meetings": [
+          "Sprint reviews",
+          "Solution reviews",
+          "Retrospectives"
+        ]
+      }
+    }
+  ],
+  "PTT Public Company Limited": [
+    {
+      "Topic Learning": [
+        "IoT platform evaluation",
+        "CMMS systems analysis",
+        "Workflow diagram design",
+        "Comparative analysis",
+        "Industrial IoT systems",
+        "Maintenance management systems",
+        "Technical documentation",
+        "System architecture comparison",
+        "Enterprise IoT solutions"
+      ],
+      "Advanced Topic Reasoning": [
+        "IoT evaluation from CN321/CN416 is extensively demonstrated through their systematic comparison of IoT platforms. The logs show detailed analysis of platform capabilities, applying both 'Network Layer Protocols' and 'Cloud computing system deployment' principles",
+    
+        "CMMS analysis from CN310 is thoroughly demonstrated through their study of maintenance systems. Their logs show systematic approach to understanding enterprise maintenance systems, applying 'Server configuration modification' concepts",
+    
+        "Workflow design from SF222 is comprehensively shown through their creation of workflow diagrams, demonstrating application of 'Basic principles to design good software'",
+    
+        "Comparative analysis from SF331 is clearly evidenced through their systematic comparison of platform features, showing application of 'Software structure and architecture' principles in evaluation",
+    
+        "Industrial IoT from CN416 is demonstrated through their detailed study of enterprise-level IoT platforms, showing understanding of 'Technology related to Cloud Computing'",
+    
+        "Maintenance systems from CN310 is shown through their systematic study of CMMS, demonstrating understanding of enterprise system management",
+    
+        "Documentation from SF220 is evidenced through their creation of comprehensive comparison tables, showing application of 'Methods, techniques, and tools used for software engineering process'",
+    
+        "Architecture comparison from SF331 is demonstrated through their detailed platform analysis, showing understanding of different architectural approaches",
+    
+        "Enterprise solutions from CN416 is shown through their study of industrial applications, demonstrating understanding of enterprise-scale cloud systems"
+      ],
+      "Fundamental Topics Required": [
+        "Computer networks fundamentals",
+        "System architecture basics",
+        "Database systems",
+        "Technical documentation",
+        "Cloud computing concepts",
+        "System analysis methods",
+        "Hardware-software integration",
+        "Enterprise systems"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Networks from CN321 provides the essential foundation for their IoT platform understanding. The logs show systematic application of networking concepts in platform evaluation",
+    
+        "Architecture from SF331 is crucial for their system comparison work, particularly evident in their analysis of different platform architectures",
+    
+        "Databases from CN230 are fundamental to their CMMS understanding, showing application of data management concepts",
+    
+        "Documentation from SF220 forms the core foundation for their comparison table creation, showing systematic approach to technical documentation",
+    
+        "Cloud computing from CN416 is essential for their understanding of IoT platforms, showing application of cloud infrastructure concepts",
+    
+        "System analysis from SF222 provides the framework for their comparative study, showing systematic approach to system evaluation",
+    
+        "Integration from CN310 is crucial for their understanding of IoT implementation considerations, showing understanding of system integration concepts",
+    
+        "Enterprise systems from CN310 are fundamental to their understanding of industrial applications, showing comprehension of large-scale system requirements"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF220: Introduction to Software Engineering",
+          "CN230: Database Systems",
+          "SF222: Software Engineering Models and Analysis"
+        ],
+        "Level 2 (Intermediate)": [
+          "CN310: Computer Server Configuration",
+          "CN321: Data Communication and Computer Networks I",
+          "SF331: Software Architecture and Design"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "CN416: Cloud Computing",
+          "SF340: Software Configuration Management",
+          "CN418: Big Data Engineering Management"
+        ]
+      },
+      "Log Activities Coverage": {
+        "IoT Analysis": {
+          "Platform Comparison": [
+            "Feature analysis",
+            "Capability assessment",
+            "Platform strengths",
+            "Integration options"
+          ],
+          "Documentation": [
+            "Comparison tables",
+            "Feature matrices",
+            "Platform summaries"
+          ]
+        },
+        "CMMS Study": {
+          "System Analysis": [
+            "Maintenance management",
+            "System features",
+            "Implementation requirements"
+          ],
+          "Documentation": [
+            "System summaries",
+            "Feature analysis",
+            "Usage scenarios"
+          ]
+        },
+        "Workflow Development": {
+          "Diagram Creation": [
+            "Process flows",
+            "System interactions",
+            "Implementation workflows"
+          ]
+        }
+      },
+      "Technical Knowledge Areas": {
+        "IoT Platforms": [
+          "Platform architectures",
+          "Integration capabilities",
+          "Security features",
+          "Scalability options"
+        ],
+        "CMMS Systems": [
+          "Maintenance management",
+          "Asset tracking",
+          "Work order systems"
+        ],
+        "Documentation": [
+          "Technical writing",
+          "Comparative analysis",
+          "Feature documentation"
+        ]
+      }
+    }
+  ],
+  "Siam Commercial Bank PCL": [
+    {
+      "Topic Learning": [
+        "Java/J2EE development",
+        "RESTful API design",
+        "Frontend frameworks (Angular)",
+        "Node.js backend development",
+        "Database management (MySQL)",
+        "CI/CD practices",
+        "Agile methodologies",
+        "Version control (Git)",
+        "Web services integration",
+        "TypeScript development",
+        "Stored procedures",
+        "Software quality assurance",
+        "Technical requirement analysis",
+        "Production incident handling",
+        "Integration testing"
+      ],
+      "Advanced Topic Reasoning": [
+        "Web services from CN321/SF334 shown in RESTful API development",
+        "Frontend frameworks from SF334 demonstrated in Angular development",
+        "Database management from CN230 shown in MySQL implementation",
+        "Software quality from SF332 demonstrated in testing practices",
+        "Integration from SF331 shown in system connectivity",
+        "Agile practices from SF221 demonstrated in planning sessions",
+        "Version control from SF340 shown in Git usage",
+        "Architecture from SF331 demonstrated in system design"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming fundamentals",
+        "Object-oriented programming",
+        "Web development basics",
+        "Database concepts",
+        "Software development lifecycle",
+        "Version control basics",
+        "Testing methodologies",
+        "System architecture principles",
+        "Network communication",
+        "Project management"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer programming (CN101) essential for understanding programming fundamentals, algorithms, and basic software development practices",
+        "OOP (SF211) needed for Java/J2EE development and TypeScript/Angular concepts",
+        "Web development (SF334) required for HTML5, CSS, JavaScript fundamentals",
+        "Database systems (CN230) essential for MySQL, stored procedures, and data management",
+        "Software engineering (SF220) needed for development lifecycle and project planning",
+        "Software processes (SF221) required for understanding Agile methodologies",
+        "Networks (CN321) essential for web services and API communication",
+        "Testing (SF332) needed for quality assurance and incident handling",
+        "Data structures (SF231) required for efficient algorithm implementation",
+        "Architecture (SF331) essential for system design and integration"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "SF220: Introduction to Software Engineering",
+          "SF221: Software Process"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF231: Data Structures and Algorithms",
+          "SF334: Web Application Development",
+          "CN230: Database Systems",
+          "CN321: Data Communication and Computer Networks I"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design",
+          "SF332: Software Testing and Quality Assurance",
+          "SF340: Software Configuration Management",
+          "SF351: Web Application Security"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Backend Development": {
+          "Java/J2EE": [
+            "RESTful API development",
+            "Web services implementation",
+            "Business logic implementation"
+          ],
+          "Node.js": [
+            "Express framework",
+            "Loopback implementation",
+            "Server-side logic"
+          ]
+        },
+        "Frontend Development": {
+          "Angular": [
+            "TypeScript development",
+            "Component creation",
+            "State management"
+          ],
+          "Web Technologies": [
+            "HTML5/CSS implementation",
+            "AJAX integration",
+            "Responsive design"
+          ]
+        },
+        "Database": {
+          "MySQL": [
+            "Query optimization",
+            "Stored procedures",
+            "Data modeling"
+          ]
+        },
+        "DevOps": {
+          "Practices": [
+            "Git version control",
+            "CI/CD pipeline",
+            "Deployment automation"
+          ]
+        }
+      },
+      "Technical Skills": {
+        "Backend": [
+          "Java/J2EE",
+          "Node.js",
+          "RESTful APIs"
+        ],
+        "Frontend": [
+          "Angular 2+",
+          "TypeScript",
+          "HTML5/CSS"
+        ],
+        "Database": [
+          "MySQL",
+          "Stored Procedures"
+        ],
+        "Tools": [
+          "Git",
+          "CI/CD tools",
+          "Testing frameworks"
+        ]
+      }
+    }
+  ],
+  "Smartclick Solution Co., Ltd": [
+    {
+      "Topic Learning": [
+        "Web development",
+        "System administration",
+        "Database management",
+        "Domain management",
+        "SSL implementation",
+        "Linux server administration",
+        "Frontend development",
+        "Client communication",
+        "Server deployment",
+        "Network infrastructure",
+        "Documentation (TOR)",
+        "Animation implementation"
+      ],
+      "Advanced Topic Reasoning": [
+        "Web development from SF334 is extensively demonstrated through their comprehensive website creation work. The logs show systematic development of various website components, applying 'Server-side web application development' principles",
+    
+        "System admin from CN311 is thoroughly demonstrated through their work with CentOS and Ubuntu systems. The logs show practical application of 'Operating system design and implementation' concepts",
+    
+        "Database from CN230 is comprehensively shown through their work with database creation and dumps, demonstrating application of 'Data-intensive systems' principles",
+    
+        "Domain management from CN321 is evidenced through their systematic tracking of domain expiries, showing understanding of 'Network Layer Protocols' and DNS management",
+    
+        "SSL from SF351 is demonstrated through their certificate management work, showing application of 'Key security mechanisms' and secure communication principles",
+    
+        "Linux admin from CN311 is shown through their detailed server configuration work, particularly evident in their CentOS and Ubuntu administration tasks",
+    
+        "Frontend from SF334 is demonstrated through their comprehensive work on layouts and animations, showing mastery of 'User interface design' principles",
+    
+        "Client communication from SF220 is evidenced through their systematic customer interactions, showing application of 'Methods, techniques, and tools used for software engineering process'",
+    
+        "Deployment from SF340 is shown through their use of Filezilla for file transfers, demonstrating 'Software configuration management' principles",
+    
+        "Network from CN321 is demonstrated through their IP address assignment work, showing understanding of network configuration",
+    
+        "Documentation from SF220 is evidenced through their creation of detailed TORs, showing systematic approach to project documentation",
+    
+        "Animation from SF334 is demonstrated through their implementation of web animations, showing advanced frontend development skills"
+      ],
+      "Fundamental Topics Required": [
+        "Web technologies basics",
+        "Operating systems",
+        "Database fundamentals",
+        "Network protocols",
+        "Security principles",
+        "HTML/CSS/JavaScript",
+        "Technical communication",
+        "System design"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Web technologies from SF334 provide the essential foundation for their website development work. The logs show continuous application of web development principles",
+    
+        "Operating systems from CN311 are crucial for their server administration tasks, particularly evident in their Linux system management",
+    
+        "Database from CN230 is fundamental to their data management work, showing understanding of database operations",
+    
+        "Networks from CN321 form the core foundation for their system configuration work, particularly in IP and domain management",
+    
+        "Security from SF351 is essential for their SSL implementation work, showing understanding of security principles",
+    
+        "Web languages from SF334 are crucial for their frontend development work, particularly evident in their layout and animation implementations",
+    
+        "Communication from SF220 provides the framework for their client interactions, showing professional communication skills",
+    
+        "System design from SF222 is fundamental to their infrastructure planning, showing understanding of system architecture principles"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "SF220: Introduction to Software Engineering",
+          "CN230: Database Systems"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "CN311: Operating Systems",
+          "CN321: Data Communication and Computer Networks I"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF334: Web Application Development",
+          "SF340: Software Configuration Management",
+          "SF351: Web Application Security",
+          "CN416: Cloud Computing"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Web Development": {
+          "Frontend": [
+            "Layout design",
+            "Responsive navigation",
+            "Animation implementation",
+            "Mobile optimization"
+          ],
+          "Backend": [
+            "Database connection",
+            "PHP implementation",
+            "Server configuration"
+          ]
+        },
+        "System Administration": {
+          "Server Management": [
+            "CentOS configuration",
+            "Ubuntu setup",
+            "SSL management",
+            "Domain tracking"
+          ],
+          "Infrastructure": [
+            "IP assignment",
+            "Rack diagrams",
+            "Network setup"
+          ]
+        },
+        "Client Management": {
+          "Communication": [
+            "Client meetings",
+            "Asset collection",
+            "Requirement gathering"
+          ],
+          "Documentation": [
+            "TOR creation",
+            "Project planning",
+            "Technical documentation"
+          ]
+        }
+      },
+      "Technical Stack Coverage": {
+        "Frontend": [
+          "HTML/CSS",
+          "JavaScript",
+          "Responsive design",
+          "Web animations"
+        ],
+        "Backend": [
+          "PHP",
+          "Database systems",
+          "Server configuration"
+        ],
+        "Tools": [
+          "Filezilla",
+          "CentOS",
+          "Ubuntu",
+          "SSL certificates"
+        ]
+      }
+    }
+  ],
+  "Stock Exchange of Thailand": [
+    {
+      "Topic Learning": [
+        "Financial system integration",
+        "API development and testing",
+        "Version control systems",
+        "Shell scripting",
+        "Database management",
+        "System testing",
+        "Code review practices",
+        "Agile development",
+        "VPN and server configuration",
+        "Corporate banking systems",
+        "Error handling",
+        "Frontend development"
+      ],
+      "Advanced Topic Reasoning": [
+        "Financial systems from DE321 is extensively demonstrated through their work on banking integrations. The logs show detailed work with ATS (Automatic Transfer System) and KTB bank implementations, applying 'Financial Literacy for Individuals' principles",
+    
+        "API development from SF334 is thoroughly demonstrated through their endpoint testing work. The logs show systematic testing and implementation of APIs, applying 'Server-side web application development' concepts",
+    
+        "Version control from SF340 is comprehensively shown through their systematic use of Git, demonstrating 'Software configuration management' principles",
+    
+        "Shell scripting from CN311 is evidenced through their automation work, showing practical application of 'Operating system design and implementation' concepts",
+    
+        "Database from CN230 is clearly demonstrated through their archive management work, showing application of 'Data-intensive systems' principles particularly in WorldCheck archive handling",
+    
+        "Testing from SF332 is extensively shown through their systematic development of test cases, demonstrating thorough application of 'Test techniques' and 'Test evaluation'",
+    
+        "Code review from SF340 is demonstrated through their regular participation in code reviews, showing understanding of code quality principles",
+    
+        "Agile from SF220 is evidenced through their active participation in sprint activities, demonstrating 'Methods, techniques, and tools used for software engineering process'",
+    
+        "System config from CN310 is shown through their setup of VPN and server configurations, applying 'Server configuration modification' principles",
+    
+        "Banking from DE321 is demonstrated through their work on ATS implementation, showing understanding of financial systems",
+    
+        "Error handling from SF334 is shown through their work with exception management, particularly evident in their API error handling",
+    
+        "Frontend from SF334 is demonstrated through their UI development work, showing application of user interface design principles"
+      ],
+      "Fundamental Topics Required": [
+        "Programming fundamentals",
+        "Database systems",
+        "Software engineering practices",
+        "Network protocols",
+        "System architecture",
+        "Business process understanding",
+        "Testing methodologies",
+        "Financial systems basics"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Programming from CN101 forms the essential foundation for their development work. The logs show continuous application of programming principles across various tasks",
+    
+        "Database from CN230 is crucial for their data management work, particularly evident in their archive handling and data operations",
+    
+        "Software engineering from SF220 provides the framework for their Agile practices, showing understanding of software development methodologies",
+    
+        "Networks from CN321 is essential for their system integration work, particularly evident in their VPN and server configurations",
+    
+        "Architecture from SF331 is fundamental to their system design work, showing understanding of software architecture principles",
+    
+        "Business from DE321 is crucial for their understanding of the financial domain, particularly evident in their work with banking systems",
+    
+        "Testing from SF332 provides the foundation for their quality assurance work, showing systematic approach to testing",
+    
+        "Financial from DE321 is essential for their work in the banking context, showing understanding of financial systems and processes"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "SF220: Introduction to Software Engineering",
+          "CN230: Database Systems"
+        ],
+        "Level 2 (Intermediate)": [
+          "CN310: Computer Server Configuration",
+          "CN311: Operating Systems",
+          "CN321: Data Communication and Computer Networks I",
+          "DE321: Technology Entrepreneurship"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design",
+          "SF332: Software Testing and Quality Assurance",
+          "SF334: Web Application Development",
+          "SF340: Software Configuration Management"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Development Work": {
+          "Financial Systems": [
+            "KTB bank integration",
+            "ATS deposit system",
+            "Corporate banking features"
+          ],
+          "Backend": [
+            "API development",
+            "Archive management",
+            "Error handling"
+          ]
+        },
+        "Testing Activities": {
+          "Test Cases": [
+            "API testing",
+            "Integration testing",
+            "Unit testing"
+          ],
+          "Tools": [
+            "Testing frameworks",
+            "API testing tools",
+            "Database tools"
+          ]
+        },
+        "Process Management": {
+          "Agile": [
+            "Daily meetings",
+            "Sprint reviews",
+            "Sprint planning",
+            "Refinement sessions"
+          ],
+          "Code Quality": [
+            "Code reviews",
+            "Bug fixes",
+            "Documentation"
+          ]
+        }
+      },
+      "Technical Skills": {
+        "Development": [
+          "API development",
+          "Shell scripting",
+          "Frontend development",
+          "Database management"
+        ],
+        "Tools": [
+          "Git",
+          "VPN",
+          "Server management",
+          "Testing frameworks"
+        ],
+        "Business": [
+          "Financial systems",
+          "Banking processes",
+          "Corporate workflows"
+        ]
+      }
+    }
+  ],
+  "THE SUN PLEX ENGINEERING AND SOFTWARE CO.,LTD": [
+    {
+      "Topic Learning": [
+        "UI/UX design principles",
+        "Web administration systems",
+        "Figma prototyping",
+        "VR technology implementation",
+        "Web design",
+        "Interactive mapping",
+        "Content management",
+        "Panoramic visualization",
+        "Grid systems",
+        "Popup interface design",
+        "Mockup creation",
+        "Admin panel design"
+      ],
+      "Advanced Topic Reasoning": [
+        "UI/UX design from SF334 is extensively demonstrated through their systematic work with Figma mockups. The logs show detailed engagement with user interface design, applying 'User interface design for web application development' principles",
+    
+        "Admin systems from SF331 is thoroughly demonstrated through their web admin design work. The logs show systematic approach to administrative interface design, applying 'Software structure and architecture' concepts",
+    
+        "Prototyping from SF334 is comprehensively shown through their Figma implementation work, demonstrating practical application of rapid prototyping principles in web development",
+    
+        "VR tech from TU236 is evidenced through their work as a VR history instructor assistant, showing practical application of 'Basic 3D Production & Animation' concepts",
+    
+        "Web design from SF334 is demonstrated through their company website development work, showing comprehensive application of web development principles",
+    
+        "Mapping from SF334 is shown through their implementation of grid systems, demonstrating understanding of spatial layout principles",
+    
+        "CMS from SF334 is evidenced through their content management work, showing understanding of content organization and presentation",
+    
+        "Visualization from TU236 is demonstrated through their work with panoramic backgrounds, showing application of '3D creation in World of Virtual Reality'",
+    
+        "Grid systems from SF334 is shown through their systematic approach to layout design, demonstrating understanding of responsive design principles",
+    
+        "Interface design from SF334 is demonstrated through their popup creation work, showing attention to interactive element design",
+    
+        "Mockup from SF334 is evidenced through their systematic design process, showing understanding of design workflow principles",
+    
+        "Admin design from SF331 is shown through their creation of administrative panels, demonstrating understanding of system architecture requirements"
+      ],
+      "Fundamental Topics Required": [
+        "Web development basics",
+        "Design principles",
+        "User interface concepts",
+        "Visual design fundamentals",
+        "Information architecture",
+        "Responsive design",
+        "Project management",
+        "3D visualization basics"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Web development from SF334 provides the essential foundation for their website creation work. The logs show continuous application of web development principles",
+    
+        "Design principles from SF222 are crucial for their UI work, showing understanding of 'Basic principles to design good software'",
+    
+        "UI concepts from SF334 form the core foundation for their interface design work, particularly evident in their Figma implementations",
+    
+        "Visual design from SF334 is essential for their mockup creation, showing understanding of visual hierarchy and layout principles",
+    
+        "Information architecture from SF331 is fundamental to their admin systems work, showing understanding of system organization principles",
+    
+        "Responsive design from SF334 is crucial for their web implementation work, showing understanding of multi-device design principles",
+    
+        "Project management from SF220 provides the framework for their work coordination, showing systematic approach to project execution",
+    
+        "3D visualization from TU236 is essential for their VR and panoramic work, showing understanding of spatial design principles"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "SF220: Introduction to Software Engineering",
+          "TU236: Basic 3D Production & Animation"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF222: Software Engineering Models and Analysis",
+          "SF334: Web Application Development"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design",
+          "SF340: Software Configuration Management"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Design Work": {
+          "UI/UX": [
+            "Figma mockups",
+            "Web admin interface",
+            "Popup designs",
+            "Grid layouts"
+          ],
+          "Visual Elements": [
+            "Panoramic backgrounds",
+            "Interactive maps",
+            "Content layout"
+          ]
+        },
+        "Development": {
+          "Web": [
+            "Company website",
+            "Admin panel",
+            "Interactive features"
+          ],
+          "VR": [
+            "Historical VR assistance",
+            "VR implementation"
+          ]
+        },
+        "Project Management": {
+          "Activities": [
+            "Exhibition assistance",
+            "Meeting participation",
+            "Work planning"
+          ]
+        }
+      },
+      "Technical Skills": {
+        "Design Tools": [
+          "Figma",
+          "UI design software",
+          "Mockup tools"
+        ],
+        "Technologies": [
+          "VR systems",
+          "Web technologies",
+          "Mapping tools"
+        ],
+        "Methodologies": [
+          "UI/UX design process",
+          "Web development workflow",
+          "Content management"
+        ]
+      }
+    }
+  ],
+  "TMBThanachart Bank Public Company Limited": [
+    {
+      "Topic Learning": [
+        "Kotlin programming fundamentals",
+        "API Gateway implementation",
+        "Request/Response handling",
+        "Database connectivity",
+        "Spring Boot integration",
+        "Unit testing methodologies",
+        "Elastic Search implementation",
+        "Component development",
+        "React state management",
+        "React component architecture",
+        "Software testing processes",
+        "Code review practices",
+        "Database integration patterns",
+        "API development",
+        "Data validation"
+      ],
+      "Advanced Topic Reasoning": [
+        "Kotlin programming from SF211 is extensively demonstrated through their systematic API development work. The logs show progression from basic Kotlin concepts to complex API implementations, applying object-oriented principles",
+    
+        "API Gateway from CN321 is thoroughly demonstrated through their work with request handling and response management. The logs show detailed understanding of API gateway concepts and implementation",
+    
+        "Database integration from CN230 is comprehensively shown through their Spring Boot work, demonstrating practical application of 'Data-intensive systems' concepts particularly in table connections",
+    
+        "Testing from SF332 is evidenced through their systematic creation of unit tests, showing detailed application of 'Test techniques' and 'Test evaluation' principles",
+    
+        "Search implementation from CN418 is extensively demonstrated through their work with Elastic Search, showing application of 'Data intensive computing' principles in search functionality",
+    
+        "Component architecture from SF331 is shown through their React component development work, demonstrating understanding of 'Software structure and architecture'",
+    
+        "State management from SF333 is evidenced through their frontend development work with useState and component state handling",
+    
+        "Code review from SF340 is demonstrated through their active participation in team code reviews, showing understanding of 'Software configuration management'",
+    
+        "Data validation from SF332 is shown through their comprehensive request validation implementations, demonstrating thorough testing principles",
+    
+        "Database design from CN230 is evidenced through their Spring Boot integration work, showing understanding of database architecture",
+    
+        "API design from SF331 is demonstrated through their service development work, showing systematic approach to API architecture",
+    
+        "Testing methodology from SF332 is shown through their systematic approach to defect management and test case development"
+      ],
+      "Fundamental Topics Required": [
+        "Object-oriented programming",
+        "Database fundamentals",
+        "Web development basics",
+        "Software testing principles",
+        "Version control systems",
+        "Data structures",
+        "Software development lifecycle",
+        "REST API concepts",
+        "Frontend development basics"
+      ],
+      "Fundamental Topic Reasoning": [
+        "OOP from SF211 provides the essential foundation for their Kotlin development work. The logs show systematic application of object-oriented principles",
+    
+        "Database basics from CN230 are crucial for their Spring Boot work, particularly evident in their database connection implementations",
+    
+        "Web development from SF334 forms the core foundation for their API work, showing understanding of web service principles",
+    
+        "Testing principles from SF332 are fundamental to their unit testing work, showing systematic approach to software testing",
+    
+        "Version control from SF340 is essential for their team collaboration, though not explicitly mentioned but necessary for development workflow",
+    
+        "Data structures from SF231 are crucial for their backend development work, particularly evident in data handling implementations",
+    
+        "SDLC from SF220 provides the framework for their project workflow, showing understanding of software development lifecycle",
+    
+        "API concepts from CN321 are fundamental to their service development work, showing understanding of network protocols",
+    
+        "Frontend basics from SF334 are essential for their React work, showing understanding of modern frontend development"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "SF220: Introduction to Software Engineering",
+          "CN230: Database Systems"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF231: Data Structures and Algorithms",
+          "SF334: Web Application Development",
+          "CN321: Data Communication and Computer Networks I"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design",
+          "SF332: Software Testing and Quality Assurance",
+          "SF340: Software Configuration Management",
+          "CN418: Big Data Engineering management"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Backend Development": {
+          "Kotlin": [
+            "API development",
+            "Request/Response handling",
+            "Data validation"
+          ],
+          "Database": [
+            "Spring Boot integration",
+            "Database connectivity",
+            "Data management"
+          ],
+          "Search": [
+            "Elastic Search implementation",
+            "Query optimization",
+            "Search functionality"
+          ]
+        },
+        "Frontend Development": {
+          "React": [
+            "Component development",
+            "State management",
+            "UI implementation"
+          ],
+          "Testing": [
+            "Unit test creation",
+            "Defect management",
+            "Test case development"
+          ]
+        },
+        "Team Collaboration": {
+          "Activities": [
+            "Code reviews",
+            "Daily meetings",
+            "Project planning"
+          ]
+        }
+      },
+      "Technical Skills": {
+        "Programming Languages": [
+          "Kotlin",
+          "JavaScript/React",
+          "SQL"
+        ],
+        "Frameworks": [
+          "Spring Boot",
+          "Elastic Search",
+          "React"
+        ],
+        "Tools": [
+          "Postman",
+          "Git",
+          "Testing frameworks"
+        ]
+      }
+    }
+  ],
+  "Zero Friction Co., Ltd": [
+    {
+      "Topic Learning": [
+        "Frontend UI/UX development",
+        "Component-based architecture",
+        "API integration",
+        "Line LIFF implementation",
+        "Vue.js framework",
+        "Authentication systems",
+        "QR code scanning",
+        "Search functionality",
+        "Database operations",
+        "Project planning",
+        "UI component reusability",
+        "Message API integration",
+        "Frontend state management",
+        "Responsive design",
+        "OAuth integration"
+      ],
+      "Advanced Topic Reasoning": [
+        "Frontend architecture from SF331 shown in component design",
+        "API integration from CN321 demonstrated in backend communication",
+        "Authentication from SF351 shown in OTP and Line LIFF implementation",
+        "Component design from SF333 demonstrated in reusable UI components",
+        "State management from SF333 shown in frontend data handling",
+        "Security implementation from SF351 demonstrated in authentication flow",
+        "UI/UX principles from SF334 shown in interface design",
+        "Project planning from SF220 demonstrated in feature planning",
+        "Database integration from CN230 shown in data management",
+        "Mobile integration from SF333 demonstrated in responsive design"
+      ],
+      "Fundamental Topics Required": [
+        "Computer programming fundamentals",
+        "Web development basics",
+        "Object-oriented programming",
+        "Software engineering principles",
+        "Database concepts",
+        "UI/UX fundamentals",
+        "Version control basics",
+        "API fundamentals",
+        "Software development lifecycle",
+        "Frontend development basics"
+      ],
+      "Fundamental Topic Reasoning": [
+        "Computer programming (CN101) essential for understanding programming concepts, software components, and basic programming practices needed for web development",
+        "OOP (SF211) needed for component-based architecture and class/object concepts in frontend frameworks",
+        "Web development (SF334) required for understanding HTML, CSS, JavaScript, and web application fundamentals",
+        "Software engineering (SF220) essential for project lifecycle, requirements gathering, and team collaboration",
+        "Software modeling (SF222) needed for understanding system design and architecture patterns",
+        "Mobile development (SF333) required for responsive design and mobile-first approaches",
+        "Database systems (CN230) essential for understanding data management and storage concepts",
+        "Networks (CN321) needed for API communication and HTTP concepts",
+        "Security (SF351) required for authentication and secure communication patterns",
+        "UI/UX design (SF334) essential for creating user-friendly interfaces and components"
+      ],
+      "Course Progression": {
+        "Level 1 (Core Fundamentals)": [
+          "CN101: Introduction to Computer Programming",
+          "SF211: Object-oriented programming",
+          "SF220: Introduction to Software Engineering",
+          "SF222: Software Engineering Models and Analysis"
+        ],
+        "Level 2 (Intermediate)": [
+          "SF334: Web Application Development",
+          "CN230: Database Systems",
+          "CN321: Data Communication and Computer Networks I"
+        ],
+        "Level 3 (Advanced/Applied)": [
+          "SF331: Software Architecture and Design",
+          "SF333: Mobile Device Application Development",
+          "SF351: Web Application Security"
+        ]
+      },
+      "Log Activities Coverage": {
+        "Frontend Development": {
+          "UI Implementation": [
+            "Homepage design",
+            "Insert page creation",
+            "Notification system",
+            "Blacklist interface",
+            "Login/OTP screens"
+          ],
+          "Component Development": [
+            "Reusable components",
+            "Navigation bar",
+            "Search functionality",
+            "History views"
+          ]
+        },
+        "Integration": {
+          "Line LIFF": [
+            "Authentication",
+            "QR code scanning",
+            "Messaging API",
+            "Flex messages"
+          ],
+          "API": [
+            "Backend communication",
+            "Data fetching",
+            "POST requests",
+            "Database operations"
+          ]
+        },
+        "Project Management": {
+          "Planning": [
+            "Feature planning",
+            "Requirements gathering",
+            "Team collaboration",
+            "CEO feedback implementation"
+          ]
+        }
+      },
+      "Technical Skills": {
+        "Frontend": [
+          "Vue.js",
+          "HTML/CSS",
+          "JavaScript",
+          "Responsive design"
+        ],
+        "Integration": [
+          "Line LIFF SDK",
+          "REST APIs",
+          "OAuth",
+          "QR code scanning"
+        ],
+        "Tools": [
+          "Version control",
+          "UI design tools",
+          "API testing tools"
+        ]
+      }
+    }
+  ]
+}

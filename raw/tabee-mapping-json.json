@@ -1,0 +1,297 @@
+{
+  "course_mappings": {
+    "CIS106": {
+      "code": "CIS106",
+      "name": "Leadership and Influence",
+      "tabee_requirements": [6, 7, 10]
+    },
+    "CN101": {
+      "code": "CN101",
+      "name": "Introduction to Computer Programming",
+      "tabee_requirements": [1, 5]
+    },
+    "CN200": {
+      "code": "CN200",
+      "name": "Discrete Mathematics",
+      "tabee_requirements": [1, 2]
+    },
+    "CN204": {
+      "code": "CN204",
+      "name": "Probability Theory and Random Processes",
+      "tabee_requirements": [1, 2, 11]
+    },
+    "CN210": {
+      "code": "CN210",
+      "name": "Fundamental of Computer Architecture",
+      "tabee_requirements": [1, 5]
+    },
+    "CN230": {
+      "code": "CN230",
+      "name": "Database Systems",
+      "tabee_requirements": [3, 4, 5]
+    },
+    "CN240": {
+      "code": "CN240",
+      "name": "Data Science for Signal Processing",
+      "tabee_requirements": [2, 4, 5]
+    },
+    "CN310": {
+      "code": "CN310",
+      "name": "Computer Server Configuration",
+      "tabee_requirements": [3, 5]
+    },
+    "CN311": {
+      "code": "CN311",
+      "name": "Operating Systems",
+      "tabee_requirements": [1, 5]
+    },
+    "CN321": {
+      "code": "CN321",
+      "name": "Data Communication and Computer Networks I",
+      "tabee_requirements": [1, 5]
+    },
+    "CN334": {
+      "code": "CN334",
+      "name": "Web Application Development",
+      "tabee_requirements": [3, 5, 11]
+    },
+    "CN340": {
+      "code": "CN340",
+      "name": "Machine Learning",
+      "tabee_requirements": [2, 5, 11]
+    },
+    "CN341": {
+      "code": "CN341",
+      "name": "Deep Learning",
+      "tabee_requirements": [2, 5, 11]
+    },
+    "CN351": {
+      "code": "CN351",
+      "name": "Web Application Security",
+      "tabee_requirements": [3, 4, 5]
+    },
+    "CN416": {
+      "code": "CN416",
+      "name": "Cloud Computing",
+      "tabee_requirements": [3, 5, 11]
+    },
+    "CN418": {
+      "code": "CN418",
+      "name": "Big Data Engineering Management",
+      "tabee_requirements": [2, 4, 5, 10]
+    },
+    "CN478": {
+      "code": "CN478",
+      "name": "Blockchain Technology",
+      "tabee_requirements": [3, 5, 11]
+    },
+    "DE321": {
+      "code": "DE321",
+      "name": "Technology Entrepreneurship",
+      "tabee_requirements": [8, 10, 11]
+    },
+    "DE322": {
+      "code": "DE322",
+      "name": "Entrepreneurial Marketing",
+      "tabee_requirements": [8, 10, 11]
+    },
+    "EL105": {
+      "code": "EL105",
+      "name": "English Communication Skills",
+      "tabee_requirements": [7, 11]
+    },
+    "LAS101": {
+      "code": "LAS101",
+      "name": "Critical Thinking, Reading, and Writing",
+      "tabee_requirements": [7, 11]
+    },
+    "MA111": {
+      "code": "MA111",
+      "name": "Fundamentals of Calculus",
+      "tabee_requirements": [1, 2]
+    },
+    "SC135": {
+      "code": "SC135",
+      "name": "General Physics",
+      "tabee_requirements": [1]
+    },
+    "SF210": {
+      "code": "SF210",
+      "name": "Programming Skill Development Laboratory I",
+      "tabee_requirements": [2, 3, 5]
+    },
+    "SF211": {
+      "code": "SF211",
+      "name": "Object-oriented Programming",
+      "tabee_requirements": [2, 3, 5]
+    },
+    "SF212": {
+      "code": "SF212",
+      "name": "Programming Skill Development Laboratory II",
+      "tabee_requirements": [2, 3, 5]
+    },
+    "SF220": {
+      "code": "SF220",
+      "name": "Introduction to Software Engineering",
+      "tabee_requirements": [3, 10]
+    },
+    "SF221": {
+      "code": "SF221",
+      "name": "Software Process",
+      "tabee_requirements": [3, 10]
+    },
+    "SF222": {
+      "code": "SF222",
+      "name": "Software Engineering Models and Analysis",
+      "tabee_requirements": [2, 3, 4]
+    },
+    "SF230": {
+      "code": "SF230",
+      "name": "Linear Algebra and Numerical Methods",
+      "tabee_requirements": [1, 2]
+    },
+    "SF231": {
+      "code": "SF231",
+      "name": "Data Structures and Algorithms",
+      "tabee_requirements": [2, 3]
+    },
+    "SF250": {
+      "code": "SF250",
+      "name": "Probability Theory and Statistics",
+      "tabee_requirements": [1, 2]
+    },
+    "SF251": {
+      "code": "SF251",
+      "name": "Introduction to Data Science",
+      "tabee_requirements": [2, 4, 5]
+    },
+    "SF330": {
+      "code": "SF330",
+      "name": "Software Requirements and Specification",
+      "tabee_requirements": [3, 4, 10]
+    },
+    "SF331": {
+      "code": "SF331",
+      "name": "Software Architecture and Design",
+      "tabee_requirements": [3, 4, 10]
+    },
+    "SF332": {
+      "code": "SF332",
+      "name": "Software Testing and Quality Assurance",
+      "tabee_requirements": [4, 5, 10]
+    },
+    "SF333": {
+      "code": "SF333",
+      "name": "Mobile Device Application Development",
+      "tabee_requirements": [3, 5, 11]
+    },
+    "SF340": {
+      "code": "SF340",
+      "name": "Software Configuration Management and Maintenance",
+      "tabee_requirements": [4, 5, 10]
+    },
+    "SF355": {
+      "code": "SF355",
+      "name": "Foundation of Artificial Intelligence",
+      "tabee_requirements": [2, 5, 11]
+    },
+    "SF402": {
+      "code": "SF402",
+      "name": "Software Engineering Seminar",
+      "tabee_requirements": [7, 11]
+    },
+    "SF403": {
+      "code": "SF403",
+      "name": "Software Engineering Internship",
+      "tabee_requirements": [6, 7, 8, 9]
+    },
+    "SF404": {
+      "code": "SF404",
+      "name": "Software Engineering Project I",
+      "tabee_requirements": [3, 6, 7, 10]
+    },
+    "SF405": {
+      "code": "SF405",
+      "name": "Software Engineering Project II",
+      "tabee_requirements": [3, 6, 7, 10]
+    },
+    "SF407": {
+      "code": "SF407",
+      "name": "Long-term Internship in Software Engineering",
+      "tabee_requirements": [6, 7, 8, 9, 10]
+    },
+    "SF410": {
+      "code": "SF410",
+      "name": "Ethics and Professional Issues",
+      "tabee_requirements": [8, 9]
+    },
+    "SF411": {
+      "code": "SF411",
+      "name": "Special Topic in Engineering I",
+      "tabee_requirements": [2, 11]
+    },
+    "SF412": {
+      "code": "SF412",
+      "name": "Special Topic in Engineering II",
+      "tabee_requirements": [2, 11]
+    },
+    "SF413": {
+      "code": "SF413",
+      "name": "Special Topic in Engineering III",
+      "tabee_requirements": [2, 11]
+    },
+    "SF414": {
+      "code": "SF414",
+      "name": "iOS Device Application Development",
+      "tabee_requirements": [3, 5, 11]
+    },
+    "TSE100": {
+      "code": "TSE100",
+      "name": "Ethics for Engineers",
+      "tabee_requirements": [8, 9]
+    },
+    "TU100": {
+      "code": "TU100",
+      "name": "Civic Engagement",
+      "tabee_requirements": [7, 8]
+    },
+    "TU201": {
+      "code": "TU201",
+      "name": "Financial Literacy for Individuals",
+      "tabee_requirements": [8, 11]
+    },
+    "TU202": {
+      "code": "TU202",
+      "name": "Complete Investment",
+      "tabee_requirements": [8, 11]
+    },
+    "TU236": {
+      "code": "TU236",
+      "name": "Basic 3D Production & Animation and World of Virtual Reality VR AR and MR",
+      "tabee_requirements": [5, 11]
+    },
+    "TU237": {
+      "code": "TU237",
+      "name": "Digital Entrepreneurship & Startup Crash Course",
+      "tabee_requirements": [8, 10, 11]
+    },
+    "TU238": {
+      "code": "TU238",
+      "name": "Basic AI & IoT",
+      "tabee_requirements": [2, 5, 11]
+    }
+  },
+  "tabee_requirements": {
+    "1": "ความรู้ด้านวิศวกรรมและพื้นฐานทางวิทยาศาสตร์",
+    "2": "การวิเคราะห์ปัญหาทางวิศวกรรม",
+    "3": "การออกแบบและพัฒนาเพื่อหาคำตอบของปัญหา",
+    "4": "การพิจารณาตรวจสอบ",
+    "5": "การใช้อุปกรณ์เครื่องมือทันสมัย",
+    "6": "การทำงานร่วมกันเป็นทีม",
+    "7": "การติดต่อสื่อสาร",
+    "8": "กิจกรรมสังคม สิ่งแวดล้อม การพัฒนาที่ยั่งยืน",
+    "9": "จรรยาบรรณวิชาชีพ",
+    "10": "การบริหารวิศวกรรม",
+    "11": "การเรียนรู้ตลอดชีพ"
+  }
+}
