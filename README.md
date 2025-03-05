@@ -1,6 +1,13 @@
 # Knowledge Pass
 ### How Thammasat's Software Engineering Courses Align with Industry Needs
 
+## WorkHeart : Team Members
+- 6510742163 นางสาวศุภิสรา สีถาวร
+- 6510742254 นายสรยุทธ์ อิงบุญ
+- 6510742452 นายพีรภาส งอกผล
+- 6510742502 นายภูรี เพ็ญหิรัญ
+- 6510742510 นายมณฑิระ อินทร์น้อย
+
 ## v1.0.0 Logs
 - `KPFrontend` เป็นส่วน frontend ของระบบ โดยใช้ html, css, tailwind ในการพัฒนา และใช้ django ในการจัดการและควบคุม
 - `KPBackend` เป็นส่วนโค้ด API และ test file ของฝั่ง backend ซึ่งใช้ FastAPI ในการทำ API สำหรับเรียกใช้ function ต่าง ๆ เช่น 
