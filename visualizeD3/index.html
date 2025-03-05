@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>GENIUS</title>
+<link rel="stylesheet" type="text/css" href="./inspector.css">
+<body>
+    <h1 style="font-size: large;">Connecting the Dots : How Thammasat's Software Engineering Courses Align with Industry Needs</h1>
+    
+</body>
+<script type="module">
+
+import define from "./index.js";
+import {Runtime, Library, Inspector} from "./runtime.js";
+
+const runtime = new Runtime();
+const main = runtime.module(define, Inspector.into(document.body));
+
+</script>
