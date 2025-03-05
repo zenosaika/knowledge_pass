@@ -1,0 +1,26 @@
+services:
+  neo4j:
+    image: neo4j:latest
+    volumes:
+      - $HOME/neo4j/logs:/logs
+      - $HOME/neo4j/config:/config
+      - $HOME/neo4j/data:/data
+      - $HOME/neo4j/plugins:/plugins
+    environment:
+      - NEO4J_AUTH=neo4j/godisnowhere
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    restart: always
+
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - $HOME/mongodb/data:/data/db
+      - $HOME/mongodb/configdb:/data/configdb 
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=godisnowhere
+    restart: always

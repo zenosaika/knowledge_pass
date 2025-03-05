@@ -1,5 +1,55 @@
-# Connecting the Dots
+# Knowledge Pass
 ### How Thammasat's Software Engineering Courses Align with Industry Needs
+
+## v1.0.0 Logs
+- `KPFrontend` เป็นส่วน frontend ของระบบ โดยใช้ html, css, tailwind ในการพัฒนา และใช้ django ในการจัดการและควบคุม
+- `KPBackend` เป็นส่วนโค้ด API และ test file ของฝั่ง backend ซึ่งใช้ FastAPI ในการทำ API สำหรับเรียกใช้ function ต่าง ๆ เช่น 
+    - automated skill extraction
+    - automated graph construction
+    - search graph
+    - compile graph
+- `KPDatabase` ด้านในเก็บ docker-compose.yml ไว้สำหรับ start database services ได้แก่ 
+    - Neo4j Graph Database
+    - MongoDB No-SQL Database
+- `frontend_test` เป็น folder ที่เก็บ test file สำหรับ frontend
+
+### Features
+```
+- พัฒนาระบบ Visualization ที่สามารถแสดงข้อมูลที่ถูกดึงจากฐานข้อมูลได้อย่างถูกต้อง
+- ปรับปรุงระบบแสดงผลของ Learning Path ให้แม่นยำขึ้นและรองรับการใช้งานตามแผนการเรียนของผู้ใช้
+- พัฒนาฟังก์ชัน Data Extraction ให้สามารถสกัดข้อมูลได้อย่างแม่นยำถึง 80% ขึ้นไป
+- เพิ่ม Interface สำหรับการค้นหาข้อมูลอาชีพ และการสืบค้นข้อมูลทักษะและรายวิชาในฐานข้อมูล
+- ปรับปรุง User Experience (UX) เพื่อให้สามารถใช้งานบน Desktop Version ได้สมบูรณ์
+```
+
+### Instructions
+```
+# 1. Install Requirements
+
+pip install -r requirements.txt
+
+
+# 2. Deploy Neo4j & MongoDB on local
+
+cd KPDatabase
+docker-compose up -d
+
+# 3. Run FastAPI on local
+
+cd KPBackend
+uvicorn main:app --reload --port 8081
+
+# 4. Run Django on local
+
+cd KPFrontend
+python manage.py runserver
+
+# 5. Go to http://127.0.0.1:8000
+```
+
+### Previews
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/v1_homepage.png"><br>
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/v1_result_page.png"><br>
 
 ## v0.3.0 Logs
 - `AutomatePipeline.ipynb` เป็นไฟล์ notebook สำหรับการทำ information extraction, graph construction, search relation in graph database แบบอัตโนมัติ 

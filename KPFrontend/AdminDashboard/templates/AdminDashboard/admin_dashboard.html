@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Pass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #111; /* Dark background */
+            color: #eee; /* Light text color */
+            margin: 0;
+            padding: 0;
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1a1a1a; /* Slightly lighter dark container */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* White shadow */
+            border-radius: 8px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #282828; /* Darker card background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Darker shadow */
+            border: 1px solid #333; /* Add a subtle border */
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+            color: #a0a0a0; /* Light gray heading */
+        }
+
+        .card p {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ddd; /* Slightly lighter text */
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .add-button {
+            background-color: #673ab7; /* Purple */
+            color: white;
+        }
+
+        .sync-button {
+            background-color: #2196F3; /* Blue */
+            color: white;
+        }
+
+        .add-button:hover {
+            background-color: #512da8; /* Darker Purple */
+        }
+
+        .sync-button:hover {
+            background-color: #1976D2;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+        }
+
+        .modal-content {
+            background-color: #222;  /* Darker modal background */
+            color: #eee; /* Light text in modal */
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #555; /* Slightly lighter border for modal */
+            width: 80%;
+            border-radius: 8px; /* Rounded corners for modal */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer; /* Make the close button a pointer */
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white; /* White on hover */
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content input[type="text"] { /* Style input fields in modal */
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            background-color: #333; /* Darker input background */
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 5px;
+        }
+
+        .modal-content textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            background-color: #333;
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 5px;
+            resize: vertical; /* Allow vertical resizing of textarea */
+            min-height: 100px; /* Set a minimum height */
+        }
+
+      .modal-content input[type="file"] {
+            margin-top: 10px; /* Space above file input */
+            color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
+
+        <div class="grid-container">
+            <div class="card">
+                <h2>Job Nodes</h2>
+                <p id="job-count">0</p>
+            </div>
+            <div class="card">
+                <h2>Course Nodes</h2>
+                <p id="course-count">0</p>
+            </div>
+            <div class="card">
+                <h2>Skill Nodes</h2>
+                <p id="skill-count">0</p>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="button add-button" onclick="openAddCourseModal()">Add New Course</button>
+            <button class="button add-button" onclick="openAddJobModal()">Add New Job</button>
+            <button class="button sync-button" onclick="compileAndSyncData()">Compile & Sync Data</button>
+        </div>
+    </div>
+
+    <div id="addCourseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddCourseModal()">&times;</span>
+            <h2>Add New Course</h2>
+            <input type="text" id="courseName" placeholder="Course Name">
+            <textarea id="courseDescription" placeholder="Course Description"></textarea>
+            <input type="file" id="courseImage" accept="image/*">
+            <button class="button add-button" onclick="addNewCourse()">Add Course</button>
+        </div>
+    </div>
+
+    <div id="addJobModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddJobModal()">&times;</span>
+            <h2>Add New Job</h2>
+            <input type="text" id="jobName" placeholder="Job Title">
+            <textarea id="jobDescription" placeholder="Job Description"></textarea>
+            <input type="file" id="jobImage" accept="image/*">
+            <button class="button add-button" onclick="addNewJob()">Add Job</button>
+        </div>
+    </div>
+
+
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 160,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#6366f1"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#eee",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 200,
+                        "size": 80,
+                        "duration": 0.4
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        
+        function openAddCourseModal() {
+            document.getElementById("addCourseModal").style.display = "block";
+            // Clear input fields when modal opens (optional):
+            document.getElementById("courseName").value = "";
+            document.getElementById("courseDescription").value = "";
+            document.getElementById("courseImage").value = "";
+
+        }
+
+        function closeAddCourseModal() {
+            document.getElementById("addCourseModal").style.display = "none";
+        }
+
+        function addNewCourse() {
+            const courseName = document.getElementById("courseName").value;
+            const courseDescription = document.getElementById("courseDescription").value;
+            const courseImage = document.getElementById("courseImage").files; // Get the selected file
+
+            // Handle adding new course logic (e.g., send data to server)
+            // You'll need to use FormData to send the file:
+            const formData = new FormData();
+            formData.append('name', courseName);
+            formData.append('description', courseDescription);
+            formData.append('image', courseImage);
+
+            // Example using fetch (replace with your actual server endpoint):
+            fetch('/your-course-endpoint', {
+                method: 'POST',
+                body: formData
+            })
+          .then(response => { /*... handle response... */ })
+          .catch(error => { /*... handle error... */ });
+
+            alert("Course added (placeholder - sending to server not implemented yet)");
+            closeAddCourseModal();
+            updateCount('course-count', 1);
+        }
+
+        //... (similar functions for Job Modal: openAddJobModal, closeAddJobModal, addNewJob)...
+        function openAddJobModal() {
+            document.getElementById("addJobModal").style.display = "block";
+            // Clear input fields when modal opens (optional):
+            document.getElementById("jobName").value = "";
+            document.getElementById("jobDescription").value = "";
+            document.getElementById("jobImage").value = "";
+        }
+
+        function closeAddJobModal() {
+            document.getElementById("addJobModal").style.display = "none";
+        }
+
+        function addNewJob() {
+            const jobName = document.getElementById("jobName").value;
+            const jobDescription = document.getElementById("jobDescription").value;
+            const jobImage = document.getElementById("jobImage").files;
+
+            const formData = new FormData();
+            formData.append('name', jobName);
+            formData.append('description', jobDescription);
+            formData.append('image', jobImage);
+
+            fetch('/your-job-endpoint', {  // Replace with your endpoint
+                method: 'POST',
+                body: formData
+            })
+          .then(response => { /*... handle response... */ })
+          .catch(error => { /*... handle error... */ });
+
+            alert("Job added (placeholder - sending to server not implemented yet)");
+            closeAddJobModal();
+            updateCount('job-count', 1);
+        }
+
+        async function compileAndSyncData() {
+            try {
+                const response = await fetch('http://127.0.0.1:8081/compile_graph', {
+                    method: 'GET',
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json(); // Try to get error details from the server
+                    throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.detail || response.statusText}`); // Improved error message
+                }
+
+                const data = await response.json(); // If the API returns data (e.g., a success message)
+                console.log('Graph compiled and synced:', data);
+                alert("Graph compiled and synced successfully!"); // Or display a more user-friendly message
+
+            } catch (error) {
+                console.error('Error compiling and syncing graph:', error);
+                alert(`Error compiling and syncing graph: ${error.message}`); // Show the error message to the user
+            }
+        }
+
+
+        function updateGraphInfo() {
+            fetch("http://127.0.0.1:8081/get_graph_info")
+            .then(response => response.json())
+            .then(data => {
+                    console.log("Graph information:", data);
+                    // Update the counts in the respective elements
+                    document.getElementById("job-count").textContent = data.n_job;
+                    document.getElementById("course-count").textContent = data.n_course;
+                    document.getElementById("skill-count").textContent = data.n_skill;
+                })
+            .catch(error => {
+                    console.error("Error fetching graph information:", error);
+                    // Display an error message (example)
+                    document.getElementById("job-count").textContent = "Error";
+                    document.getElementById("course-count").textContent = "Error";
+                    document.getElementById("skill-count").textContent = "Error";
+                });
+        }
+
+        // Call updateGraphInfo() when the page loads
+        window.onload = updateGraphInfo;
+    </script>
+
+</body>
+
+</html>

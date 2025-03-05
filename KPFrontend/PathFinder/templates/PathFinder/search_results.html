@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Pass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        body {
+            background-color: #111;
+            color: #eee;
+            font-family: sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+      .space-background {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            width: 100%;
+            padding: 20px;
+        }
+
+      .dashboard-container {
+            width: 80%;
+            max-width: 1200px;
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            gap: 20px;
+        }
+
+      .sankey-container {
+            width: 100%;
+            height: 400px; /* Set a height for the Sankey chart */
+            position: relative;
+        }
+
+        #sankey_multiple {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+      .bottom-row {
+            display: flex;
+            gap: 20px;
+        }
+
+      .left-box {
+            width: 50%;
+        }
+
+      .right-box {
+            width: 50%;
+        }
+
+      .job-result {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        color: white;
+        }
+
+        .job-result h2 {
+        font-size: 2.0rem;
+        margin-bottom: 10px;
+        }
+
+        .job-result p {
+        margin-bottom: 5px;
+        }
+
+        .summary-text,
+        .suggestion-text {
+        margin-top: 20px;
+        color: #ddd;
+        }
+
+        .export-button {
+        background-color: #6366f1;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        }
+
+        .export-button:hover {
+        background-color: #5355e8;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <div id="particles-js"></div>
+    <div class="space-background">
+        <h1 class="text-4xl font-bold mb-4">Search Results</h1>
+
+        <div class="dashboard-container">
+
+            <div class="sankey-container">
+                <div id="sankey_multiple"></div>
+            </div>
+
+            <div class="bottom-row">
+                <div class="left-box">
+                    </div>
+                <div class="right-box">
+                    {% if results %}
+                    {% if results.error %}
+                    <p class="text-red-500">{{ results.error }}</p>
+                    {% elif results.message %}
+                    <p class="text-gray-500">{{ results.message }}</p>
+                    {% else %}
+
+                    {% for job in results %}
+                    <div class="job-result">
+                        {{ job|safe }}
+                    </div>
+                    {% endfor %}
+
+                    {% endif %}
+
+                    <div class="summary-text">
+                        <p><strong>Summary:</strong> This job requires a strong foundation in computer science,
+                            particularly in
+                            software development and data analysis.</p>
+                    </div>
+                    <div class="suggestion-text">
+                        <p><strong>Suggestions:</strong> Consider taking courses in data structures, algorithms, and
+                            machine learning to improve your chances.</p>
+                    </div>
+
+                    <button class="export-button">Export Report</button>
+
+                    {% elif query %}
+                    <p>No jobs found for "{{ query }}".</p>
+                    {% else %}
+                    <p>Please enter a search query.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+        <a href="/"
+            class="mt-4 inline-block px-6 py-3 bg-purple-600 text-white rounded-md hover:bg-purple-700">Back to
+            Home</a>
+
+    </div>
+
+    <script type="text/javascript">
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 160,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#6366f1"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#eee",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 200,
+                        "size": 80,
+                        "duration": 0.4
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+
+        google.charts.load("current", { packages: ["sankey"] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            const myData = JSON.parse(`{{ sankey_data|safe }}`).data;
+            console.log(myData);
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'From');
+            data.addColumn('string', 'To');
+            data.addColumn('number', 'Weight');
+            data.addRows(myData);
+            // data.addRows([
+            //     [ 'CN101', 'Python', 5 ],
+            //     [ 'CN416', 'Django', 5 ],
+            //     [ 'CN416', 'Linux', 1 ],
+            //     [ 'CN334', 'Python', 1 ],
+            //     [ 'CN334', 'Django', 1 ],
+            //     [ 'CN334', 'Java', 5 ],
+            //     [ 'CN334', 'Linux', 1 ],
+            //     [ 'SF221', 'Python', 1 ],
+            //     [ 'SF221', 'Django', 1 ],
+            //     [ 'SF221', 'Java', 1 ],
+            //     [ 'SF221', 'Linux', 5 ],
+            //     [ 'Python', 'Skill3', 2 ],
+            //     [ 'Python', 'Skill1', 1 ],
+            //     [ 'Python', 'Skill2', 1 ],
+            //     [ 'Python', 'Skill5', 3 ],
+            //     [ 'Django', 'Skill3', 1 ],
+            //     [ 'Django', 'Skill1', 3 ],
+            //     [ 'Django', 'Skill4', 3 ],
+            //     [ 'Django', 'Skill2', 3 ],
+            //     [ 'Django', 'Skill5', 1 ],
+            //     [ 'Java', 'Skill1', 1 ],
+            //     [ 'Java', 'Skill2', 3 ],
+            //     [ 'Java', 'Skill5', 1 ],
+            //     [ 'Linux', 'Skill3', 1 ],
+            //     [ 'Linux', 'Skill1', 1 ],
+            //     [ 'Linux', 'Skill2', 2 ],
+            //     [ 'Linux', 'Skill5', 7 ],
+            //     [ 'Skill5', 'Required Skill 1', 5 ],
+            //     [ 'Skill5', 'Required Skill 2', 1 ],
+            //     [ 'Skill5', 'Required Skill 3', 3 ],
+            //     [ 'Skill3', 'Required Skill 1', 5 ],
+            //     [ 'Skill3', 'Required Skill 2', 1 ],
+            //     [ 'Skill3', 'Required Skill 3', 3 ],
+            //     [ 'Skill1', 'Required Skill 1', 5 ],
+            //     [ 'Skill1', 'Required Skill 2', 1 ],
+            //     [ 'Skill1', 'Required Skill 3', 3 ],
+            //     [ 'Skill4', 'Required Skill 1', 5 ],
+            //     [ 'Skill4', 'Required Skill 2', 1 ],
+            //     [ 'Skill4', 'Required Skill 3', 3 ],
+            //     [ 'Skill2', 'Required Skill 1', 5 ],
+            //     [ 'Skill2', 'Required Skill 2', 1 ],
+            //     [ 'Skill2', 'Required Skill 3', 3 ]
+            // ]);
+
+            var colors = ['#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f',
+                  '#cab2d6', '#ffff99', '#1f78b4', '#33a02c'];
+
+            var options = {
+                width: '100%',
+                height: '100%',
+                sankey: {
+                    node: {
+                        width: 20,
+                        padding: 10,
+                        colors: colors,
+                        label: {
+                            color: '#eee',
+                            fontSize: 14,
+                            fontName: 'Arial',
+                        }
+                    },
+                    link: {
+                        colorMode: 'gradient',
+                        colors: colors
+                    }
+                },
+            };
+
+            var chart = new google.visualization.Sankey(document.getElementById('sankey_multiple'));
+
+            function draw() {
+                chart.draw(data, options);
+            }
+
+            draw();
+            window.addEventListener('resize', draw);
+        }
+    </script>
+</body>
+
+</html>
