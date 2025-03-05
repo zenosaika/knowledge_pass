@@ -1,6 +1,9 @@
 # Connecting the Dots
 ### How Thammasat's Software Engineering Courses Align with Industry Needs
 
+## v0.3.0 Logs
+- `AutomatePipeline.ipynb` เป็นไฟล์ notebook สำหรับการทำ information extraction, graph construction, search relation in graph database แบบอัตโนมัติ 
+
 ## v0.2.0 Logs
 - `visualizeD3` เป็น web app ซึ่งใช้ library `D3.js` ในการทำ visualization ความสัมพันธ์ระหว่าง course-job ที่ได้มาจากผลลัพธ์ของการทำ information extraction ด้วย llm
 
