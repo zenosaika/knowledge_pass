@@ -1,6 +1,8 @@
 # Knowledge Pass
 ### How Thammasat's Software Engineering Courses Align with Industry Needs
 
+- [Release 1.0.0]  [https://knowledge-pass.fly.dev](https://knowledge-pass.fly.dev)
+
 ## WorkHeart : Team Members
 - 6510742163 นางสาวศุภิสรา สีถาวร
 - 6510742254 นายสรยุทธ์ อิงบุญ
