@@ -1,9 +1,9 @@
 import os
 from dotenv import load_dotenv
-import google.generativeai as genai
 
-import mimetypes
-import time
+from google import genai
+from google.genai import types
+
 import json
 
 from neo4j import GraphDatabase
@@ -15,20 +15,24 @@ load_dotenv()
 
 
 # Gemini API
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+MODEL = "gemini-2.0-flash"
+client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
-generation_config = {
-  "temperature": 1,
-  "top_p": 0.95,
-  "top_k": 40,
-  "max_output_tokens": 8192,
-  "response_mime_type": "application/json",
-}
+def llm_generate(chats, config):
+    contents = [
+        types.Content(
+            role="user",
+            parts=chats,
+        ),
+    ]
 
-model = genai.GenerativeModel(
-  model_name="gemini-1.5-flash",
-  generation_config=generation_config,
-)
+    responses = [chunk.text for chunk in client.models.generate_content_stream(
+        model=MODEL,
+        contents=contents,
+        config=config,
+    )]
+
+    return json.loads(''.join(responses))
 
 
 # Neo4j connection
@@ -50,90 +54,53 @@ except Exception as e:
     exit()  # Exit if connection fails
 
 
-def upload_to_gemini(path, mime_type=None):
-  """Uploads the given file to Gemini.
+def extract_skill(input_data, input_type):
+    chats = [
+        types.Part.from_text(
+            text=f"Extract important technical & topic-learning keyword (english only) from this {input_type}\n"
+        ),
+    ]
 
-  See https://ai.google.dev/gemini-api/docs/prompting_with_media
-  """
-  if mime_type is None:
-    mime_type, _ = mimetypes.guess_type(path)
-  file = genai.upload_file(path, mime_type=mime_type)
-  print(f"Uploaded file '{file.display_name}' as: {file.uri}")
-  return file
+    if input_type == 'text':
+        chats.append(
+            types.Part.from_text(
+                text=input_data
+            )
+        )
+    elif input_type in ['image', 'file']:
+        files = [client.files.upload(file=input_data)]
 
+        chats.append(
+            types.Part.from_uri(
+                file_uri=files[0].uri,
+                mime_type=files[0].mime_type,
+            )
+        )
 
-def wait_for_files_active(files):
-  """Waits for the given files to be active.
+    config = types.GenerateContentConfig(
+        temperature=1.0,
+        top_p=0.95,
+        top_k=40,
+        max_output_tokens=8192,
+        response_mime_type="application/json",
+        response_schema=genai.types.Schema(
+            type=genai.types.Type.OBJECT,
+            properties={
+                "skills": genai.types.Schema(
+                    type=genai.types.Type.ARRAY,
+                    items=genai.types.Schema(
+                        type=genai.types.Type.STRING,
+                    ),
+                ),
+            },
+        ),
+    )
 
-  Some files uploaded to the Gemini API need to be processed before they can be
-  used as prompt inputs. The status can be seen by querying the file's "state"
-  field.
+    json_obj = llm_generate(chats, config)
 
-  This implementation uses a simple blocking polling loop. Production code
-  should probably employ a more sophisticated approach.
-  """
-  print("Waiting for file processing...")
-  for name in (file.name for file in files):
-    file = genai.get_file(name)
-    while file.state.name == "PROCESSING":
-      print(".", end="", flush=True)
-      time.sleep(5)
-      file = genai.get_file(name)
-    if file.state.name != "ACTIVE":
-      raise Exception(f"File {file.name} failed to process")
-  print("...all files ready")
-  print()
+    skill_list = json_obj['skills']
 
-
-def extract_skill_from_text(text):
-  chat_session = model.start_chat(history=[])
-
-  response = chat_session.send_message([
-                text,
-                "extract skills (just keyword not detail such as \"proficiency in ...\") into python list",
-                "example output :\n",
-                "```json\n",
-                "{\"skills\": [\"NET CORE\", \"ASP.NET CORE MVC framework\", \"C#\", \"object-oriented programming\", \"reusable libraries\", \"Web API\", \"Web Service\", \"JSON\", \"Microsoft SQL Server 2022\", \"TypeScript\", \"CSS\", \"SCSS\", \"HTML\", \"Angular framework\", \"npm\", \"Yarn\", \"Webpack\", \"CQRS pattern\", \"Visual Studio\", \"Azure DevOps\", \"English language\"]}",
-                "\n```",
-            ])
-
-  return json.loads(response.text)
-
-
-def extract_skill_from_image(image_path):
-  image = upload_to_gemini(image_path)
-  wait_for_files_active([image])
-
-  chat_session = model.start_chat(history=[])
-
-  response = chat_session.send_message([
-                image,
-                "extract skills (just keyword not detail such as \"proficiency in ...\") into python list",
-                "example output :\n",
-                "```json\n",
-                "{\"skills\": [\"NET CORE\", \"ASP.NET CORE MVC framework\", \"C#\", \"object-oriented programming\", \"reusable libraries\", \"Web API\", \"Web Service\", \"JSON\", \"Microsoft SQL Server 2022\", \"TypeScript\", \"CSS\", \"SCSS\", \"HTML\", \"Angular framework\", \"npm\", \"Yarn\", \"Webpack\", \"CQRS pattern\", \"Visual Studio\", \"Azure DevOps\", \"English language\"]}",
-                "\n```",
-            ])
-
-  return json.loads(response.text)
-
-
-def extract_skill_from_pdf(pdf_path):
-  pdf = upload_to_gemini(pdf_path)
-  wait_for_files_active([pdf])
-
-  chat_session = model.start_chat(history=[])
-
-  response = chat_session.send_message([
-                pdf,
-                "extract skills (just keyword not detail such as \"proficiency in ...\") into python list",
-                "example output :\n",
-                "```json\n",
-                "{\"skills\": [\"NET CORE\", \"ASP.NET CORE MVC framework\", \"C#\", \"object-oriented programming\", \"reusable libraries\", \"Web API\", \"Web Service\", \"JSON\", \"Microsoft SQL Server 2022\", \"TypeScript\", \"CSS\", \"SCSS\", \"HTML\", \"Angular framework\", \"npm\", \"Yarn\", \"Webpack\", \"CQRS pattern\", \"Visual Studio\", \"Azure DevOps\", \"English language\"]}",
-                "\n```",
-            ])
-
-  return json.loads(response.text)
+    return skill_list
 
 
 def merge_triple(tx, subject, predicate, object, subject_type, object_type):
@@ -144,45 +111,46 @@ def merge_triple(tx, subject, predicate, object, subject_type, object_type):
         subject=subject,
         object=object
     )
-
+  
 
 def get_synonyms(word):
-  chat_session = model.start_chat(history=[
-      {
-        "role": "user",
-        "parts": [
-          "Give me a Python list of terms related to \"css\" (in software engineering and tech domain) only synonyms, abbreviations, and the full name. all lowercase.",
-        ],
-      },
-      {
-        "role": "model",
-        "parts": [
-          "```json\n",
-          "{\"related_terms\": [\"css\", \"cascading style sheets\", \"style sheets\", \"css3\", \"web styles\", \"stylesheet language\"]}",
-          "\n```",
-        ],
-      },
-  ])
+    chats = [
+        types.Part.from_text(
+            text=f"Give me a Python list of terms related to \"{word}\" (in software engineering and tech domain) only synonyms, abbreviations, and the full name. all lowercase."
+        ),
+    ]
 
-  response = chat_session.send_message([
-                f"Give me a Python list of terms related to \"{word}\" (in software engineering and tech domain) only synonyms, abbreviations, and the full name. all lowercase."
-            ])
+    config = types.GenerateContentConfig(
+        temperature=1.0,
+        top_p=0.95,
+        top_k=40,
+        max_output_tokens=8192,
+        response_mime_type="application/json",
+        response_schema=genai.types.Schema(
+            type=genai.types.Type.OBJECT,
+            properties={
+                "related_terms": genai.types.Schema(
+                    type=genai.types.Type.ARRAY,
+                    items=genai.types.Schema(
+                        type=genai.types.Type.STRING,
+                    ),
+                ),
+            },
+        ),
+    )
 
+    json_obj = llm_generate(chats, config)
 
-  return json.loads(response.text)
+    related_terms = json_obj['related_terms']
+
+    return related_terms
 
 
 def add_new_skill(skill_name):
   with GraphDatabase.driver(uri, auth=auth) as driver:
     with driver.session() as session:
       # link the skill with related term nodes
-      llm_response = get_synonyms(skill_name)
-      print(f'LLM: Related Terms of "{skill_name}" :\n')
-
-      if 'related_terms' in llm_response:
-        related_terms = llm_response['related_terms']
-      else:
-        related_terms = llm_response[list(llm_response.keys())[0]]
+      related_terms = get_synonyms(skill_name)
 
       for term in tqdm(related_terms, desc=f'Merge related terms of "{skill_name}"'):
 
