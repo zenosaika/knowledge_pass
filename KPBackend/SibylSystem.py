@@ -152,6 +152,9 @@ def add_new_skill(skill_name):
       # link the skill with related term nodes
       related_terms = get_synonyms(skill_name)
 
+      # add self-loop
+      related_terms.append(skill_name)
+
       for term in tqdm(related_terms, desc=f'Merge related terms of "{skill_name}"'):
 
         term = term.lower()
