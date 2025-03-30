@@ -10,6 +10,16 @@
 - 6510742502 นายภูรี เพ็ญหิรัญ
 - 6510742510 นายมณฑิระ อินทร์น้อย
 
+## v1.1.0 Logs
+### Features
+```
+- เปลี่ยน LLM Model API จาก Gemini-1.5-Flash เป็น Gemini-2.0-Flash
+- ทำการเพิ่มประสิทธิภาพ Optimize การค้นหาข้อมูลในกราฟ ให้มีจำนวน Query ที่ต้องเรียกใช้ลดลง ด้วยการเพิ่ม Self-Loop ไปยัง Root Skill
+- เพิ่มหน้า Admin Dashboard สำหรับดูภาพรวมของ Node ใน Graph Database และใช่คำสั่ง Compile Graph
+```
+### Previews
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/admin_dashboard_v110.png"><br>
+
 ## v1.0.0 Logs
 - `KPFrontend` เป็นส่วน frontend ของระบบ โดยใช้ html, css, tailwind ในการพัฒนา และใช้ django ในการจัดการและควบคุม
 - `KPBackend` เป็นส่วนโค้ด API และ test file ของฝั่ง backend ซึ่งใช้ FastAPI ในการทำ API สำหรับเรียกใช้ function ต่าง ๆ เช่น 
