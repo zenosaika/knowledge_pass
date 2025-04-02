@@ -2,6 +2,14 @@ from fastapi import FastAPI, Query
 from typing import Optional
 from fastapi.middleware.cors import CORSMiddleware
 
+from fastapi import FastAPI, File, UploadFile, Form, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from typing import List, Optional, Set
+
+import os
+import shutil
+import tempfile
+
 import SibylSystem
 
 app = FastAPI()
@@ -105,3 +113,77 @@ async def get_all_job():
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
+
+@app.post("/add_job_cluster")
+async def add_job_cluster_endpoint(
+    name: str = Form(...),
+    description: Optional[str] = Form(None),
+    image: Optional[UploadFile] = File(None)
+):
+    
+    job_name = name
+    all_skills: Set[str] = set()
+
+    # 1. Extract from description (if provided)
+    if description:
+        print("Extracting skills from description...")
+        desc_skills = SibylSystem.extract_skill(description, input_type='text')
+        all_skills.update(desc_skills)
+
+    # 2. Extract from file (if provided)
+    if image:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_file_path = os.path.join(temp_dir, image.filename)
+
+            with open(temp_file_path, "wb") as buffer:
+                    shutil.copyfileobj(image.file, buffer)
+
+            file_skills = SibylSystem.extract_skill(temp_file_path, input_type='file')
+            all_skills.update(file_skills)
+
+
+    SibylSystem.add_new_job(job_name, list(all_skills))
+    
+    return {
+        "message": f"Job '{job_name}' added successfully.",
+        "job_name": job_name,
+        "skills_added_count": len(all_skills),
+        "skills": list(all_skills)
+        }
+
+@app.post("/add_course_cluster")
+async def add_course_cluster_endpoint(
+    name: str = Form(...),
+    description: Optional[str] = Form(None),
+    image: Optional[UploadFile] = File(None)
+):
+    
+    course_name = name
+    all_skills: Set[str] = set()
+
+    # 1. Extract from description (if provided)
+    if description:
+        print("Extracting skills from description...")
+        desc_skills = SibylSystem.extract_skill(description, input_type='text')
+        all_skills.update(desc_skills)
+
+    # 2. Extract from file (if provided)
+    if image:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_file_path = os.path.join(temp_dir, image.filename)
+
+            with open(temp_file_path, "wb") as buffer:
+                    shutil.copyfileobj(image.file, buffer)
+
+            file_skills = SibylSystem.extract_skill(temp_file_path, input_type='file')
+            all_skills.update(file_skills)
+
+
+    SibylSystem.add_new_course(course_name, list(all_skills))
+    
+    return {
+        "message": f"Course '{course_name}' added successfully.",
+        "course_name": course_name,
+        "skills_added_count": len(all_skills),
+        "skills": list(all_skills)
+        }
