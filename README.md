@@ -10,6 +10,16 @@
 - 6510742502 นายภูรี เพ็ญหิรัญ
 - 6510742510 นายมณฑิระ อินทร์น้อย
 
+## v1.2.0 Logs
+### Features
+```
+- พัฒนาหน้า Interface ของ Admin Dashboard ให้มีความสวยงาม ใช้งานง่ายขึ้น
+- ทำการเพิ่มฟังก์ชัน Add New Course และ Add New Job ให้สามารถใช้ได้ผ่านหน้า Admin Dashboard
+- ทำให้หน้า Result Page (Visualization) มีความ Responsive ในหลายอุปกรณ์มากขึ้น
+```
+### Previews
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/more_responsive_v120.jpg"><br>
+
 ## v1.1.0 Logs
 ### Features
 ```
