@@ -19,6 +19,8 @@
 ```
 ### Previews
 <img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/more_responsive_v120.jpg"><br>
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/admin_dashboard_v120.png"><br>
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/add_new_job_v120.png"><br>
 
 ## v1.1.0 Logs
 ### Features
