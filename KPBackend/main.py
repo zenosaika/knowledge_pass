@@ -1,189 +1,304 @@
-from fastapi import FastAPI, Query
-from typing import Optional
+from fastapi import FastAPI, HTTPException, UploadFile, File, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-
-from fastapi import FastAPI, File, UploadFile, Form, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from typing import List, Optional, Set
 
 import os
-import shutil
-import tempfile
+import uuid
+import pandas as pd
+from typing import Optional
 
-import SibylSystem
+import llm_utils
+import neo4j_utils
+
 
 app = FastAPI()
 
-# Add the CORS middleware
+
+# Create temporary directory
+UPLOAD_DIRECTORY = "tmp/uploads"
+os.makedirs(UPLOAD_DIRECTORY, exist_ok=True)
+
+COMPILED_GRAPH_DIRECTORY = "tmp/compiled_graphs"
+os.makedirs(COMPILED_GRAPH_DIRECTORY, exist_ok=True)
+
+
+# Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:8000"],  # Allow requests from this origin
-    allow_credentials=True,  # Allow sending cookies and HTTP authentication
-    allow_methods=["*"],  # Allow all methods (GET, POST, PUT, etc.)
+    # Allow requests from your frontend's origin.
+    allow_origins=["http://127.0.0.1:8000"],
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],  # Allow all headers
 )
 
-def get_description(job_name, path):
-    skills = path[:-1][::-1]
-    description = 'เพราะวิชานี้สอน <i style="color:#CCCCFF;">'
-
-    for skl in skills[:-1]:
-        description += f'{skl.title()} -> ซึ่งเกี่ยวข้องกับ -> '
-    description += f'{skills[-1].title()}</i> ซึ่ง require ในงาน <b style="color:rgb(116,238,21);">{job_name}</b>'
-    
-    return description
-
-def get_sankey_data(paths):
-    data = {}
-    for path in paths:
-        path = path[::-1]
-        for i in range(len(path) - 1):
-            k = (path[i], path[i+1])
-            if k in data:
-                data[k] += 1
-            else:
-                data[k] = 1
-
-    sankey_data = []
-    for k, v in data.items():
-        sankey_data.append((k[0], k[1], v))
-
-    return sankey_data
-
-
-@app.get("/search")
-async def search_jobs(q: Optional[str] = Query(None, description="Job title to retrieve")):
-    if not q:
-        return {"message": "No query provided"}
-
-    obj = SibylSystem.inference(q)
-
-    results = {}
-    required_skills_checklist = {k:False for k in obj['required_skills']}
-
-    to_be_print = []
-
-    for path in obj['data']:
-        course_name = path[-1]
-        description = get_description(q, path)
-        skill2 = path[0]
-        if course_name in results:
-            results[course_name].append(description)
-        else:
-            results[course_name] = [description]
-
-        required_skills_checklist[skill2] = True
-
-    to_be_print.append(f'<b style="font-size:large;">ผลการวิเคราะห์งาน</b>')
-    to_be_print.append(f'<h2 style="color:rgb(116,238,21);">{q}</h2>')
-    to_be_print.append(f'<b style="font-size:large;">ต้องการ Skills ที่เรียนได้จากวิชาดังต่อไปนี้ :</b><br>')
-
-    for k, v in results.items():
-        to_be_print.append(f'💠 <b>{k}</b>')
-        to_be_print.append('<details><summary>ดูคำอธิบาย</summary>')
-        for item in v:
-            to_be_print.append(f'&nbsp;&nbsp;&nbsp;&nbsp;- {item}')
-        to_be_print.append('</details>')
-
-    to_be_print.append('<br><b style="font-size:large;">ความเกี่ยวข้องกับวิชาที่มีสอนในสาขา Soft-EN 💻 :</b><br>')
-    for k, v in required_skills_checklist.items():
-        to_be_print.append(f"&nbsp;&nbsp;&nbsp;&nbsp;{'🟩' if v else '⬛'}&nbsp;&nbsp;&nbsp;&nbsp;{'<b>' + k.title() + '</b>' if v else k.title()}")
-
-    html_result = '<br>'.join(to_be_print)
-
-    sankey_data = get_sankey_data(obj['data'])
-
-    return {'html': [html_result], 'sankey_data': sankey_data}
-    
-@app.get("/compile_graph")
-async def search_jobs():
-    SibylSystem.compile_graph()
-    return {"status": 200}
-
-@app.get("/get_graph_info")
-async def get_graph_info():
-    n_job, n_course, n_skill = SibylSystem.get_graph_info()
-    return {"n_job": n_job, "n_course": n_course, "n_skill": n_skill}
-
-@app.get("/get_all_job")
-async def get_all_job():
-    jobs = SibylSystem.get_all_job()
-    return jobs
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
 
-@app.post("/add_job_cluster")
-async def add_job_cluster_endpoint(
-    name: str = Form(...),
-    description: Optional[str] = Form(None),
-    image: Optional[UploadFile] = File(None)
+
+@app.post("/create_cluster")
+async def create_cluster(
+    cluster_name: str = Form(...),
+    cluster_type: str = Form("Course"),
+    text_input: Optional[str] = Form(None),
+    file_input: Optional[UploadFile] = File(None)
 ):
     
-    job_name = name
-    all_skills: Set[str] = set()
+    input_data = None
+    input_type = None
 
-    # 1. Extract from description (if provided)
-    if description:
-        print("Extracting skills from description...")
-        desc_skills = SibylSystem.extract_skill(description, input_type='text')
-        all_skills.update(desc_skills)
+    if text_input:
+        input_data = text_input
+        input_type = "text"
+    elif file_input:
+        file_id = str(uuid.uuid4())
+        file_path = os.path.join(UPLOAD_DIRECTORY, f"{file_id}_{file_input.filename}")
 
-    # 2. Extract from file (if provided)
-    if image:
-        with tempfile.TemporaryDirectory() as temp_dir:
-            temp_file_path = os.path.join(temp_dir, image.filename)
-
-            with open(temp_file_path, "wb") as buffer:
-                    shutil.copyfileobj(image.file, buffer)
-
-            file_skills = SibylSystem.extract_skill(temp_file_path, input_type='file')
-            all_skills.update(file_skills)
-
-
-    SibylSystem.add_new_job(job_name, list(all_skills))
+        # Save uploaded file to local storage
+        try:
+            with open(file_path, "wb") as f:
+                while contents := await file_input.read(1024 * 1024): # Read in chunks
+                    f.write(contents)
+            input_data = file_path
+            input_type = "file"
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Error uploading file: {e}")
+    else:
+        raise HTTPException(status_code=400, detail="Either text or file input is required")
     
+    # Graph construction pipeline
+    try:
+        skill_list = llm_utils.extract_skill(input_data=input_data,
+                                            input_type=input_type)
+        
+        taxonomy_dict = llm_utils.extract_taxonomy(word_list=skill_list)
+
+        neo4j_utils.create_cluster(cluster_name=cluster_name,
+                                cluster_type=cluster_type,
+                                skill_list=list(taxonomy_dict.keys()),
+                                taxonomy_dict=taxonomy_dict)
+        
+        return {"message": "Cluster created successfully", "file_path": input_data if input_type == "file" else None}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error creating cluster: {e}")
+    
+
+def make_course_job_dataframe(all_course_job_paths):
+    rows = []
+
+    for k in all_course_job_paths.keys():
+        for v in all_course_job_paths[k]:
+            relations = list(v.get('p'))
+
+            path = []
+
+            path.append(relations[0].start_node.get('name'))
+
+            for r in relations:
+                start_node = r.start_node.get('name')
+                end_node = r.end_node.get('name')
+
+                if path[-1] != end_node:
+                    path.append(f'{r.type}>')
+                    path.append(end_node)
+                else:
+                    path.append(f'{r.type}<')
+                    path.append(start_node)
+
+            rows.append({
+                'type': k,
+                'job': path[0],
+                'job_require': path[2],
+                'course_acquire': path[-3],
+                'course': path[-1],
+                'path': path
+            })
+
+    return pd.DataFrame(rows)
+
+
+def make_skill_job_dataframe(all_skill_job_paths):
+    rows = []
+
+    for k in all_skill_job_paths.keys():
+        for v in all_skill_job_paths[k]:
+            relations = list(v.get('p'))
+
+            path = []
+
+            path.append(relations[0].start_node.get('name'))
+
+            for r in relations:
+                start_node = r.start_node.get('name')
+                end_node = r.end_node.get('name')
+
+                if path[-1] != end_node:
+                    path.append(f'{r.type}>')
+                    path.append(end_node)
+                else:
+                    path.append(f'{r.type}<')
+                    path.append(start_node)
+
+            rows.append({
+                'type': k,
+                'job': path[0],
+                'job_require': path[2],
+                'skill': path[-1],
+                'path': path
+            })
+
+    return pd.DataFrame(rows)
+
+
+def make_job_requirement_dataframe(each_job_requirements):
+    rows = []
+
+    for path in each_job_requirements:
+        rows.append({
+            "job": path["job"]["name"],
+            "skill": path["skill"]["name"]
+        })
+
+    return  pd.DataFrame(rows)
+
+
+@app.post("/compile_graph")
+async def compile_graph():
+    try:
+        # Precompute all course to job paths
+        all_course_job_paths = neo4j_utils.find_all_possible_course_job_path()
+        df = make_course_job_dataframe(all_course_job_paths)
+        df.to_csv(os.path.join(COMPILED_GRAPH_DIRECTORY, "course_job.csv"), index=False)
+
+         # Precompute all skill to job paths
+        all_skill_job_paths = neo4j_utils.find_all_possible_skill_job_path()
+        df = make_skill_job_dataframe(all_skill_job_paths)
+        df.to_csv(os.path.join(COMPILED_GRAPH_DIRECTORY, "skill_job.csv"), index=False)
+
+         # Get each job requirements
+        each_job_requirements = neo4j_utils.find_each_job_requirement()
+        df = make_job_requirement_dataframe(each_job_requirements)
+        df.to_csv(os.path.join(COMPILED_GRAPH_DIRECTORY, "job_requirement.csv"), index=False)
+
+        return {"message": "Graph compiled successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error compiling graph: {e}")
+
+
+@app.post("/personalized_recommendation")
+async def personalized_recommendation(courses: list[str] = Form(...),
+                                      skills: list[str] = Form(...)):
+    
+    job_requirement_csv_path = os.path.join(COMPILED_GRAPH_DIRECTORY, "job_requirement.csv")
+    course_job_csv_path = os.path.join(COMPILED_GRAPH_DIRECTORY, "course_job.csv")
+    skill_job_csv_path = os.path.join(COMPILED_GRAPH_DIRECTORY, "skill_job.csv")
+
+    # Compile graph first if the CSV files do not exist
+    if not os.path.exists(job_requirement_csv_path) or \
+       not os.path.exists(course_job_csv_path) or \
+       not os.path.exists(skill_job_csv_path):
+        compile_graph()
+
+    rows1 = []
+    rows2 = []
+    skill_course_dict = {}
+
+    job_requirement_df = pd.read_csv(job_requirement_csv_path)
+    job_fulfillment_dict = {}
+    for k, g in job_requirement_df.groupby('job'):
+        job_fulfillment_dict[k] = {skill:False for skill in g['skill']}
+    
+    course_job_df = pd.read_csv(course_job_csv_path)
+    for k, g in course_job_df.groupby(['course', 'job']):
+        course, job = k
+        if course in courses:
+            for idx, row in g.iterrows():
+                job_fulfillment_dict[job][row['job_require']] = True
+
+                # sankey data 1: multi-hop
+                rows1.append({
+                    'job': job,
+                    'course': course,
+                    'data': (course, row['course_acquire'], 1)
+                })
+
+                if row['course_acquire'] != row['job_require']:
+                    rows1.append({
+                    'job': job,
+                    'course': course,
+                    'data': (row['course_acquire'], row['job_require'], 1)
+                })
+                    
+                rows1.append({
+                    'job': job,
+                    'course': course,
+                    'data': (row['job_require'], job, 1)
+                })
+
+                # sankey data 2: single-hop
+                rows2.append({
+                    'job': job,
+                    'data': (course, row['job_require'], 1)
+                })
+                rows2.append({
+                    'job': job,
+                    'data': (row['job_require'], job, 1)
+                })
+
+                if row['job_require'] not in skill_course_dict:
+                    skill_course_dict[row['job_require']] = set()
+                skill_course_dict[row['job_require']].add(course)
+
+
+    skill_job_df = pd.read_csv(skill_job_csv_path)
+    for k, g in skill_job_df.groupby(['skill', 'job']):
+        skill, job = k
+        if skill in skills:
+            for idx, row in g.iterrows():
+                job_fulfillment_dict[job][row['job_require']] = True
+
+                # sankey data 1: multi-hop
+                rows1.append({
+                    'job': job,
+                    'course': "_SKILL",
+                    'data': (skill + ' ', row['job_require'], 1)
+                })
+                    
+                rows1.append({
+                    'job': job,
+                    'course': "_SKILL",
+                    'data': (row['job_require'], job, 1)
+                })
+
+                # sankey data 2: single-hop
+                rows2.append({
+                    'job': job,
+                    'data': (skill + ' ', row['job_require'], 1)
+                })
+                    
+                rows2.append({
+                    'job': job,
+                    'data': (row['job_require'], job, 1)
+                })
+
+    # Ranking jobs based on skill fulfillment
+    job_scores = {}
+    for job, skill_fulfillments in job_fulfillment_dict.items():
+        total_skills = len(skill_fulfillments)
+        fulfilled_skills = sum(skill_fulfillments.values())
+
+        if total_skills > 0:
+            job_scores[job] = fulfilled_skills / total_skills
+        else:
+            job_scores[job] = 0
+
+    ranked_jobs = sorted(job_scores.items(), key=lambda item: item[1], reverse=True)
+
     return {
-        "message": f"Job '{job_name}' added successfully.",
-        "job_name": job_name,
-        "skills_added_count": len(all_skills),
-        "skills": list(all_skills)
-        }
-
-@app.post("/add_course_cluster")
-async def add_course_cluster_endpoint(
-    name: str = Form(...),
-    description: Optional[str] = Form(None),
-    image: Optional[UploadFile] = File(None)
-):
-    
-    course_name = name
-    all_skills: Set[str] = set()
-
-    # 1. Extract from description (if provided)
-    if description:
-        print("Extracting skills from description...")
-        desc_skills = SibylSystem.extract_skill(description, input_type='text')
-        all_skills.update(desc_skills)
-
-    # 2. Extract from file (if provided)
-    if image:
-        with tempfile.TemporaryDirectory() as temp_dir:
-            temp_file_path = os.path.join(temp_dir, image.filename)
-
-            with open(temp_file_path, "wb") as buffer:
-                    shutil.copyfileobj(image.file, buffer)
-
-            file_skills = SibylSystem.extract_skill(temp_file_path, input_type='file')
-            all_skills.update(file_skills)
-
-
-    SibylSystem.add_new_course(course_name, list(all_skills))
-    
-    return {
-        "message": f"Course '{course_name}' added successfully.",
-        "course_name": course_name,
-        "skills_added_count": len(all_skills),
-        "skills": list(all_skills)
-        }
+        "job_fulfillment": job_fulfillment_dict,
+        "ranked_jobs": ranked_jobs,
+        'multi_hop_sankey_df': pd.DataFrame(rows1),
+        'single_hop_sankey_df': pd.DataFrame(rows2),
+        'skill_course_dict': skill_course_dict
+    }
