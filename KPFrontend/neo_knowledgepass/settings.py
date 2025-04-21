@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home',
     'visualization',
     'learning_path',
+    'graph_rag',
 ]
 
 MIDDLEWARE = [
