@@ -23,4 +23,5 @@ urlpatterns = [
     path('visualization/', include('visualization.urls')),
     path('learning_path/', include('learning_path.urls')),
     path('graph_rag/', include('graph_rag.urls')),
+    path('admin_dashboard/', include('admin_dashboard.urls')),
 ]

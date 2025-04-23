@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'visualization',
     'learning_path',
     'graph_rag',
+    'admin_dashboard',
 ]
 
 MIDDLEWARE = [
