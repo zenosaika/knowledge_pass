@@ -54,7 +54,10 @@ fastapi dev main.py --port 8081
 ```
 
 ### Previews
-<video src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/v200_demo.mp4" controls></video><br>
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/v200_job_recommendation.jpg"><br>
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/v200_learning_path_gen.jpg"><br>
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/v200_skill_gap_alignment.jpg"><br>
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/v200_admin_dashboard.jpg"><br>
 
 ## v1.2.0 Logs
 ### Features
