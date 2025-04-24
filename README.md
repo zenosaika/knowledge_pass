@@ -1,7 +1,7 @@
 # Knowledge Pass
 ### How Thammasat's Software Engineering Courses Align with Industry Needs
 
-- [Release 2.0.0]  [https://neo-knowledgepass.fly.dev](https://neo-knowledgepass.fly.dev)
+- [Release 2.0.0]  [https://neo-knowledge-pass.fly.dev](https://neo-knowledge-pass.fly.dev)
 - [Release 1.0.0]  [https://knowledge-pass.fly.dev](https://knowledge-pass.fly.dev)
 
 ## WorkHeart : Team Members
