@@ -11,6 +11,30 @@
 - 6510742502 นายภูรี เพ็ญหิรัญ
 - 6510742510 นายมณฑิระ อินทร์น้อย
 
+### Previews
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/light_home.jpg"><br>
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/light_path.jpg"><br>
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/light_gap.jpg"><br>
+<img src="https://github.com/zenosaika/knowledge_pass/blob/main/assets/light_admin.jpg"><br>
+
+## Deployment
+1. Set environment variables
+```
+NEO4J_URI=
+NEO4J_PASSWORD=
+GOOGLE_API_KEY=
+```
+2. Deploy backend
+```
+cd deploy/api
+fly launch
+```
+3. Deploy frontend
+```
+cd deploy/webapp
+fly launch
+```
+
 ## v2.0.0 Logs
 ### Features
 ```
@@ -51,6 +75,11 @@ docker run \
 ### Run FastAPI
 ```
 fastapi dev main.py --port 8081
+```
+
+### Run Django
+```
+python3 manage.py runserver
 ```
 
 ### Previews
