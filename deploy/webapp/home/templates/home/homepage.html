@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Pass - Personalized Internships</title>
+    <script src="https://cdn.tailwindcss.com"></script> <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        body {
+            /* MODIFIED: Added radial gradient for blue circle effect, original color as outermost stop */
+            background-image: radial-gradient(ellipse at center, #D6EAF8 10%, #EAF2F8 40%, #F4F7F6 80%);
+            color: #333D42; /* Dark gray-blue for text */
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* Particles background styling */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Main content container */
+        .content-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100%;
+            padding: 100px 20px 40px; /* Increased top padding for navbar */
+            z-index: 1;
+            box-sizing: border-box;
+        }
+        
+        /* Navbar styling */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .navbar a {
+            color: #333D42; /* Dark text for navbar links */
+            transition: color 0.3s ease;
+        }
+        .navbar a:hover {
+            color: #007BFF; /* Primary blue for hover */
+        }
+        .navbar .active-link { /* Custom class for active link styling */
+            background-color: #007BFF;
+            color: white !important; /* Ensure text is white */
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+        .navbar .active-link:hover {
+             background-color: #0056b3;
+        }
+
+        /* Mobile Menu Button */
+        #mobile-menu-button {
+            background-color: transparent; /* Make button background transparent */
+            color: #007BFF; /* Primary blue for icon */
+        }
+         #mobile-menu-button:hover {
+            background-color: rgba(0, 123, 255, 0.1); /* Light blue hover */
+        }
+
+        /* Mobile Menu Panel */
+        #mobile-menu {
+            background-color: white; /* White background for dropdown */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        #mobile-menu a {
+            color: #333D42;
+        }
+        #mobile-menu a:hover {
+            background-color: #E9F5FF; /* Light blue hover for items */
+            color: #0056b3;
+        }
+         #mobile-menu .active-link-mobile { /* Custom class for active link styling in mobile */
+            background-color: #007BFF !important;
+            color: white !important;
+        }
+
+
+        /* Title styling */
+        .page-title {
+            font-size: 3.2rem; /* Slightly larger */
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #2C3E50; /* Fallback color */
+            background-image: linear-gradient(to right, #007BFF, #00C6FF); /* Blue gradient */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            /* animate-pulse is a Tailwind class, can be kept if subtle enough */
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: #5A6A72; /* Softer gray-blue */
+            margin-bottom: 2.5rem;
+            text-align: center;
+            max-width: 650px;
+        }
+
+        /* Styling for containers holding tags or file input */
+        .input-section-container {
+            background-color: #FFFFFF; /* White background */
+            padding: 2.5rem; /* More padding */
+            border-radius: 16px; /* Softer rounded corners */
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 650px; /* Slightly wider */
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.08); /* Softer, more diffused shadow */
+            /* MODIFIED: Added a more prominent and thematic border */
+            border: 2px solid #A9D7F9; /* Light-medium blue border, consistent with tag hover */
+        }
+        .input-section-container h2 {
+            font-size: 1.75rem; /* Larger heading */
+            font-weight: 600;
+            color: #2C3E50; /* Dark desaturated blue */
+            margin-bottom: 1rem;
+        }
+
+        /* Area where tags are displayed */
+        .tag-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-top: 1.25rem;
+            min-height: 40px;
+        }
+        .tag-area .placeholder-text { /* For "Loading courses..." or "No skills..." */
+            color: #7F8C93;
+            font-size: 0.9rem;
+        }
+
+
+        /* Individual tag styling */
+        .tag {
+            background-color: #E9F5FF; /* Light blue background */
+            color: #007BFF; /* Primary blue text */
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px; /* Pill shape */
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            border: 1px solid #BCE0FD; /* Light blue border */
+            user-select: none;
+            box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+        }
+
+        .tag:hover {
+            background-color: #D4EAFC;
+            border-color: #A9D7F9;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.15);
+        }
+
+        .tag.active {
+            background-color: #28A745; /* Success Green for active */
+            color: white;
+            border-color: #218838;
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.4);
+        }
+        .tag.active:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        /* Styling specifically for the file input */
+        .file-input-container label {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 0.75rem;
+        }
+        .file-input-container .file-upload-info {
+             color: #7F8C93;
+             font-size: 0.8rem;
+        }
+
+        input[type="file"] {
+            color: #5A6A72;
+            font-size: 0.9rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: max-content;
+        }
+
+        input[type="file"]::file-selector-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 0.7rem 1.3rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            margin-right: 1rem;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+        }
+
+        input[type="file"]::file-selector-button:hover {
+             background-color: #0056b3; /* Darker blue */
+        }
+
+        /* Style for error messages */
+        .error-message {
+             color: #D83A56; /* Stronger Red */
+             background-color: #FFE3E3; /* Light red background */
+             border: 1px solid #FFB5B5;
+             padding: 1rem;
+             border-radius: 8px;
+             margin-top: 1.5rem;
+             text-align: center;
+             font-weight: 500; /* Medium weight */
+             min-height: 1.5rem;
+             box-shadow: 0 2px 4px rgba(216, 58, 86, 0.1);
+        }
+        .error-message.hidden {
+             display: none;
+        }
+        /* Style for JS-injected fetch error */
+        .fetch-error-text {
+            color: #D83A56; /* Consistent error color */
+            font-weight: 500;
+        }
+
+
+        /* Search input styling */
+        .search-input {
+            width: 100%;
+            padding: 0.85rem 1.1rem;
+            background-color: #F8F9FA; /* Very light gray, almost white */
+            color: #333D42;
+            border: 1px solid #CED4DA; /* Standard light border */
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2); /* Focus ring */
+        }
+        .search-input::placeholder {
+            color: #90A4AE;
+        }
+
+        /* Search results container */
+        .search-results {
+            max-height: 220px; /* Increased height */
+            overflow-y: auto;
+            background-color: #FFFFFF;
+            border: 1px solid #CED4DA;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            margin-top: -1px;
+            z-index: 10;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+        }
+        .search-results.hidden {
+            display: none;
+        }
+        .search-result-item {
+            padding: 0.85rem 1.1rem;
+            color: #495057;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #F1F3F5; /* Lighter separator */
+            transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+        }
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        .search-result-item:hover {
+            background-color: #E9F5FF; /* Light blue hover */
+            color: #0056b3; /* Darker blue text on hover */
+        }
+        .search-result-item.selected-in-search {
+            background-color: #F8F9FA;
+            color: #ADB5BD;
+            cursor: not-allowed;
+        }
+
+        /* Submit Button Styling */
+        #recommendation-button {
+            margin-top: 2rem;
+            padding: 0.9rem 2.2rem; /* Generous padding */
+            background-image: linear-gradient(to right, #007BFF 0%, #00C6FF 100%); /* Blue gradient */
+            color: white;
+            font-size: 1.15rem; /* Slightly larger font */
+            font-weight: 600;
+            border-radius: 10px; /* Rounded corners */
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.25);
+            transition: all 0.3s ease;
+        }
+        #recommendation-button:hover {
+            background-image: linear-gradient(to right, #0069D9 0%, #00AEEB 100%); /* Darker gradient on hover */
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.35);
+        }
+        #recommendation-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.3), 0 8px 20px rgba(0, 123, 255, 0.35); /* Enhanced focus with original shadow */
+        }
+         #recommendation-button:active {
+            transform: translateY(0px) scale(0.98);
+            box-shadow: 0 2px 10px rgba(0, 123, 255, 0.2);
+        }
+
+        /* YouTube Embed */
+        .youtube-embed {
+            border-radius: 16px !important; /* Ensure important for specificity if needed */
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12) !important;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar fixed top-0 z-20 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="/" class="font-bold text-xl">
+                        Knowledge Pass
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="/" class="active-link px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Job Recommend</a>
+                        <a href="/learning_path_home" class="px-3 py-2 rounded-md text-sm font-medium">Learning Path</a>
+                        <a href="/graph_rag_home" class="px-3 py-2 rounded-md text-sm font-medium">Gap Alignment</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/" class="active-link-mobile block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Job Recommend</a>
+                <a href="/learning_path_home" class="block px-3 py-2 rounded-md text-base font-medium">Learning Path</a>
+                <a href="/graph_rag_home" class="block px-3 py-2 rounded-md text-base font-medium">Gap Alignment</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="particles-js"></div>
+
+    <div class="content-container">
+
+        <h1 class="page-title animate-pulse pb-3">Personalized Job Recommender</h1>
+        <p class="page-subtitle">Select your courses and skills to discover personalized internship opportunities.</p>
+
+        <div class="mb-10 flex justify-center">
+             <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/y2Yn0NjVIJA?si=UmACP_k61iheydFY" /* Assuming this is a placeholder and will be a valid YouTube URL */
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+                class="youtube-embed"> </iframe>
+        </div>
+
+        <form id="recommendation-form" method="POST" action="/visualization/" enctype="multipart/form-data" class="w-full flex flex-col items-center">
+            {% csrf_token %}
+        
+            <div class="input-section-container w-full mb-8">
+                <h2>Select Your Enrolled Courses</h2>
+                <div class="tag-area" id="courses-tag-area">
+                    <span class="placeholder-text">Loading courses...</span>
+                </div>
+                <input type="text" id="course-search-input" class="search-input" placeholder="Search for more courses...">
+                <div id="course-search-results" class="search-results hidden"></div>
+            </div>
+        
+            <div class="input-section-container w-full mb-8">
+                <h2>Select Your Unique Skills</h2>
+                <div class="tag-area" id="skills-tag-area">
+                     <span class="placeholder-text" id="skills-placeholder">No skills selected yet. Use the search bar below.</span>
+                </div>
+                <input type="text" id="skill-search-input" class="search-input" placeholder="Search for skills...">
+                <div id="skill-search-results" class="search-results hidden"></div>
+            </div>
+        
+            <div class="input-section-container file-input-container w-full mb-8">
+                <label for="cv-upload">Upload Your CV/Resume (Optional)</label>
+                 <input type="file" id="cv-upload" name="resume_file" accept=".pdf,.doc,.docx" class="block w-full cursor-pointer focus:outline-none">
+                 <p class="file-upload-info mt-2">Accepted formats: PDF, DOC, DOCX</p>
+            </div>
+        
+             <div id="hidden-inputs"></div>
+        
+             <div id="form-error" class="error-message hidden"></div>
+        
+             <button type="submit" id="recommendation-button">
+                Get Personalized Recommendations
+            </button>
+        
+        </form>
+    </div>
+
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 10, "density": { "enable": true, "value_area": 900 } },
+                "color": { "value": ["#ff6b6b", "#4ecdc4", "#ffe66d", "#81ecec", "#6c5ce7"] },
+                "shape": { "type": "circle", "stroke": { "width": 1, "color": "#222" }, "polygon": { "nb_sides": 5 } },
+                "opacity": { "value": 0.8, "random": true, "anim": { "enable": true, "speed": 0.5, "opacity_min": 0.3, "sync": false } },
+                "size": { "value": 75, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 1, "sync": false } },
+                "line_linked": { "enable": true, "distance": 130, "color": "#aaa", "opacity": 0.3, "width": 1 },
+                "move": { "enable": true, "speed": 1.0, "direction": "none", "random": true, "straight": false, "out_mode": "out", "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                    "bubble": { "distance": 250, "size": 120, "duration": 0.6 },
+                    "repulse": { "distance": 250, "duration": 0.6 },
+                    "push": { "particles_nb": 6 },
+                    "remove": { "particles_nb": 3 }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // --- Data Arrays (will be populated from backend) ---
+        let allAvailableCourses = [];
+        let allAvailableSkills = [];
+
+        const MAX_INITIAL_COURSES_DISPLAY = 20;
+        const BACKEND_URL = "http://127.0.0.1:8081"; // Your backend URL
+
+        // --- State Variables ---
+        const selectedCourses = new Set();
+        const selectedSkills = new Set();
+
+        // --- DOM Element References ---
+        const coursesTagArea = document.getElementById('courses-tag-area');
+        const courseSearchInput = document.getElementById('course-search-input');
+        const courseSearchResults = document.getElementById('course-search-results');
+
+        const skillsTagArea = document.getElementById('skills-tag-area');
+        const skillsPlaceholder = document.getElementById('skills-placeholder');
+        const skillSearchInput = document.getElementById('skill-search-input');
+        const skillSearchResults = document.getElementById('skill-search-results');
+        
+        const recommendationForm = document.getElementById('recommendation-form');
+        const hiddenInputsContainer = document.getElementById('hidden-inputs');
+        const formErrorDiv = document.getElementById('form-error');
+        const cvUploadInput = document.getElementById('cv-upload');
+
+
+        // --- Core Functions ---
+        async function fetchData(endpoint, type) {
+            const el = type === 'courses' ? coursesTagArea : skillsTagArea;
+            const placeholder = type === 'skills' ? skillsPlaceholder : null;
+            
+            if (el.querySelector('.placeholder-text')) {
+                el.querySelector('.placeholder-text').textContent = `Loading ${type}...`;
+            } else if (placeholder) {
+                placeholder.textContent = `Loading ${type}...`;
+            }
+
+
+            try {
+                const response = await fetch(`${BACKEND_URL}${endpoint}`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({ detail: "Unknown error occurred" }));
+                    throw new Error(`HTTP error! status: ${response.status}, Message: ${errorData.detail || response.statusText}`);
+                }
+                const data = await response.json();
+
+                if (type === 'courses' && data.courses && Array.isArray(data.courses)) {
+                    return data.courses;
+                } else if (type === 'skills' && data.skills && Array.isArray(data.skills)) {
+                    return data.skills;
+                } else {
+                    throw new Error(`Invalid data structure received for ${type}. Expected an array.`);
+                }
+            } catch (error) {
+                console.error(`Error fetching ${type}:`, error);
+                const errorSpan = `<span class="fetch-error-text text-sm">Failed to load ${type}. Check connection or try again later.</span>`;
+                if (el.querySelector('.placeholder-text')) { 
+                     el.innerHTML = errorSpan;
+                } else if (placeholder) { 
+                     placeholder.innerHTML = errorSpan; 
+                     placeholder.classList.remove('hidden');
+                } else { 
+                     el.innerHTML = errorSpan;
+                }
+                return [];
+            }
+        }
+
+
+        function createTagElement(text, selectedSet, parentArea, isDynamicallyAdded = false) {
+            const tag = document.createElement('span');
+            tag.classList.add('tag');
+            tag.textContent = text;
+            tag.dataset.value = text; 
+
+            if (selectedSet.has(text)) {
+                tag.classList.add('active');
+            }
+
+            tag.addEventListener('click', () => {
+                formErrorDiv.classList.add('hidden'); 
+                
+                if (isDynamicallyAdded || parentArea === skillsTagArea) { 
+                    selectedSet.delete(text);
+                    parentArea.removeChild(tag);
+                    if (parentArea === skillsTagArea && selectedSet.size === 0 && skillsPlaceholder) {
+                        skillsPlaceholder.classList.remove('hidden');
+                        skillsPlaceholder.textContent = 'No skills selected yet. Use the search bar below.'; 
+                        skillsPlaceholder.classList.add('placeholder-text'); 
+                    }
+                } else { 
+                    tag.classList.toggle('active');
+                    if (tag.classList.contains('active')) {
+                        selectedSet.add(text);
+                    } else {
+                        selectedSet.delete(text);
+                    }
+                }
+            });
+            return tag;
+        }
+
+        function displayInitialCourseTags() {
+            coursesTagArea.innerHTML = ''; 
+            if (allAvailableCourses.length === 0 && !coursesTagArea.querySelector('.fetch-error-text')) {
+                 coursesTagArea.innerHTML = `<span class="placeholder-text">No courses available to display.</span>`;
+            } else if (allAvailableCourses.length > 0) {
+                const coursesToDisplay = allAvailableCourses.slice(0, MAX_INITIAL_COURSES_DISPLAY);
+                coursesToDisplay.forEach(courseText => {
+                    const tagElement = createTagElement(courseText, selectedCourses, coursesTagArea, false);
+                    coursesTagArea.appendChild(tagElement);
+                });
+            }
+        }
+        
+        function setupSearch(searchInputEl, resultsContainerEl, getItemsArrayFn, selectedSet, tagAreaEl, isCourseSearch) {
+            searchInputEl.addEventListener('input', () => {
+                const currentItemsArray = getItemsArrayFn(); 
+                const searchTerm = searchInputEl.value.toLowerCase().trim();
+                resultsContainerEl.innerHTML = ''; 
+                resultsContainerEl.classList.add('hidden');
+
+                if (searchTerm.length === 0 || currentItemsArray.length === 0) return;
+
+                const filteredItems = currentItemsArray.filter(item => 
+                    item.toLowerCase().includes(searchTerm)
+                );
+
+                if (filteredItems.length > 0) {
+                    resultsContainerEl.classList.remove('hidden');
+                }
+
+                filteredItems.forEach(item => {
+                    const resultItem = document.createElement('div');
+                    resultItem.classList.add('search-result-item');
+                    resultItem.textContent = item;
+
+                    if (selectedSet.has(item)) {
+                        resultItem.classList.add('selected-in-search'); 
+                    }
+
+                    resultItem.addEventListener('click', () => {
+                        formErrorDiv.classList.add('hidden');
+                        if (!selectedSet.has(item)) { 
+                            selectedSet.add(item);
+
+                            if (tagAreaEl === skillsTagArea && skillsPlaceholder) {
+                                skillsPlaceholder.classList.add('hidden');
+                                skillsPlaceholder.textContent = ''; 
+                            }
+                            if (isCourseSearch) {
+                                let existingTag = null;
+                                coursesTagArea.querySelectorAll('.tag[data-value]').forEach(t => {
+                                    if (t.dataset.value === item) existingTag = t;
+                                });
+
+                                if (existingTag) { 
+                                    existingTag.classList.add('active'); 
+                                } else { 
+                                    const newTagElement = createTagElement(item, selectedSet, tagAreaEl, true); 
+                                    newTagElement.classList.add('active'); 
+                                    tagAreaEl.appendChild(newTagElement);
+                                }
+                            } else { 
+                                const newTagElement = createTagElement(item, selectedSet, tagAreaEl, true);
+                                newTagElement.classList.add('active');
+                                tagAreaEl.appendChild(newTagElement);
+                            }
+                        }
+                        searchInputEl.value = ''; 
+                        resultsContainerEl.innerHTML = ''; 
+                        resultsContainerEl.classList.add('hidden');
+                    });
+                    resultsContainerEl.appendChild(resultItem);
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!searchInputEl.contains(event.target) && !resultsContainerEl.contains(event.target)) {
+                    resultsContainerEl.classList.add('hidden');
+                }
+            });
+            searchInputEl.addEventListener('click', (event) => {
+                event.stopPropagation(); 
+                if (searchInputEl.value.trim().length > 0 && resultsContainerEl.children.length > 0) {
+                    resultsContainerEl.classList.remove('hidden');
+                }
+            });
+        }
+
+
+        recommendationForm.addEventListener('submit', function(event) {
+            hiddenInputsContainer.innerHTML = ''; 
+            formErrorDiv.classList.add('hidden'); 
+
+            const cvFile = cvUploadInput.files; 
+
+            if (selectedCourses.size === 0 && selectedSkills.size === 0 && (!cvFile || cvFile.length === 0)) {
+                 event.preventDefault(); 
+                 formErrorDiv.textContent = "Please select at least one course or skill, or upload a CV.";
+                 formErrorDiv.classList.remove('hidden'); 
+                 formErrorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                 return; 
+            }
+
+            selectedCourses.forEach(course => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'courses'; 
+                input.value = course;
+                hiddenInputsContainer.appendChild(input);
+            });
+
+            selectedSkills.forEach(skill => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'skills'; 
+                input.value = skill;
+                hiddenInputsContainer.appendChild(input);
+            });
+        });
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        if (mobileMenuButton && mobileMenu && menuIconOpen && menuIconClose) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIconOpen.classList.toggle('hidden');
+                menuIconClose.classList.toggle('hidden');
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (skillsPlaceholder) {
+                 skillsPlaceholder.textContent = 'Loading skills...';
+                 skillsPlaceholder.classList.remove('hidden');
+            }
+
+            try {
+                const [coursesData, skillsData] = await Promise.all([
+                    fetchData("/get_all_courses", "courses"),
+                    fetchData("/get_all_skills", "skills")
+                ]);
+                
+                allAvailableCourses = coursesData;
+                allAvailableSkills = skillsData;
+
+            } catch (error) {
+                console.error("A critical error occurred during initial data fetching setup:", error);
+            }
+
+            displayInitialCourseTags(); 
+            setupSearch(courseSearchInput, courseSearchResults, () => allAvailableCourses, selectedCourses, coursesTagArea, true);
+            
+            if (skillsPlaceholder) { 
+                if (allAvailableSkills.length === 0 && !skillsTagArea.querySelector('.fetch-error-text') && !skillsPlaceholder.querySelector('.fetch-error-text')) {
+                     skillsPlaceholder.textContent = 'No skills available to display.';
+                     skillsPlaceholder.classList.add('placeholder-text');
+                } else if (allAvailableSkills.length > 0 && selectedSkills.size === 0) { 
+                     skillsPlaceholder.textContent = 'No skills selected yet. Use the search bar below.';
+                     skillsPlaceholder.classList.add('placeholder-text');
+                     skillsPlaceholder.classList.remove('hidden');
+                } else if (selectedSkills.size > 0) { 
+                    skillsPlaceholder.classList.add('hidden');
+                }
+            }
+            setupSearch(skillSearchInput, skillSearchResults, () => allAvailableSkills, selectedSkills, skillsTagArea, false);
+
+            console.log("Knowledge Pass form initialized with new theme.");
+        });
+
+    </script>
+
+</body>
+</html>

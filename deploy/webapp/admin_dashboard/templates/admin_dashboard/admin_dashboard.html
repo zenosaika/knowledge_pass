@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Knowledge Graph</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles - THEMED */
+        body {
+            background-image: radial-gradient(ellipse at center, #D6EAF8 10%, #EAF2F8 40%, #F4F7F6 80%);
+            color: #333D42; 
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            min-height: 100vh;
+            padding-top: 64px; /* For fixed/sticky navbar height */
+        }
+
+        /* Particles background styling (Commented out as per user's HTML) */
+        /* #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; } */
+        
+        /* --- Navbar Styling (Light Themed) --- */
+        nav.navbar { 
+            background-color: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+            /* Tailwind 'fixed' class handles position and z-index */
+        }
+        nav.navbar a {
+            color: #333D42 !important; 
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        nav.navbar a:hover:not(.active-link-style) { 
+            color: #007BFF !important; 
+            background-color: rgba(0, 123, 255, 0.07) !important; 
+        }
+        nav.navbar .active-link-style { 
+            background-color: #007BFF !important;
+            color: white !important; 
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+        nav.navbar .active-link-style:hover {
+             background-color: #0056b3 !important;
+             color: white !important;
+        }
+        nav.navbar #mobile-menu-button { 
+            background-color: transparent !important;
+            color: #007BFF !important; 
+        }
+        nav.navbar #mobile-menu-button svg { stroke: #007BFF !important; }
+        nav.navbar #mobile-menu-button:hover { background-color: rgba(0, 123, 255, 0.1) !important; }
+        
+        #mobile-menu { 
+            background-color: white !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        #mobile-menu a { color: #333D42 !important; }
+        #mobile-menu a:hover:not(.active-link-mobile-style) {
+            background-color: #E9F5FF !important;
+            color: #0056b3 !important;
+        }
+        #mobile-menu .active-link-mobile-style { 
+            background-color: #007BFF !important;
+            color: white !important;
+        }
+
+        /* Main content container - THEMED */
+        .content-container { 
+            position: relative; display: flex; flex-direction: column; align-items: center; 
+            width: 100%; padding: 40px 20px 40px 20px; z-index: 1; box-sizing: border-box; 
+        }
+        
+        /* Page Title and Subtitle - THEMED */
+        .content-container > h1.page-main-title { 
+            font-size: 3.2rem; font-weight: 700; margin-bottom: 1rem; 
+            color: transparent; background-clip: text; -webkit-background-clip: text;
+            background-image: linear-gradient(to right, #007BFF, #00C6FF); 
+            padding-bottom: 0.25rem; 
+        }
+        .content-container > p.page-main-subtitle { 
+            font-size: 1.25rem; color: #5A6A72; margin-bottom: 2rem; 
+            text-align: center; max-width: 700px; 
+        }
+        
+        /* Section Container (for search, modal content) - THEMED */
+        .section-container { 
+            background-color: #FFFFFF;
+            padding: 2rem; 
+            border-radius: 16px; 
+            margin-bottom: 1.5rem; 
+            width: 100%; 
+            max-width: 800px; 
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.08); 
+            border: 2px solid #A9D7F9; 
+            transition: all 0.3s ease-in-out; 
+        }
+        
+        /* Search input styling - THEMED */
+         #entity-search-input {
+            flex-grow: 1;
+            padding: 0.85rem 1.1rem; 
+            background-color: #F8F9FA; 
+            color: #333D42; 
+            border: 1px solid #CED4DA; 
+            border-radius: 8px; 
+            font-size: 0.9rem; 
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+         }
+         #entity-search-input:focus {
+             border-color: #007BFF; 
+             box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+         }
+         .search-button { /* For the button next to search input */
+            padding: 0.85rem; 
+            border-radius: 8px;
+            background-color: #007BFF;
+            color: white;
+            transition: background-color 0.2s ease;
+         }
+         .search-button:hover {
+            background-color: #0056b3;
+         }
+
+        /* --- Entity Card Styling - THEMED --- */
+        .entity-card {
+            position: relative; 
+            background-color: #FFFFFF; 
+            border: 1px solid #BCE0FD; 
+            border-radius: 10px;
+            padding: 1.25rem; 
+            padding-top: 2.5rem; 
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.06); 
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+            display: flex; flex-direction: column; justify-content: space-between;
+            overflow: hidden; 
+        }
+        .entity-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.15); 
+            border-color: #A9D7F9; 
+        }
+        .entity-card-course { border-left: 4px solid #4f46e5 !important; /* Indigo */ }
+        .entity-card-job { border-left: 4px solid #10b981 !important; /* Emerald */ }
+        
+        .entity-type-label {
+            position: absolute;
+            top: 0.75rem; 
+            right: 0.75rem; 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            color: #0056b3; 
+            letter-spacing: 0.05em;
+            padding: 0.2rem 0.5rem;
+            background-color: #E9F5FF; 
+            border: 1px solid #BCE0FD;
+            border-radius: 4px;
+        }
+        .entity-card h3 { 
+            color: #2C3E50; 
+        }
+        .entity-card p { 
+            color: #5A6A72; 
+        }
+        .entity-card .card-actions-footer { /* Class for the div holding buttons */
+            border-top: 1px solid #E0E6E8; /* Light separator for themed card */
+        }
+        /* --- End Entity Card Styling --- */
+
+        /* Button Styles - THEMED */
+        .action-button {
+            padding: 0.5rem 1rem; 
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.875rem; 
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease, box-shadow 0.2s ease;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .action-button:hover { transform: scale(1.03); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+        
+        .edit-button { background-color: #f59e0b; } /* Amber */
+        .edit-button:hover { background-color: #d97706; }
+        .delete-button { background-color: #ef4444; } /* Red */
+        .delete-button:hover { background-color: #dc2626; }
+        
+        .create-button, #add-entity-submit-button { /* Primary action buttons */
+            padding: 0.75rem 1.5rem; 
+            font-size: 0.95rem; 
+            background-image: linear-gradient(to right, #007BFF 0%, #00C6FF 100%);
+            color: white !important; /* Ensure text is white */
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+        }
+        .create-button:hover, #add-entity-submit-button:hover { 
+            background-image: linear-gradient(to right, #0069D9 0%, #00AEEB 100%);
+            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+        }
+        #cancel-modal-button {
+             padding: 0.75rem 1.5rem; font-size: 0.95rem; 
+             background-color: #E9ECEF; 
+             color: #495057 !important; 
+             border: 1px solid #CED4DA;
+        }
+         #cancel-modal-button:hover { background-color: #DEE2E6; border-color: #ADB5BD;}
+
+        /* Modal Styling - THEMED */
+        #create-modal { transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; }
+        #create-modal.hidden { opacity: 0; visibility: hidden; }
+        #create-modal:not(.hidden) { opacity: 1; visibility: visible; }
+        
+         .modal-content { /* Uses .section-container theme */
+             max-height: 90vh; 
+             overflow-y: auto; 
+         }
+         .modal-content .modal-header h2 { 
+            color: #2C3E50;
+            font-size: 1.75rem; 
+         }
+         .modal-content .modal-header button svg { stroke: #5A6A72; }
+         .modal-content .modal-header button:hover svg { stroke: #007BFF; }
+         .modal-content .modal-footer { border-top: 1px solid #E0E6E8; }
+
+
+         /* File Input Styling - THEMED */
+        input[type="file"] {
+            color: #5A6A72;
+            font-size: 0.9rem;
+            display: block;
+            width: 100%; 
+            max-width: none;
+        }
+        input[type="file"]::file-selector-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 0.6rem 1rem; 
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            margin-right: 1rem;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.15);
+        }
+        input[type="file"]::file-selector-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Form input general styling - THEMED */
+        .form-label {
+             display: block;
+             font-weight: 500; 
+             color: #333D42; 
+             margin-bottom: 0.375rem; 
+             font-size: 0.9rem;
+         }
+        .form-input, .form-textarea, .form-select {
+             width: 100%;
+             padding: 0.75rem 1rem; 
+             border-radius: 8px; 
+             border: 1px solid #CED4DA; 
+             background-color: #F8F9FA; 
+             color: #333D42; 
+             font-size: 0.9rem;
+             outline: none;
+             transition: border-color 0.2s ease, box-shadow 0.2s ease;
+             margin-top: 0.25rem; 
+         }
+         .form-input:focus, .form-textarea:focus, .form-select:focus {
+             border-color: #007BFF; 
+             box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+         }
+         /* Error message for modal form - THEMED */
+        #form-error-modal {
+            color: #D83A56; 
+            background-color: #FFE3E3; 
+            border: 1px solid #FFB5B5;
+            padding: 0.75rem; 
+            border-radius: 6px; 
+            font-size: 0.875rem;
+        }
+        #form-error-modal.hidden { display: none !important; }
+
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar fixed top-0 z-20 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="/" class="font-bold text-xl">
+                        Knowledge Pass
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="/" class="px-3 py-2 rounded-md text-sm font-medium">Job Recommend</a>
+                        <a href="/learning_path_home" class="px-3 py-2 rounded-md text-sm font-medium">Learning Path</a>
+                        <a href="/graph_rag_home" class="px-3 py-2 rounded-md text-sm font-medium">Gap Alignment</a>
+                         <a href="/admin" class="active-link-style px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Admin Dashboard</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                      <span class="sr-only">Open main menu</span>
+                      <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                      </svg>
+                      <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+            </div>
+        </div>
+         <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <a href="/" class="block px-3 py-2 rounded-md text-base font-medium">Job Recommend</a>
+              <a href="/learning_path_home" class="block px-3 py-2 rounded-md text-base font-medium">Learning Path</a>
+              <a href="/graph_rag_home" class="block px-3 py-2 rounded-md text-base font-medium">Gap Alignment</a>
+              <a href="/admin" class="active-link-mobile-style block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Admin Dashboard</a>
+              </div>
+          </div>
+    </nav>
+
+    <div class="content-container">
+
+        <h1 class="page-main-title">Admin Dashboard</h1>
+        <p class="page-main-subtitle">Manage Knowledge Graph Entities (Courses & Jobs)</p>
+
+        <div class="w-full max-w-4xl mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
+             <button id="create-entity-button" class="action-button create-button order-1 md:order-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1 -mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+                Create New Entity
+            </button>
+
+            <div class="section-container !p-4 !mb-0 w-full md:w-auto flex-grow order-2 md:order-1">
+                <label for="entity-search-input" class="sr-only">Search Entities</label>
+                <div class="flex gap-2 items-center">
+                     <input type="search" id="entity-search-input" list="entity-suggestions" placeholder="Search entities by name...">
+                     <datalist id="entity-suggestions"></datalist>
+                     <button aria-label="Search" class="search-button">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                         </svg>
+                     </button>
+                 </div>
+            </div>
+        </div>
+
+
+        <div id="entity-display-area" class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+            </div>
+
+    </div> 
+    
+    <div id="create-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-30 p-4">
+        <div class="modal-content section-container !mt-0 !mb-0 relative w-full max-w-lg rounded-xl">
+             <div class="modal-header flex justify-between items-center mb-5 pb-3">
+                <h2 id="modal-title">Create New Entity</h2>
+                <button id="close-modal-button" aria-label="Close modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+             <form id="create-entity-form">
+                 <input type="hidden" id="entity-id-input" name="entity_id"> 
+                 <div class="mb-4">
+                     <label for="entity-name" class="form-label">Entity Name</label>
+                     <input type="text" id="entity-name" name="entity_name" class="form-input" placeholder="e.g., Advanced Algorithms" required>
+                 </div>
+
+                 <div class="mb-4">
+                     <label for="entity-type" class="form-label">Entity Type</label>
+                     <select id="entity-type" name="entity_type" class="form-select" required>
+                         <option value="" disabled selected>Select type...</option>
+                         <option value="Course">Course</option>
+                         <option value="Job">Job</option>
+                     </select>
+                 </div>
+
+                 <div class="mb-4">
+                     <label for="entity-description" class="form-label">Description</label>
+                     <textarea id="entity-description" name="entity_description" rows="4" class="form-textarea" placeholder="Provide a brief description..."></textarea>
+                 </div>
+
+                 <div class="mb-6">
+                     <label for="entity-file" class="form-label">Upload Supporting File (Optional)</label>
+                     <input type="file" id="entity-file" name="entity_file" accept=".pdf,.doc,.docx,.txt,.zip,.rar">
+                     <p class="text-xs text-gray-500 mt-1">Accepted formats: PDF, DOC(X), TXT, ZIP, RAR</p>
+                 </div>
+
+                 <div id="form-error-modal" class="hidden mb-4"></div>
+
+                 <div class="modal-footer flex justify-end space-x-3 pt-4">
+                     <button type="button" id="cancel-modal-button" class="action-button">Cancel</button>
+                     <button type="submit" id="add-entity-submit-button" class="action-button">
+                         Add to Knowledge Graph
+                     </button>
+                 </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        // --- Particles.js Initialization (Commented out as per user's last HTML) ---
+        // particlesJS('particles-js', { /* ... config ... */ });
+
+        // --- Sample Entity Data (Replace with actual data source/API call) ---
+        const sampleEntities = [
+            { id: 'crs001', name: 'Introduction to Programming', type: 'Course', description: 'Fundamentals of programming concepts using Python. Covers variables, control flow, functions, and basic data structures.' },
+            { id: 'crs002', name: 'Data Structures and Algorithms', type: 'Course', description: 'Study of fundamental data structures like arrays, linked lists, trees, graphs, and essential algorithms.' },
+            { id: 'job001', name: 'Software Engineer Intern', type: 'Job', description: 'Assist in developing, testing, and deploying software applications. Requires knowledge of data structures and algorithms.' },
+            { id: 'crs003', name: 'Database Systems', type: 'Course', description: 'Covers relational database design, SQL, normalization, and transaction management.' },
+            { id: 'job002', name: 'Data Analyst Intern', type: 'Job', description: 'Analyze datasets to extract meaningful insights, create visualizations, and report findings. SQL and Python knowledge preferred.' },
+            { id: 'crs004', name: 'Web Development Basics', type: 'Course', description: 'Introduction to HTML, CSS, and JavaScript for building client-side web applications.' },
+            { id: 'job003', name: 'Frontend Developer Intern', type: 'Job', description: 'Develop user interfaces using HTML, CSS, JavaScript, and potentially frameworks like React or Vue.' },
+            { id: 'crs005', name: 'Object-Oriented Programming', type: 'Course', description: 'Principles of OOP including encapsulation, inheritance, and polymorphism, often taught using Java or C++.'},
+             { id: 'job004', name: 'Backend Developer Intern', type: 'Job', description: 'Work on server-side logic, databases, and APIs using languages like Node.js, Python (Django/Flask), Java (Spring), etc.'}
+        ];
+
+        // --- DOM Element References ---
+        const entitySearchInput = document.getElementById('entity-search-input');
+        const entitySuggestionsList = document.getElementById('entity-suggestions');
+        const entityDisplayArea = document.getElementById('entity-display-area');
+        const createEntityButton = document.getElementById('create-entity-button');
+        const createModal = document.getElementById('create-modal');
+        const closeModalButton = document.getElementById('close-modal-button');
+        const cancelModalButton = document.getElementById('cancel-modal-button');
+        const createEntityForm = document.getElementById('create-entity-form');
+        const modalTitle = document.getElementById('modal-title');
+        const formErrorModalDiv = document.getElementById('form-error-modal');
+        const entityIdInput = document.getElementById('entity-id-input'); 
+        const addEntitySubmitButton = document.getElementById('add-entity-submit-button');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+
+        // --- Core Functions ---
+        function populateEntitySuggestions() {
+            entitySuggestionsList.innerHTML = ''; 
+            sampleEntities.forEach(entity => {
+                const option = document.createElement('option');
+                option.value = entity.name;
+                entitySuggestionsList.appendChild(option);
+            });
+        }
+
+        function createEntityCard(entity) {
+            const card = document.createElement('div');
+            card.classList.add('entity-card');
+            card.dataset.entityId = entity.id;
+            const typeClass = entity.type.toLowerCase(); 
+            if (typeClass === 'course') { card.classList.add('entity-card-course'); } 
+            else if (typeClass === 'job') { card.classList.add('entity-card-job'); }
+
+            card.innerHTML = `
+                <span class="entity-type-label">${escapeHTML(entity.type)}</span>
+                <div>
+                    <h3 class="text-lg font-semibold mb-1">${escapeHTML(entity.name)}</h3>
+                    <p class="text-sm mt-2 leading-relaxed">${escapeHTML(entity.description) || 'No description available.'}</p>
+                </div>
+                <div class="card-actions-footer flex justify-end space-x-2 mt-4 pt-3"> 
+                    <button class="action-button edit-button" data-id="${entity.id}">Edit</button>
+                    <button class="action-button delete-button" data-id="${entity.id}">Delete</button>
+                </div>`;
+            return card;
+        }
+
+        function displayEntities(entitiesToDisplay) {
+             entityDisplayArea.innerHTML = ''; 
+             if (!entitiesToDisplay || entitiesToDisplay.length === 0) {
+                 entityDisplayArea.innerHTML = `<p class="text-gray-500 italic md:col-span-2 lg:col-span-3 text-center">No entities found matching your criteria.</p>`;
+                 return;
+             }
+             entitiesToDisplay.forEach(entity => {
+                 const card = createEntityCard(entity);
+                 entityDisplayArea.appendChild(card);
+             });
+         }
+
+        function filterEntities() {
+            const searchTerm = entitySearchInput.value.toLowerCase().trim();
+            if (!searchTerm) {
+                displayEntities(sampleEntities); 
+                return;
+            }
+            const filtered = sampleEntities.filter(entity =>
+                entity.name.toLowerCase().includes(searchTerm) ||
+                (entity.description && entity.description.toLowerCase().includes(searchTerm))
+            );
+            displayEntities(filtered);
+        }
+
+        function openModal(mode = 'create', entityData = null) {
+             createEntityForm.reset(); 
+             formErrorModalDiv.classList.add('hidden'); 
+             entityIdInput.value = ''; 
+             addEntitySubmitButton.textContent = 'Add to Knowledge Graph'; 
+
+             if (mode === 'edit' && entityData) {
+                 modalTitle.textContent = 'Edit Entity';
+                 addEntitySubmitButton.textContent = 'Update Entity';
+                 entityIdInput.value = entityData.id;
+                 document.getElementById('entity-name').value = entityData.name;
+                 document.getElementById('entity-type').value = entityData.type;
+                 document.getElementById('entity-description').value = entityData.description;
+             } else {
+                  modalTitle.textContent = 'Create New Entity';
+             }
+             createModal.classList.remove('hidden');
+             document.body.style.overflow = 'hidden'; 
+         }
+
+        function closeModal() {
+             createModal.classList.add('hidden');
+             document.body.style.overflow = ''; 
+         }
+
+        async function handleFormSubmit(event) {
+             event.preventDefault();
+             formErrorModalDiv.classList.add('hidden'); 
+             const originalFormData = new FormData(createEntityForm);
+             const entityId = originalFormData.get('entity_id'); 
+             const isEditMode = !!entityId;
+             const entityName = originalFormData.get('entity_name');
+             const entityType = originalFormData.get('entity_type');
+             if (!entityName || !entityType) {
+                 formErrorModalDiv.textContent = 'Entity Name and Type are required.';
+                 formErrorModalDiv.classList.remove('hidden');
+                 return;
+             }
+             addEntitySubmitButton.disabled = true;
+             addEntitySubmitButton.textContent = isEditMode ? 'Updating...' : 'Creating...';
+             try {
+                 if (isEditMode) {
+                     console.log(`--- Pretending to send UPDATE request for entity ID: ${entityId} ---`);
+                     await new Promise(resolve => setTimeout(resolve, 1000)); 
+                     const index = sampleEntities.findIndex(e => e.id === entityId);
+                     if (index !== -1) {
+                         sampleEntities[index] = {
+                            id: entityId, name: entityName, type: entityType,
+                            description: originalFormData.get('entity_description')
+                         };
+                     }
+                 } else {
+                     console.log("--- Sending CREATE request to /create_cluster ---");
+                     const apiFormData = new FormData();
+                     apiFormData.append('cluster_name', entityName);
+                     apiFormData.append('cluster_type', entityType);
+                     const description = originalFormData.get('entity_description');
+                     const file = originalFormData.get('entity_file');
+                     if (file && file.size > 0) { apiFormData.append('file_input', file, file.name); }
+                     else if (description) { apiFormData.append('text_input', description); }
+                     const response = await fetch('http://127.0.0.1:8081/create_cluster', {
+                         method: 'POST', body: apiFormData, 
+                     });
+                     if (!response.ok) {
+                         let errorDetail = `HTTP error! status: ${response.status}`;
+                         try { const errorData = await response.json(); errorDetail = errorData.detail || JSON.stringify(errorData); }
+                         catch (jsonError) { errorDetail = `Server returned status ${response.status}. Response body not JSON or empty.`; }
+                         throw new Error(errorDetail); 
+                     }
+                     const result = await response.json(); 
+                     console.log("Cluster creation successful:", result);
+                     const newEntity = {
+                         id: result.cluster_id || `new_${Date.now()}`, 
+                         name: entityName, type: entityType,
+                         description: description || "Created from file via API", 
+                     };
+                     sampleEntities.unshift(newEntity); 
+                 }
+                 closeModal();
+                 filterEntities(); 
+                 populateEntitySuggestions(); 
+             } catch (error) {
+                 console.error("Error submitting form:", error);
+                 formErrorModalDiv.textContent = `An error occurred: ${error.message || 'Please try again.'}`;
+                 formErrorModalDiv.classList.remove('hidden');
+             } finally {
+                 addEntitySubmitButton.disabled = false;
+                 addEntitySubmitButton.textContent = isEditMode ? 'Update Entity' : 'Add to Knowledge Graph';
+             }
+        }
+
+        function handleActionClick(event) {
+            const target = event.target.closest('.action-button'); 
+            if (!target) return;
+            const entityId = target.dataset.id;
+            if (!entityId) return;
+
+            if (target.classList.contains('edit-button')) {
+                const entityData = sampleEntities.find(e => e.id === entityId);
+                if (entityData) { openModal('edit', entityData); } 
+                else { alert("Error: Could not find entity data to edit."); }
+            } else if (target.classList.contains('delete-button')) {
+                const entity = sampleEntities.find(e => e.id === entityId);
+                if (!entity) return;
+                if (confirm(`Are you sure you want to delete "${entity.name}"?`)) {
+                    console.log(`--- Pretending to send DELETE request for entity ID: ${entityId} ---`);
+                    setTimeout(() => { // Simulate API call
+                        const index = sampleEntities.findIndex(e => e.id === entityId);
+                        if (index > -1) {
+                            sampleEntities.splice(index, 1);
+                            filterEntities(); 
+                            populateEntitySuggestions(); 
+                        }
+                    }, 500);
+                }
+            }
+        }
+
+        function escapeHTML(str) { 
+            if (!str) return '';
+            return str.replace(/[&<>'"]/g, tag => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'}[tag] || tag));
+        }
+
+        entitySearchInput.addEventListener('input', filterEntities);
+        createEntityButton.addEventListener('click', () => openModal('create'));
+        closeModalButton.addEventListener('click', closeModal);
+        cancelModalButton.addEventListener('click', closeModal);
+        createModal.addEventListener('click', (event) => { if (event.target === createModal) closeModal(); });
+        createEntityForm.addEventListener('submit', handleFormSubmit);
+        entityDisplayArea.addEventListener('click', handleActionClick);
+
+        if (mobileMenuButton && mobileMenu) {
+            const openIcon = document.getElementById('menu-icon-open'); // Use ID
+            const closeIcon = document.getElementById('menu-icon-close'); // Use ID
+            mobileMenuButton.addEventListener('click', () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+                mobileMenu.classList.toggle('hidden');
+                if (openIcon && closeIcon) {
+                     openIcon.classList.toggle('hidden');
+                     closeIcon.classList.toggle('hidden');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            populateEntitySuggestions();
+            displayEntities(sampleEntities); 
+            console.log("Admin Dashboard Initialized with light theme.");
+        });
+    </script>
+
+</body>
+</html>

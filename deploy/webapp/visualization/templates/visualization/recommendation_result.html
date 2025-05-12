@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Pass - Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Base Styles --- */
+        body {
+            /* MODIFIED: Applied theme from previous page */
+            background-image: radial-gradient(ellipse at center, #D6EAF8 10%, #EAF2F8 40%, #F4F7F6 80%);
+            color: #333D42; /* Dark gray-blue for text */
+            font-family: 'Poppins', sans-serif; /* MODIFIED: Changed font */
+            margin: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* --- Particles Background --- */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Behind content */
+        }
+
+        /* --- Main Layout Container --- */
+        .space-background { /* Renamed for clarity, was content-container in prev. */
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            padding: 100px 20px 40px; /* Increased top padding for navbar */
+            box-sizing: border-box;
+            z-index: 1; /* Ensure content is above particles */
+        }
+
+        /* --- Navbar Styling (from previous page) --- */
+        nav.navbar { /* Applied to the nav element */
+            background-color: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+        }
+        nav.navbar a {
+            color: #333D42 !important;
+            transition: color 0.3s ease;
+        }
+        nav.navbar a:hover:not(.active-link-style) {
+            color: #007BFF !important;
+            background-color: rgba(0, 123, 255, 0.07) !important; /* Subtle hover */
+        }
+        nav.navbar .active-link-style { /* For the currently active page link */
+            background-color: #007BFF !important;
+            color: white !important;
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+        nav.navbar .active-link-style:hover {
+             background-color: #0056b3 !important;
+             color: white !important;
+        }
+        /* Mobile Menu Button in Navbar */
+        nav.navbar #mobile-menu-button-results { /* Specific ID for results page button */
+            background-color: transparent !important;
+            color: #007BFF !important; /* Primary blue for icon */
+        }
+        nav.navbar #mobile-menu-button-results svg {
+            stroke: #007BFF !important; /* Ensuring icon color */
+        }
+        nav.navbar #mobile-menu-button-results:hover {
+            background-color: rgba(0, 123, 255, 0.1) !important; /* Light blue hover */
+        }
+        /* Mobile Menu Panel */
+        #mobile-menu-results {
+            background-color: white !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        #mobile-menu-results a {
+            color: #333D42 !important;
+        }
+        #mobile-menu-results a:hover {
+            background-color: #E9F5FF !important;
+            color: #0056b3 !important;
+        }
+        #mobile-menu-results .active-link-mobile-style {
+            background-color: #007BFF !important;
+            color: white !important;
+        }
+
+
+        /* --- Title (from previous page) --- */
+        .page-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-image: linear-gradient(to right, #007BFF, #00C6FF);
+        }
+         .page-subtitle {
+            font-size: 1.25rem;
+            color: #5A6A72; /* Softer gray-blue */
+            margin-bottom: 2.5rem;
+            text-align: center;
+         }
+
+        /* --- Themed Box Style (for content containers) --- */
+        .themed-box {
+            background-color: #FFFFFF;
+            padding: 2rem; /* Adjusted padding */
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.08);
+            border: 2px solid #A9D7F9;
+            color: #333D42; /* Default text color inside themed boxes */
+            width: 100%; /* Ensure full width within parent */
+        }
+        .themed-box h2, .themed-box h3, .themed-box .internship-title {
+            color: #2C3E50 !important; /* Dark desaturated blue for headings */
+        }
+
+        /* --- Leaderboard Styles --- */
+        .leaderboard-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Align items to bottom for podium effect */
+            gap: 1.5rem;
+            width: 90%;
+            max-width: 1000px;
+            margin-bottom: 3rem;
+            flex-wrap: wrap; /* Allow wrapping */
+        }
+        .leaderboard-item {
+            /* MODIFIED: Apply themed-box styles, remove dark theme specifics */
+            background-color: #FFFFFF;
+            padding: 1.5rem 1rem;
+            border-radius: 16px; /* Consistent with themed-box */
+            /* border: 2px solid #A9D7F9; Overridden by rank specific */
+            box-shadow: 0 10px 25px rgba(44, 62, 80, 0.1); /* Slightly adjusted shadow */
+            text-align: center;
+            color: #333D42;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+            flex-basis: 250px;
+            min-width: 220px;
+        }
+        .leaderboard-item:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 35px rgba(44, 62, 80, 0.15);
+        }
+        .leaderboard-item .rank-badge {
+            font-size: 2rem; font-weight: bold; line-height: 1; margin-bottom: 0.75rem;
+            width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; border: 2px solid; /* Color set by rank */
+            background-color: rgba(0, 123, 255, 0.1); /* Light blue bg */
+        }
+        /* .leaderboard-item .internship-title is handled by .themed-box h3 */
+        .leaderboard-item .company-name { font-size: 0.9rem; color: #007BFF; margin-bottom: 0.75rem; } /* Primary blue */
+        .leaderboard-item .score-display { font-size: 1rem; font-weight: 500; color: #28A745; margin-top: auto; padding-top: 0.5rem; } /* Green for score */
+        .leaderboard-item .score-display strong { font-weight: 700; color: #218838; } /* Darker green */
+
+        /* Rank-specific styling - MODIFIED for light theme */
+        .rank-1 { border: 3px solid #FFD700 !important; box-shadow: 0 0 20px rgba(255, 215, 0, 0.5) !important; min-height: 240px; order: 2; }
+        .rank-1 .rank-badge { color: #DAA520; border-color: #FFD700; }
+        .rank-1:hover { box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6) !important; }
+
+        .rank-2 { border: 3px solid #C0C0C0 !important; box-shadow: 0 0 15px rgba(192, 192, 192, 0.5) !important; min-height: 210px; order: 1; }
+        .rank-2 .rank-badge { color: #A9A9A9; border-color: #C0C0C0; }
+        .rank-2:hover { box-shadow: 0 10px 25px rgba(192, 192, 192, 0.6) !important; }
+
+        .rank-3 { border: 3px solid #CD7F32 !important; box-shadow: 0 0 15px rgba(205, 127, 50, 0.4) !important; min-height: 210px; order: 3; }
+        .rank-3 .rank-badge { color: #B87333; border-color: #CD7F32; }
+        .rank-3:hover { box-shadow: 0 10px 25px rgba(205, 127, 50, 0.5) !important; }
+
+        @media (max-width: 768px) {
+            .leaderboard-container { flex-direction: column; align-items: center; gap: 1rem; }
+            .leaderboard-item { flex-basis: auto; width: 80%; max-width: 400px; min-height: auto !important; order: initial !important; padding: 1rem; }
+        }
+
+        /* --- Main Content Area (Below Leaderboard) --- */
+        .main-content-area {
+            /* MODIFIED: Apply themed-box style */
+            background-color: #FFFFFF;
+            padding: 2.5rem; /* More padding like input containers */
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.08);
+            border: 2px solid #A9D7F9;
+            width: 90%;
+            max-width: 1400px;
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem; /* Space between chart area and bottom row */
+        }
+        .main-content-area h2 { color: #2C3E50 !important; }
+
+
+        /* --- Charts Container --- */
+        .charts-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .sankey-container { /* Individual chart/accordion containers */
+            /* MODIFIED: Apply themed-box style */
+            background-color: #FFFFFF;
+            border-radius: 12px; /* Slightly smaller radius for nested */
+            border: 1px solid #BCE0FD; /* Lighter blue border */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            width: 100%;
+        }
+        .sankey-container h2 { /* Titles inside containers */
+            color: #2C3E50 !important;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+            border-bottom: 1px solid #E0E6E8; /* Light border */
+            font-size: 1.5rem;
+        }
+        .overview-chart-container { /* Specific style for overview chart */
+            border-left: 4px solid #007BFF; /* Primary blue highlight */
+            /* background-color: #F8F9FA; Slightly off-white if needed */
+        }
+        .overview-chart-container .sankey-chart-div {
+            padding: 1.5rem;
+        }
+        .sankey-chart-div {
+            width: 100%;
+            height: 600px; /* Default height */
+        }
+        #sankey_chart_0 {
+            height: 1000px; /* Specific height for overview chart */
+        }
+
+        /* --- Accordion Styles --- */
+        .accordion-toggle {
+            background-color: transparent;
+            color: #007BFF; /* Primary blue */
+            padding: 1rem 1.5rem;
+            border: none;
+            border-top: 1px solid #E0E6E8; /* Light separator */
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        .accordion-toggle:hover {
+            background-color: rgba(0, 123, 255, 0.05); /* Light blue hover */
+            color: #0056b3; /* Darker blue */
+        }
+        .accordion-toggle .indicator {
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            display: inline-block;
+            font-size: 1.4em;
+            line-height: 1;
+            color: #007BFF; /* Primary blue */
+        }
+        .accordion-toggle.active .indicator {
+            transform: rotate(180deg);
+            color: #28A745; /* Success Green */
+        }
+        .detailed-chart-content {
+            padding: 1.5rem;
+            background-color: #F8F9FA; /* Very light gray for content area */
+        }
+        .hidden { display: none; }
+
+        /* --- Bottom Row Styles --- */
+        .bottom-row {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 100%;
+        }
+        @media (min-width: 1024px) { .bottom-row { flex-direction: row; } }
+
+        .content-box { /* Shared style for left/right boxes in bottom row */
+            /* MODIFIED: Apply themed-box style */
+            background-color: #FFFFFF;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(44, 62, 80, 0.07);
+            border: 1px solid #BCE0FD; /* Lighter blue border */
+            color: #333D42;
+        }
+        .content-box h2 { color: #2C3E50 !important; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+
+        .left-box { width: 100%; }
+        @media (min-width: 1024px) { .left-box { width: 40%; } }
+        .right-box { width: 100%; display: flex; flex-direction: column; gap: 1rem; }
+        @media (min-width: 1024px) { .right-box { width: 60%; } }
+
+        .info-box { /* Styling for nested info boxes */
+            background-color: #F8F9FA; /* Very light gray */
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #E0E6E8; /* Lightest border */
+            color: #5A6A72; /* Softer text color */
+        }
+        .info-box p { font-size: 0.95rem; line-height: 1.6; color: #5A6A72; }
+        .info-box strong { color: #2C3E50; font-weight: 600; }
+        .info-box a { color: #007BFF; text-decoration: underline; text-decoration-color: #0056b3; }
+        .info-box a:hover { color: #0056b3; text-decoration-color: #007BFF; }
+
+        /* --- Button Styles (from previous page) --- */
+        .action-button {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            background-image: linear-gradient(to right, #007BFF 0%, #00C6FF 100%);
+            color: white !important; /* Ensure text is white */
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.25);
+            transition: all 0.3s ease;
+            text-decoration: none !important; /* Remove underline from <a> tags styled as button */
+            text-align: center;
+            cursor: pointer;
+        }
+        .action-button:hover {
+            background-image: linear-gradient(to right, #0069D9 0%, #00AEEB 100%);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.35);
+            color: white !important;
+        }
+        .action-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.3), 0 8px 20px rgba(0, 123, 255, 0.35);
+        }
+        .action-button:active {
+            transform: translateY(0px) scale(0.98);
+            box-shadow: 0 2px 10px rgba(0, 123, 255, 0.2);
+        }
+        .export-button { /* Inherits .action-button now */
+            margin-top: 1rem;
+            align-self: flex-start;
+        }
+        .back-button { /* Inherits .action-button now */
+            margin-top: 2.5rem; /* Space above */
+        }
+
+        /* Utility class */
+        .text-red-400 { color: #D83A56 !important; } /* Stronger Red for errors */
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar sticky top-0 z-20 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="/" class="font-bold text-xl"> Knowledge Pass
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="/" class="active-link-style px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Job Recommend</a>
+                        <a href="/learning_path_home" class="px-3 py-2 rounded-md text-sm font-medium">Learning Path</a>
+                        <a href="/graph_rag_home" class="px-3 py-2 rounded-md text-sm font-medium">Gap Alignment</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button-results" class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu-results" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" id="menu-icon-open-results" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" id="menu-icon-close-results" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:hidden hidden" id="mobile-menu-results">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/" class="active-link-mobile-style block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Job Recommend</a>
+                <a href="/learning_path_home" class="block px-3 py-2 rounded-md text-base font-medium">Learning Path</a>
+                <a href="/graph_rag_home" class="block px-3 py-2 rounded-md text-base font-medium">Gap Alignment</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- <div id="particles-js"></div> -->
+
+    <div class="space-background">
+
+        <h1 class="page-title">Your Top Matches</h1>
+        <p class="page-subtitle">Based on your profile, these are your leading internship opportunities:</p>
+
+        {% if top_internships %}
+        <div class="leaderboard-container">
+             {% for internship in top_internships %}
+                 <div class="leaderboard-item rank-{{ internship.rank }}">
+                     <div class="rank-badge"><span>{{ internship.rank }}</span></div>
+                     <h3 class="internship-title">{{ internship.title|default:"N/A" }}</h3>
+                     <p class="company-name">{{ internship.company|default:"Company Info Unavailable" }}</p>
+                     <div class="score-display">% Fulfillment : <strong>{{ internship.score|floatformat:0|default:"--" }}</strong></div>
+                 </div>
+             {% endfor %}
+        </div>
+        {% else %}
+         <div class="text-center text-gray-500 my-8 themed-box">Top internship data not available.</div>
+        {% endif %}
+
+        <div class="main-content-area">
+
+            <div class="charts-container">
+                {% if sankey_datas %}
+                    {% for chart_data_json in sankey_datas %}
+                        {% if forloop.first %}
+                            <div class="sankey-container overview-chart-container">
+                                <h2>Overview: Profile to Roles</h2>
+                                <div id="sankey_chart_0" class="sankey-chart-div"></div>
+                            </div>
+                        {% else %}
+                             <div class="sankey-container accordion-item">
+                                 <button type="button" class="accordion-toggle" aria-expanded="false">
+                                     <span>Detailed View: Chart {{ forloop.counter }}</span>
+                                     <span class="indicator">▼</span> </button>
+                                 <div class="detailed-chart-content hidden">
+                                     <div id="sankey_chart_{{ forloop.counter0 }}" class="sankey-chart-div"></div>
+                                 </div>
+                             </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <div class="sankey-container"><p class="p-4 text-center">No Sankey data available to display.</p></div>
+                {% endif %}
+            </div>
+
+            <div class="bottom-row">
+                <div class="left-box content-box">
+                    <h2>Analysis Overview</h2>
+                    <p>
+                        The first chart provides an overview mapping your profile attributes (courses, skills) to potential internship roles. The thickness indicates connection strength. Subsequent charts offer more detailed views (click to expand). Explore paths to understand skill relevance for specific job families or technologies.
+                    </p>
+                 </div>
+
+                <div class="right-box content-box">
+                    <h2>Internship Matches & Insights</h2>
+
+                    {% if results %}
+                        {% if results.error %}
+                            <div class="info-box"><p class="text-red-400">{{ results.error }}</p></div>
+                        {% elif results.message %}
+                             <div class="info-box"><p>{{ results.message }}</p></div>
+                        {% else %}
+                            {% for job in results %}
+                            <div class="info-box">
+                                {{ job|safe }}
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="summary-text info-box">
+                            <p><strong>Summary:</strong> Based on the connections shown, roles like [Example Role 1] and [Example Role 2] seem most relevant. Key skills include [Skill A] and [Skill B].</p>
+                        </div>
+                         <div class="suggestion-text info-box">
+                            <p><strong>Suggestions:</strong> To strengthen your profile for these roles, consider exploring courses in [Course X] or building projects using [Technology Y]. Focusing on [Skill C] could also be beneficial.</p>
+                        </div>
+                        <button class="action-button export-button">Export Report</button>
+
+                    {% elif query %}
+                      <div class="info-box"><p>No jobs found matching your profile criteria.</p></div>
+                    {% else %}
+                      <div class="info-box"><p>No profile data provided for search.</p></div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <a href="/" class="action-button back-button">Back to Home</a>
+
+    </div>
+    <script type="text/javascript">
+        google.charts.load("current", { packages: ["sankey"] });
+        google.charts.setOnLoadCallback(drawAllCharts);
+
+        var chartObjects = [];
+
+        function drawAllCharts() {
+            const allSankeyDataStrings = {{ sankey_datas|safe }};
+
+            if (!Array.isArray(allSankeyDataStrings) || allSankeyDataStrings.length === 0) {
+                console.warn("No Sankey data provided or data is not an array.");
+                const chartsContainer = document.querySelector('.charts-container');
+                if(chartsContainer && !chartsContainer.querySelector('.sankey-container')) {
+                    chartsContainer.innerHTML = '<div class="sankey-container"><p class="p-4 text-center">No Sankey data available to display.</p></div>';
+                }
+                return;
+            }
+
+            var colors = ['#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f',
+                          '#cab2d6', '#ffff99', '#1f78b4', '#33a02c',
+                          '#ff7f00', '#e31a1c', '#6a3d9a', '#b15928'];
+
+            allSankeyDataStrings.forEach((dataString, index) => {
+                try {
+                    var chartDiv = document.getElementById('sankey_chart_' + index);
+                    if (!chartDiv) {
+                        console.error("Chart container div not found: sankey_chart_" + index);
+                        return;
+                    }
+                    const parsedJson = JSON.parse(dataString);
+                    const chartData = parsedJson.data;
+
+                    if (!Array.isArray(chartData)) {
+                        console.error("Parsed data is not an array for chart index " + index);
+                        chartDiv.innerHTML = `<p style='color:#D83A56; padding: 20px;'>Error: Chart data ${index + 1} format is incorrect.</p>`;
+                        return;
+                    }
+                    if (chartData.length === 0) {
+                        chartDiv.innerHTML = `<p style='color:#5A6A72; padding: 20px;'>Chart ${index + 1}: No data to display.</p>`;
+                        return;
+                    }
+
+                    var dataTable = new google.visualization.DataTable();
+                    dataTable.addColumn('string', 'From');
+                    dataTable.addColumn('string', 'To');
+                    dataTable.addColumn('number', 'Weight');
+                    dataTable.addRows(chartData);
+
+                    var options = {
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: 'transparent', // MODIFIED: Ensures container bg shows
+                        sankey: {
+                            node: {
+                                colors: colors,
+                                label: {
+                                    color: '#333D42', // MODIFIED: Dark text for labels
+                                    fontSize: 13,
+                                    fontName: 'Poppins', // MODIFIED: Font
+                                    bold: false
+                                },
+                                interactivity: true
+                            },
+                            link: {
+                                colorMode: 'gradient',
+                                colors: colors
+                            }
+                        },
+                        tooltip: {
+                            textStyle: { color: '#333D42', fontName: 'Poppins' }, // MODIFIED
+                            showColorCode: true
+                        }
+                    };
+                    var chart = new google.visualization.Sankey(chartDiv);
+                    google.visualization.events.addListener(chart, 'error', function (err) {
+                        console.error('Google Chart Error:', err.id, err.message);
+                         chartDiv.innerHTML = `<p style='color:#D83A56; padding: 20px;'>Error loading chart ${index + 1}: ${err.message}.</p>`;
+                    });
+                    chart.draw(dataTable, options);
+                    chartObjects.push({ chart: chart, data: dataTable, options: options, div: chartDiv });
+                } catch (e) {
+                    console.error("Error processing/drawing chart index " + index + ":", e);
+                    if (chartDiv) {
+                        chartDiv.innerHTML = `<p style='color:#D83A56; padding: 20px;'>Fatal error loading chart data ${index + 1}. Check console.</p>`;
+                    }
+                }
+            });
+            setupAccordions();
+        }
+
+        function setupAccordions() {
+             const accordionToggles = document.querySelectorAll('.accordion-toggle');
+             accordionToggles.forEach(toggle => {
+                 const content = toggle.nextElementSibling;
+                 const indicator = toggle.querySelector('.indicator');
+                 const chartDiv = content ? content.querySelector('.sankey-chart-div') : null;
+
+                 if (!content || !indicator) {
+                     console.warn("Accordion structure incomplete for toggle:", toggle);
+                     return;
+                 }
+
+                 if (content.classList.contains('hidden')) {
+                     toggle.setAttribute('aria-expanded', 'false');
+                     indicator.textContent = '▼';
+                 } else {
+                     toggle.setAttribute('aria-expanded', 'true');
+                     indicator.textContent = '▲';
+                     toggle.classList.add('active');
+                 }
+
+                 toggle.addEventListener('click', () => {
+                     const isHidden = content.classList.contains('hidden');
+                     content.classList.toggle('hidden');
+                     toggle.classList.toggle('active');
+
+                     if (isHidden) {
+                         toggle.setAttribute('aria-expanded', 'true');
+                         indicator.textContent = '▲';
+                         if (chartDiv) { // Only try to redraw if chartDiv exists
+                            const chartToRedraw = chartObjects.find(obj => obj.div === chartDiv);
+                            if (chartToRedraw) {
+                                chartToRedraw.chart.draw(chartToRedraw.data, chartToRedraw.options);
+                            }
+                         }
+                     } else {
+                         toggle.setAttribute('aria-expanded', 'false');
+                         indicator.textContent = '▼';
+                     }
+                 });
+             });
+        }
+
+        function debounce(func, wait, immediate) {
+            var timeout;
+            return function() {
+                var context = this, args = arguments;
+                var later = function() { timeout = null; if (!immediate) func.apply(context, args); };
+                var callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func.apply(context, args);
+            };
+        };
+
+        function redrawAllChartsResize() { // Renamed to avoid conflict
+            chartObjects.forEach(obj => {
+                 try {
+                     const contentWrapper = obj.div.closest('.detailed-chart-content');
+                     const isVisible = !contentWrapper || !contentWrapper.classList.contains('hidden');
+                     const isOverview = obj.div.id === 'sankey_chart_0';
+                     if(document.body.contains(obj.div) && (isVisible || isOverview)) {
+                         obj.chart.draw(obj.data, obj.options);
+                     }
+                 } catch(e) { console.error("Error redrawing chart:", obj.div.id, e); }
+            });
+        }
+        var debouncedRedraw = debounce(redrawAllChartsResize, 300);
+        window.addEventListener('resize', debouncedRedraw);
+
+        // Mobile menu toggle for results page
+        const mobileMenuButtonResults = document.getElementById('mobile-menu-button-results');
+        const mobileMenuResults = document.getElementById('mobile-menu-results');
+        const menuIconOpenResults = document.getElementById('menu-icon-open-results');
+        const menuIconCloseResults = document.getElementById('menu-icon-close-results');
+
+        if (mobileMenuButtonResults && mobileMenuResults && menuIconOpenResults && menuIconCloseResults) {
+            mobileMenuButtonResults.addEventListener('click', () => {
+                mobileMenuResults.classList.toggle('hidden');
+                menuIconOpenResults.classList.toggle('hidden');
+                menuIconCloseResults.classList.toggle('hidden');
+                const isExpanded = mobileMenuButtonResults.getAttribute('aria-expanded') === 'true' || false;
+                mobileMenuButtonResults.setAttribute('aria-expanded', !isExpanded);
+            });
+        }
+
+    </script>
+
+    <script type="text/javascript">
+         // MODIFIED: Particles.js config from the first page
+         particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 10, "density": { "enable": true, "value_area": 900 } },
+                "color": { "value": ["#ff6b6b", "#4ecdc4", "#ffe66d", "#81ecec", "#6c5ce7"] },
+                "shape": { "type": "circle", "stroke": { "width": 1, "color": "#222" }, "polygon": { "nb_sides": 5 } },
+                "opacity": { "value": 0.8, "random": true, "anim": { "enable": true, "speed": 0.5, "opacity_min": 0.3, "sync": false } },
+                "size": { "value": 100, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 1, "sync": false } }, // MODIFIED: size
+                "line_linked": { "enable": true, "distance": 130, "color": "#aaa", "opacity": 0.3, "width": 1 },
+                "move": { "enable": true, "speed": 1.0, "direction": "none", "random": true, "straight": false, "out_mode": "out", "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } // MODIFIED: speed
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                    "bubble": { "distance": 250, "size": 120, "duration": 0.6 },
+                    "repulse": { "distance": 250, "duration": 0.6 },
+                    "push": { "particles_nb": 6 },
+                    "remove": { "particles_nb": 3 }
+                }
+            },
+            "retina_detect": true
+         });
+    </script>
+</body>
+
+</html>

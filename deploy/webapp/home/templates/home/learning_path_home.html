@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Pass - Learning Path Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles - THEMED */
+        body {
+            background-image: radial-gradient(ellipse at center, #D6EAF8 10%, #EAF2F8 40%, #F4F7F6 80%);
+            color: #333D42; /* Dark gray-blue for text */
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            min-height: 100vh;
+            padding-top: 64px; /* Added for fixed navbar height */
+        }
+
+        /* Particles background styling */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* --- Navbar Styling (from previous pages) --- */
+        nav.navbar { /* Applied to the nav element */
+            background-color: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+        }
+        nav.navbar a {
+            color: #333D42 !important; /* Dark text */
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        nav.navbar a:hover:not(.active-link-style) { /* For non-active links */
+            color: #007BFF !important; /* Primary blue for hover text */
+            background-color: rgba(0, 123, 255, 0.07) !important; /* Subtle light blue bg */
+        }
+        nav.navbar .active-link-style { /* For the currently active page link */
+            background-color: #007BFF !important;
+            color: white !important; /* Ensure text is white */
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+        nav.navbar .active-link-style:hover {
+             background-color: #0056b3 !important;
+             color: white !important;
+        }
+        /* Mobile Menu Button in Navbar */
+        nav.navbar #mobile-menu-button {
+            background-color: transparent !important;
+            color: #007BFF !important; /* Primary blue for icon */
+        }
+        nav.navbar #mobile-menu-button svg {
+            stroke: #007BFF !important; /* Ensuring icon color */
+        }
+        nav.navbar #mobile-menu-button:hover {
+            background-color: rgba(0, 123, 255, 0.1) !important; /* Light blue hover */
+        }
+        /* Mobile Menu Panel */
+        #mobile-menu {
+            background-color: white !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        #mobile-menu a {
+            color: #333D42 !important;
+        }
+        #mobile-menu a:hover:not(.active-link-mobile-style) {
+            background-color: #E9F5FF !important;
+            color: #0056b3 !important;
+        }
+        #mobile-menu .active-link-mobile-style { /* Class for active mobile link */
+            background-color: #007BFF !important;
+            color: white !important;
+        }
+
+
+        /* Main content container - THEMED */
+        .content-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Adjusted from center for pages with more content */
+            width: 100%;
+            padding: 40px 20px 40px 20px; /* Adjusted top padding */
+            z-index: 1;
+            box-sizing: border-box;
+            min-height: calc(100vh - 64px); /* Adjust min-height considering body padding-top */
+        }
+
+        /* Page Title and Subtitle - THEMED */
+        .content-container > h1.page-main-title { /* More specific selector */
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-image: linear-gradient(to right, #007BFF, #00C6FF);
+            padding-bottom: 0;
+        }
+        .content-container > p.page-main-subtitle { /* More specific selector */
+            font-size: 1.25rem;
+            color: #5A6A72;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            max-width: 650px;
+        }
+
+        /* Styling for containers holding inputs/tags - THEMED */
+        .input-section-container {
+            background-color: #FFFFFF;
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 650px;
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.08);
+            border: 2px solid #A9D7F9;
+        }
+        .input-section-container .input-section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .input-section-container .input-section-description {
+            font-size: 0.9rem;
+            color: #5A6A72;
+            margin-top: -0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+
+        /* Area where tags are displayed - THEMED */
+        .tag-area {
+            display: flex; flex-wrap: wrap; gap: 0.85rem;
+            margin-top: 1.25rem;
+            min-height: 40px;
+        }
+        .tag-area .placeholder-text {
+            color: #7F8C93;
+            font-size: 0.9rem;
+        }
+
+
+        /* Individual tag styling - THEMED */
+        .tag {
+            background-color: #E9F5FF;
+            color: #007BFF;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            border: 1px solid #BCE0FD;
+            user-select: none;
+            box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+            display: inline-flex;
+            align-items: center;
+        }
+        .tag:hover {
+            background-color: #D4EAFC;
+            border-color: #A9D7F9;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.15);
+        }
+        .tag.active { /* Kept for semantic consistency, styled same as default themed tag */
+            background-color: #E9F5FF;
+            color: #007BFF;
+            border-color: #BCE0FD;
+        }
+        .tag.active:hover {
+            background-color: #D4EAFC;
+            border-color: #A9D7F9;
+        }
+
+
+        /* Styling specifically for the file input - THEMED */
+        .file-input-container {
+            text-align: center;
+        }
+        .file-input-container .input-section-title {
+             margin-bottom: 0.75rem !important;
+        }
+        .file-input-container .input-section-description {
+            font-size: 0.9rem; /* Match other descriptions */
+            color: #5A6A72;
+            margin-top: 0.25rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        input[type="file"] {
+            color: #5A6A72;
+            font-size: 0.9rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: max-content;
+        }
+
+        input[type="file"]::file-selector-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 0.7rem 1.3rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            margin-right: 1rem;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+        }
+        input[type="file"]::file-selector-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for error messages - THEMED */
+        .error-message {
+             color: #D83A56;
+             background-color: #FFE3E3;
+             border: 1px solid #FFB5B5;
+             padding: 1rem;
+             border-radius: 8px;
+             margin-top: 1.5rem;
+             text-align: center;
+             font-weight: 500;
+             min-height: 1.5rem;
+             box-shadow: 0 2px 4px rgba(216, 58, 86, 0.1);
+        }
+        .error-message.hidden { display: none; }
+
+        #role-input-error { /* Specific styling for role input errors */
+            color: #D83A56;
+            background-color: #FFE3E3;
+            border: 1px solid #FFB5B5;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-top: 0.75rem;
+            text-align: left;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        #role-input-error.hidden { display: none; }
+
+
+        /* Search input styling - THEMED */
+        .search-input {
+            width: 100%;
+            padding: 0.85rem 1.1rem;
+            background-color: #F8F9FA;
+            color: #333D42;
+            border: 1px solid #CED4DA;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+        }
+        .search-input::placeholder { color: #90A4AE; }
+
+
+        /* Search results container - THEMED */
+        .search-results {
+            max-height: 220px;
+            overflow-y: auto;
+            background-color: #FFFFFF;
+            border: 1px solid #CED4DA;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            margin-top: -1px;
+            z-index: 10;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+        }
+        .search-results.hidden { display: none; }
+        .search-result-item {
+            padding: 0.85rem 1.1rem;
+            color: #495057;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #F1F3F5;
+            transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+        }
+        .search-result-item:last-child { border-bottom: none; }
+        .search-result-item:hover {
+            background-color: #E9F5FF;
+            color: #0056b3;
+        }
+        .search-result-item.selected-in-search {
+            background-color: #F8F9FA;
+            color: #ADB5BD;
+            cursor: not-allowed;
+        }
+
+        /* Submit Button Styling - THEMED */
+        #learning-path-button {
+            margin-top: 2rem;
+            padding: 0.9rem 2.2rem;
+            background-image: linear-gradient(to right, #007BFF 0%, #00C6FF 100%);
+            color: white;
+            font-size: 1.15rem;
+            font-weight: 600;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.25);
+            transition: all 0.3s ease;
+        }
+        #learning-path-button:hover {
+            background-image: linear-gradient(to right, #0069D9 0%, #00AEEB 100%);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.35);
+        }
+        #learning-path-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.3), 0 8px 20px rgba(0, 123, 255, 0.35);
+        }
+        #learning-path-button:active {
+            transform: translateY(0px) scale(0.98);
+            box-shadow: 0 2px 10px rgba(0, 123, 255, 0.2);
+        }
+        .fetch-error-text { /* For JS-injected fetch errors in placeholders */
+            color: #D83A56;
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar fixed top-0 z-20 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="/" class="font-bold text-xl">
+                        Knowledge Pass
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="/" class="px-3 py-2 rounded-md text-sm font-medium">Job Recommend</a>
+                        <a href="/learning_path_home" class="active-link-style px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Learning Path</a>
+                        <a href="/graph_rag_home" class="px-3 py-2 rounded-md text-sm font-medium">Gap Alignment</a>
+                    </div>
+                </div>
+                 <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                      <span class="sr-only">Open main menu</span>
+                      <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                      </svg>
+                      <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+            </div>
+        </div>
+
+         <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <a href="/" class="block px-3 py-2 rounded-md text-base font-medium">Job Recommend</a>
+              <a href="/learning_path_home" class="active-link-mobile-style block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Learning Path</a>
+              <a href="/graph_rag_home" class="block px-3 py-2 rounded-md text-base font-medium">Gap Alignment</a>
+            </div>
+          </div>
+    </nav>
+    <div id="particles-js"></div>
+    <div class="content-container">
+        <h1 class="page-main-title">Learning Path Generator</h1>
+        <p class="page-main-subtitle">Enter your desired internship roles to discover a personalized learning path based on Software Engineering at Thammasat University curriculum.</p>
+
+        <form id="learning-path-form" method="POST" action="/learning_path/" enctype="multipart/form-data" class="w-full flex flex-col items-center">
+            {% csrf_token %}
+            <div class="input-section-container w-full">
+                <span class="input-section-title">Enter Desired Internship Role(s)</span>
+                <p class="input-section-description">Search and add roles from the suggestions.</p>
+
+                <input type="text" id="role-search-input" class="search-input" placeholder="e.g., Software Engineer, Data Analyst...">
+                <div id="role-search-results" class="search-results hidden"></div>
+
+                <div id="role-input-error" class="error-message hidden text-sm mt-2 text-left"></div>
+                <div class="tag-area" id="roles-tag-area">
+                   <span class="placeholder-text" id="roles-placeholder">Loading roles...</span>
+                </div>
+            </div>
+
+            <div class="input-section-container file-input-container w-full">
+                <span class="input-section-title">Upload Sample Job Description (Optional)</span>
+                <input type="file" id="jd-upload" name="job_description_file" accept=".pdf,.doc,.docx,.txt">
+                <p class="input-section-description">Accepted formats: PDF, DOC, DOCX, TXT</p>
+            </div>
+
+            <div id="hidden-inputs"></div>
+            <div id="form-error" class="error-message hidden"></div>
+            <button type="submit" id="learning-path-button">
+                Get Learning Path
+            </button>
+
+        </form>
+    </div>
+    <script>
+        // --- Particles.js Initialization (THEMED) ---
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 10, "density": { "enable": true, "value_area": 900 } },
+                "color": { "value": ["#ff6b6b", "#4ecdc4", "#ffe66d", "#81ecec", "#6c5ce7"] },
+                "shape": { "type": "circle", "stroke": { "width": 1, "color": "#222" }, "polygon": { "nb_sides": 5 } },
+                "opacity": { "value": 0.8, "random": true, "anim": { "enable": true, "speed": 0.5, "opacity_min": 0.3, "sync": false } },
+                "size": { "value": 75, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 1, "sync": false } },
+                "line_linked": { "enable": true, "distance": 130, "color": "#aaa", "opacity": 0.3, "width": 1 },
+                "move": { "enable": true, "speed": 1.0, "direction": "none", "random": true, "straight": false, "out_mode": "out", "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                    "bubble": { "distance": 250, "size": 120, "duration": 0.6 },
+                    "repulse": { "distance": 250, "duration": 0.6 },
+                    "push": { "particles_nb": 6 },
+                    "remove": { "particles_nb": 3 }
+                }
+            },
+            "retina_detect": true
+        });
+
+        let allAvailableRoles = [];
+        const BACKEND_URL = "http://127.0.0.1:8081";
+        const selectedRoles = new Set();
+        let fetchDataFailed = false; // Flag to track initial data fetch status
+
+        const roleSearchInput = document.getElementById('role-search-input');
+        const roleSearchResults = document.getElementById('role-search-results');
+        const rolesTagArea = document.getElementById('roles-tag-area');
+        const rolesPlaceholder = document.getElementById('roles-placeholder');
+
+        const learningPathForm = document.getElementById('learning-path-form');
+        const hiddenInputsContainer = document.getElementById('hidden-inputs');
+        const formErrorDiv = document.getElementById('form-error');
+        const roleInputErrorDiv = document.getElementById('role-input-error');
+
+        async function fetchData(endpoint, type, errorDisplayEl, placeholderEl) {
+            fetchDataFailed = false;
+            try {
+                if (placeholderEl && !placeholderEl.classList.contains('fetch-error-text')) {
+                    placeholderEl.textContent = `Loading ${type}...`;
+                    placeholderEl.classList.remove('hidden');
+                }
+
+                const response = await fetch(`${BACKEND_URL}${endpoint}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                });
+
+                if (!response.ok) {
+                    fetchDataFailed = true;
+                    const errorData = await response.json().catch(() => ({ detail: "Unknown server error" }));
+                    throw new Error(`HTTP error! status: ${response.status}, Message: ${errorData.detail || response.statusText}`);
+                }
+                const data = await response.json();
+
+                if (type === 'roles' && data.jobs && Array.isArray(data.jobs)) {
+                    if (placeholderEl) {
+                        if (data.jobs.length === 0) {
+                            placeholderEl.textContent = `No ${type} available to select.`;
+                            placeholderEl.classList.remove('hidden');
+                        } else {
+                             placeholderEl.classList.add('hidden');
+                        }
+                    }
+                    return data.jobs;
+                } else {
+                    fetchDataFailed = true;
+                    throw new Error(`Invalid data structure received for ${type}. Expected an array of jobs.`);
+                }
+            } catch (error) {
+                fetchDataFailed = true;
+                console.error(`Error fetching ${type}:`, error);
+                const errorMsg = `Failed to load ${type}. Check connection or try again.`;
+                if (errorDisplayEl && errorDisplayEl !== placeholderEl) {
+                    errorDisplayEl.textContent = errorMsg;
+                    errorDisplayEl.classList.remove('hidden');
+                }
+                if (placeholderEl) {
+                    placeholderEl.innerHTML = `<span class="fetch-error-text">${errorMsg}</span>`;
+                    placeholderEl.classList.remove('hidden');
+                }
+                return [];
+            }
+        }
+
+        function createRoleTagElement(roleText) {
+            const tag = document.createElement('span');
+            tag.classList.add('tag');
+            tag.textContent = roleText + ' \u00D7';
+            tag.dataset.value = roleText;
+
+            tag.addEventListener('click', () => {
+                formErrorDiv.classList.add('hidden');
+                roleInputErrorDiv.classList.add('hidden');
+                selectedRoles.delete(roleText);
+                tag.remove();
+                updateHiddenInputs();
+                if (selectedRoles.size === 0 && rolesPlaceholder) {
+                    rolesPlaceholder.textContent = 'No roles selected. Search above.';
+                    rolesPlaceholder.classList.remove('hidden');
+                    rolesPlaceholder.classList.remove('fetch-error-text');
+                }
+            });
+            return tag;
+        }
+
+        function setupSearch(searchInputEl, resultsContainerEl, getItemsArrayFn, selectedSet, tagAreaEl, placeholderEl) {
+            searchInputEl.addEventListener('input', () => {
+                const currentItemsArray = getItemsArrayFn();
+                const searchTerm = searchInputEl.value.toLowerCase().trim();
+                resultsContainerEl.innerHTML = '';
+                resultsContainerEl.classList.add('hidden');
+                roleInputErrorDiv.classList.add('hidden');
+
+                if (searchTerm.length === 0 || currentItemsArray.length === 0) return;
+
+                const filteredItems = currentItemsArray.filter(item =>
+                    item.toLowerCase().includes(searchTerm)
+                );
+
+                if (filteredItems.length > 0) {
+                    resultsContainerEl.classList.remove('hidden');
+                }
+
+                filteredItems.forEach(item => {
+                    const resultItem = document.createElement('div');
+                    resultItem.classList.add('search-result-item');
+                    resultItem.textContent = item;
+
+                    if (selectedSet.has(item)) {
+                        resultItem.classList.add('selected-in-search');
+                    }
+
+                    resultItem.addEventListener('click', () => {
+                        formErrorDiv.classList.add('hidden');
+                        if (!selectedSet.has(item)) {
+                            selectedSet.add(item);
+                            const newTagElement = createRoleTagElement(item);
+                            tagAreaEl.appendChild(newTagElement);
+                            if (placeholderEl) placeholderEl.classList.add('hidden');
+                            updateHiddenInputs();
+                        }
+                        searchInputEl.value = '';
+                        resultsContainerEl.innerHTML = '';
+                        resultsContainerEl.classList.add('hidden');
+                    });
+                    resultsContainerEl.appendChild(resultItem);
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!searchInputEl.contains(event.target) && !resultsContainerEl.contains(event.target)) {
+                    resultsContainerEl.classList.add('hidden');
+                }
+            });
+            searchInputEl.addEventListener('click', (event) => {
+                event.stopPropagation();
+                if (searchInputEl.value.trim().length > 0 && resultsContainerEl.children.length > 0) {
+                    resultsContainerEl.classList.remove('hidden');
+                }
+            });
+        }
+
+        function updateHiddenInputs() {
+            hiddenInputsContainer.innerHTML = '';
+            selectedRoles.forEach(role => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'selected_roles';
+                input.value = role;
+                hiddenInputsContainer.appendChild(input);
+            });
+        }
+
+        learningPathForm.addEventListener('submit', function(event) {
+            formErrorDiv.classList.add('hidden');
+            roleInputErrorDiv.classList.add('hidden');
+
+            if (selectedRoles.size === 0) {
+                event.preventDefault();
+                formErrorDiv.textContent = "Please add at least one desired internship role.";
+                formErrorDiv.classList.remove('hidden');
+                formErrorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+            updateHiddenInputs();
+        });
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        if (mobileMenuButton && mobileMenu && menuIconOpen && menuIconClose) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIconOpen.classList.toggle('hidden');
+                menuIconClose.classList.toggle('hidden');
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (rolesPlaceholder) {
+                 rolesPlaceholder.textContent = 'Loading roles...';
+                 rolesPlaceholder.classList.remove('hidden');
+            }
+            roleInputErrorDiv.classList.add('hidden');
+
+            allAvailableRoles = await fetchData("/get_all_jobs", "roles", roleInputErrorDiv, rolesPlaceholder);
+
+            setupSearch(roleSearchInput, roleSearchResults, () => allAvailableRoles, selectedRoles, rolesTagArea, rolesPlaceholder);
+
+            if (rolesPlaceholder && !fetchDataFailed) {
+                if (allAvailableRoles.length > 0 && selectedRoles.size === 0) {
+                    rolesPlaceholder.textContent = 'No roles selected. Search above to add.';
+                    rolesPlaceholder.classList.remove('hidden');
+                } else if (selectedRoles.size > 0 || (allAvailableRoles.length === 0 && !fetchDataFailed) ) {
+                    rolesPlaceholder.classList.add('hidden');
+                }
+            }
+            console.log("Learning Path Generator form initialized with new theme and spacing adjustments.");
+        });
+
+    </script>
+
+</body>
+</html>

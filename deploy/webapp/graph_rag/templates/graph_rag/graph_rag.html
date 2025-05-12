@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Pass - Skill Gap Analysis Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles - THEMED */
+        body {
+            background-image: radial-gradient(ellipse at center, #D6EAF8 10%, #EAF2F8 40%, #F4F7F6 80%);
+            color: #333D42; 
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            min-height: 100vh;
+            padding-top: 64px; /* For fixed/sticky navbar height */
+        }
+
+        #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        
+        /* --- Navbar Styling (Light Themed) --- */
+        nav.navbar { 
+            background-color: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+        }
+        nav.navbar a {
+            color: #333D42 !important; 
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        nav.navbar a:hover:not(.active-link-style) { 
+            color: #007BFF !important; 
+            background-color: rgba(0, 123, 255, 0.07) !important; 
+        }
+        nav.navbar .active-link-style { 
+            background-color: #007BFF !important;
+            color: white !important; 
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+        nav.navbar .active-link-style:hover {
+             background-color: #0056b3 !important;
+             color: white !important;
+        }
+        nav.navbar #mobile-menu-button { /* Using ID from HTML */
+            background-color: transparent !important;
+            color: #007BFF !important; 
+        }
+        nav.navbar #mobile-menu-button svg {
+            stroke: #007BFF !important; 
+        }
+        nav.navbar #mobile-menu-button:hover {
+            background-color: rgba(0, 123, 255, 0.1) !important; 
+        }
+        #mobile-menu {  /* Using ID from HTML */
+            background-color: white !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        #mobile-menu a {
+            color: #333D42 !important;
+        }
+        #mobile-menu a:hover:not(.active-link-mobile-style) {
+            background-color: #E9F5FF !important;
+            color: #0056b3 !important;
+        }
+        #mobile-menu .active-link-mobile-style { 
+            background-color: #007BFF !important;
+            color: white !important;
+        }
+
+        /* Main content container - THEMED */
+        .content-container { 
+            position: relative; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            width: 100%; 
+            padding: 40px 20px 60px 20px; 
+            z-index: 1; 
+            box-sizing: border-box; 
+        }
+        
+        /* Page Title and Subtitle - THEMED */
+        .content-container > h1.page-main-title { 
+            font-size: 3.2rem; 
+            font-weight: 700;
+            margin-bottom: 1rem; /* Adjusted for this page */
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-image: linear-gradient(to right, #007BFF, #00C6FF); 
+            padding-bottom: 0.25rem; 
+        }
+        .content-container > p.page-main-subtitle { 
+            font-size: 1.25rem; 
+            color: #5A6A72; 
+            margin-bottom: 2.5rem; /* Adjusted */
+            text-align: center;
+            max-width: 700px; 
+        }
+        
+        /* Section Container (base for summary and skill cards) - THEMED */
+        .section-container { 
+            background-color: #FFFFFF;
+            padding: 2rem; 
+            border-radius: 16px; /* Themed radius */
+            margin-bottom: 1.5rem; 
+            width: 100%; 
+            max-width: 800px; 
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.08); /* Themed shadow */
+            border: 2px solid #A9D7F9; /* Themed border */
+            transition: all 0.3s ease-in-out; 
+        }
+        
+        /* Summary Card Specifics - THEMED */
+        .summary-card { 
+            border-left: 5px solid #007BFF; /* Themed accent border */
+             margin-bottom: 3rem !important; /* More space after summary */
+        }
+        .summary-card h2 {
+            color: #2C3E50; /* Darker heading color */
+            border-bottom: 1px solid #E0E6E8; /* Light separator */
+        }
+        
+        /* Skill Card - THEMED */
+        .skill-card { 
+            background-color: #FFFFFF; 
+            border: 1px solid #BCE0FD; /* Lighter themed border for nested cards */
+            border-radius: 12px; /* Slightly smaller radius for nested cards */
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .skill-card:hover { 
+            transform: translateY(-5px) scale(1.01); 
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.15); /* Themed hover shadow */
+            border-color: #A9D7F9;
+        }
+        .skill-card h3 { /* Skill title */
+            color: #007BFF; /* Primary blue for skill titles */
+        }
+        .skill-card .skill-description-label { /* "Best Match", "Explanation" */
+            color: #333D42;
+            font-weight: 600; /* Semibold */
+        }
+        .skill-card .skill-description-text { /* Course name, explanation text */
+            color: #5A6A72;
+        }
+         .skill-card .best-match-course-text { /* Specifically for the course name */
+            color: #28A745; /* Green for emphasis, ensure good contrast */
+            font-weight: 500; /* Medium */
+        }
+
+
+        /* Stats Display - THEMED */
+        .stat-number { 
+            font-size: 2.5rem; font-weight: 700; line-height: 1; 
+        }
+        .stat-label { 
+            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; 
+            color: #5A6A72; /* Themed label color */
+        }
+        .stat-helper-text { /* For the small text below stats */
+            font-size: 0.8rem; /* text-xs */
+            color: #7F8C93; /* Softer gray */
+            margin-top: 0.25rem; /* mt-1 */
+        }
+
+        /* Semantic colors for stats (ensure contrast on light bg) */
+        .fulfilled-color { color: #28A745; /* Darker Green */ }
+        .unfulfilled-color { color: #DC2626; /* Darker Red */ }
+        .total-color { color: #007BFF; /* Primary Blue */ }
+        
+        /* Icon Styling within cards */
+        .icon { /* General icon class if used more broadly */
+             width: 1.25em; height: 1.25em; /* Adjusted size */
+             margin-right: 0.5rem; /* Adjusted spacing */
+             vertical-align: middle; display: inline-block; 
+        }
+        .skill-card svg { /* SVGs inside skill cards */
+            color: #007BFF; /* Default themed blue */
+        }
+        .skill-card .best-match-icon svg {
+            color: #28A745; /* Green to match best match text */
+        }
+         .skill-card .explanation-icon svg {
+            color: #7F8C93; /* Muted gray for info icon */
+        }
+
+        /* Unfulfilled Skills Section Title */
+        .unfulfilled-skills-title {
+            color: #2C3E50; /* Darker heading color */
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar fixed top-0 z-20 w-full"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="/" class="font-bold text-xl"> Knowledge Pass
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="/" class="px-3 py-2 rounded-md text-sm font-medium">Job Recommend</a>
+                        <a href="/learning_path_home" class="px-3 py-2 rounded-md text-sm font-medium">Learning Path</a>
+                        <a href="/graph_rag_home" class="active-link-style px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Gap Alignment</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/" class="block px-3 py-2 rounded-md text-base font-medium">Job Recommend</a> <a href="/learning_path_home" class="block px-3 py-2 rounded-md text-base font-medium">Learning Path</a>
+                <a href="/graph_rag_home" class="active-link-mobile-style block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Gap Alignment</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <div id="particles-js"></div> -->
+
+    <div class="content-container">
+
+        <h1 class="page-main-title">Skill Gap Analysis Results</h1>
+        <p class="page-main-subtitle">Analysis based on selected job roles compared against the "Software Engineering at Thammasat University" program curriculum.</p>
+
+        <div class="section-container summary-card"> <h2 class="text-2xl font-semibold mb-6 pb-3">Analysis Summary</h2> <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div>
+                    <div class="stat-number total-color">{{total_requirements}}</div>
+                    <div class="stat-label">Total Skills Required</div>
+                    <p class="stat-helper-text">Combined requirements from all selected job roles.</p>
+                </div>
+                <div>
+                    <div class="stat-number fulfilled-color">{{fulfilled_requirements}}</div>
+                    <div class="stat-label">Fulfilled Requirements</div>
+                     <p class="stat-helper-text">Skills covered by SE @ TU curriculum.</p>
+                </div>
+                <div>
+                    <div class="stat-number unfulfilled-color">{{unfulfilled_requirements}}</div>
+                    <div class="stat-label">Unfulfilled Requirements</div>
+                     <p class="stat-helper-text">Potential skill gaps to address.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full max-w-4xl">
+            <h2 class="text-3xl font-semibold mb-8 text-center unfulfilled-skills-title">Unfulfilled Skills & Recommendations</h2>
+        
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {% for skill in unfulfilled_skills %}
+                <div class="skill-card p-6 rounded-lg"> <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mr-3 icon"> <path fill-rule="evenodd" d="M12 2.25c-5.384 0-9.75 4.366-9.75 9.75s4.366 9.75 9.75 9.75 9.75-4.366 9.75-9.75S17.384 2.25 12 2.25zM8.547 9.785a.75.75 0 00-1.06 1.06l3.217 3.217H8.25a.75.75 0 000 1.5h4.5a.75.75 0 00.75-.75v-4.5a.75.75 0 00-.75-.75h-3.218l-3.217-3.217a.75.75 0 001.06-1.06l3.217 3.217 3.217-3.217a.75.75 0 10-1.06-1.06l-3.217 3.217-3.217-3.217z" clip-rule="evenodd" />
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-0">{{ skill.title }}</h3> </div>
+                    <div class="mb-2">
+                        <span class="block text-sm font-semibold mb-1 skill-description-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 inline mr-1 align-text-bottom best-match-icon"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l3-4.142 1.276 1.276a.75.75 0 001.06-1.06l-2-2.75z" clip-rule="evenodd" />
+                            </svg>
+                            Best Match
+                        </span>
+                        <p class="text-md font-medium skill-description-text best-match-course-text">{{ skill.best_match_course|safe }}</p> </div>
+                    <div>
+                        <span class="block text-sm font-semibold mb-1 skill-description-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 inline mr-1 align-text-bottom explanation-icon"> <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                            </svg>
+                            Explanation
+                        </span>
+                        <p class="text-sm leading-relaxed skill-description-text">{{ skill.explaination|safe }}</p> </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // --- Particles.js Initialization (THEMED) ---
+        // particlesJS('particles-js', {
+        //     "particles": {
+        //         "number": { "value": 10, "density": { "enable": true, "value_area": 900 } },
+        //         "color": { "value": ["#ff6b6b", "#4ecdc4", "#ffe66d", "#81ecec", "#6c5ce7"] },
+        //         "shape": { "type": "circle", "stroke": { "width": 1, "color": "#222" }, "polygon": { "nb_sides": 5 } },
+        //         "opacity": { "value": 0.8, "random": true, "anim": { "enable": true, "speed": 0.5, "opacity_min": 0.3, "sync": false } },
+        //         "size": { "value": 100, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 1, "sync": false } },
+        //         "line_linked": { "enable": true, "distance": 130, "color": "#aaa", "opacity": 0.3, "width": 1 },
+        //         "move": { "enable": true, "speed": 1.0, "direction": "none", "random": true, "straight": false, "out_mode": "out", "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
+        //     },
+        //     "interactivity": {
+        //         "detect_on": "canvas",
+        //         "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+        //         "modes": {
+        //             "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+        //             "bubble": { "distance": 250, "size": 120, "duration": 0.6 },
+        //             "repulse": { "distance": 250, "duration": 0.6 },
+        //             "push": { "particles_nb": 6 },
+        //             "remove": { "particles_nb": 3 }
+        //         }
+        //     },
+        //     "retina_detect": true
+        // });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button'); // Target by ID
+            const mobileMenu = document.getElementById('mobile-menu');
+            const openIcon = document.getElementById('menu-icon-open'); // Target by ID
+            const closeIcon = document.getElementById('menu-icon-close'); // Target by ID
+            
+            if (mobileMenuButton && mobileMenu && openIcon && closeIcon) {
+                mobileMenuButton.addEventListener('click', () => {
+                    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                    mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+                    mobileMenu.classList.toggle('hidden');
+                    openIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
+            }
+            console.log("Skill Gap Analysis Results page initialized with light theme.");
+        });
+    </script>
+
+</body>
+</html>

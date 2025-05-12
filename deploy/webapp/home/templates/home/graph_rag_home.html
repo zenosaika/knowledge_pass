@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Pass - Job Skill Gap Alignment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles - THEMED */
+        body {
+            background-image: radial-gradient(ellipse at center, #D6EAF8 10%, #EAF2F8 40%, #F4F7F6 80%);
+            color: #333D42; 
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            min-height: 100vh;
+            padding-top: 64px; /* For fixed/sticky navbar height */
+        }
+
+        /* Particles background styling (Commented out) */
+        /* Particles background styling */
+        #particles-js {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                }        
+        /* --- Navbar Styling (Light Themed) --- */
+        nav.navbar { 
+            background-color: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+            /* position: sticky; /* Ensured by 'fixed' in Tailwind and body padding */
+            /* top: 0; */
+            /* z-index: 20;  */
+            /* width: 100%; */
+        }
+        nav.navbar a {
+            color: #333D42 !important; 
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        nav.navbar a:hover:not(.active-link-style) { 
+            color: #007BFF !important; 
+            background-color: rgba(0, 123, 255, 0.07) !important; 
+        }
+        nav.navbar .active-link-style { 
+            background-color: #007BFF !important;
+            color: white !important; 
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+        nav.navbar .active-link-style:hover {
+             background-color: #0056b3 !important;
+             color: white !important;
+        }
+        nav.navbar #mobile-menu-button { 
+            background-color: transparent !important;
+            color: #007BFF !important; 
+        }
+        nav.navbar #mobile-menu-button svg {
+            stroke: #007BFF !important; 
+        }
+        nav.navbar #mobile-menu-button:hover {
+            background-color: rgba(0, 123, 255, 0.1) !important; 
+        }
+        #mobile-menu { 
+            background-color: white !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        #mobile-menu a {
+            color: #333D42 !important;
+        }
+        #mobile-menu a:hover:not(.active-link-mobile-style) {
+            background-color: #E9F5FF !important;
+            color: #0056b3 !important;
+        }
+        #mobile-menu .active-link-mobile-style { 
+            background-color: #007BFF !important;
+            color: white !important;
+        }
+
+        /* Main content container - THEMED */
+        .content-container { 
+            position: relative; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            width: 100%; 
+            padding: 40px 20px 40px 20px; /* Adjusted top padding as body has it now */
+            z-index: 1; 
+            box-sizing: border-box; 
+        }
+        
+        /* Page Title and Subtitle - THEMED */
+        .content-container > h1.page-main-title { 
+            font-size: 3.2rem; 
+            font-weight: 700;
+            margin-bottom: 1.5rem; 
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-image: linear-gradient(to right, #007BFF, #00C6FF); 
+            padding-bottom: 0.25rem; 
+        }
+        .content-container > p.page-main-subtitle { 
+            font-size: 1.25rem; 
+            color: #5A6A72; 
+            margin-bottom: 2.5rem; 
+            text-align: center;
+            max-width: 700px; 
+        }
+        
+        /* Section Container (for inputs) - THEMED */
+        .section-container { 
+            background-color: #FFFFFF;
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            width: 100%; 
+            max-width: 700px; /* Retained from original */
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.08);
+            border: 2px solid #A9D7F9;
+            transition: all 0.3s ease-in-out; 
+        }
+        .section-container .section-title { /* For labels acting as titles */
+            font-size: 1.75rem; 
+            font-weight: 600;
+            color: #2C3E50; 
+            margin-bottom: 0.5rem; /* Adjusted spacing */
+            display: block;
+        }
+        .section-container .section-description {
+            font-size: 0.9rem;
+            color: #5A6A72; 
+            margin-bottom: 1.25rem;
+        }
+        
+        /* Tag Area & Tags - THEMED */
+        .tag-area { 
+            display: flex; flex-wrap: wrap; gap: 0.85rem; 
+            margin-top: 1.25rem; 
+            min-height: 40px; 
+            /* Removed dark theme padding, background, border-radius */
+        }
+        .tag-area .placeholder-text { /* For "Loading..." or "No items..." */
+            color: #7F8C93;
+            font-size: 0.9rem;
+        }
+        .tag { 
+            background-color: #E9F5FF; 
+            color: #007BFF; 
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px; 
+            cursor: pointer; 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+            transition: all 0.2s ease-in-out; 
+            border: 1px solid #BCE0FD; 
+            user-select: none; 
+            display: inline-flex; 
+            align-items: center; 
+            box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1); 
+        }
+        .tag:hover { /* Themed hover, not red */
+            background-color: #D4EAFC; 
+            border-color: #A9D7F9;
+            transform: translateY(-2px) scale(1.02); 
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.15); 
+        }
+        .tag .remove-icon { 
+            margin-left: 0.5rem; 
+            font-weight: bold; 
+            font-size: 1rem; /* Slightly larger for better click target */
+            line-height: 1; 
+            color: #007BFF; /* Match tag text */
+            opacity: 0.7;
+        }
+        .tag:hover .remove-icon {
+            opacity: 1;
+            color: #0056b3; /* Darker blue on hover */
+        }
+        
+        /* Search Input Styling - THEMED */
+        .search-input {
+            width: 100%;
+            padding: 0.85rem 1.1rem; 
+            background-color: #F8F9FA; 
+            color: #333D42; 
+            border: 1px solid #CED4DA; 
+            border-radius: 8px; 
+            margin-top: 0.5rem; 
+            font-size: 0.9rem; /* Standardized */
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); 
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+        .search-input:focus {
+            border-color: #007BFF; 
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2); 
+        }
+        .search-input::placeholder { color: #90A4AE; }
+
+
+        /* Search results container styling - THEMED */
+        .search-results {
+            max-height: 220px; 
+            overflow-y: auto;
+            background-color: #FFFFFF; 
+            border: 1px solid #CED4DA; 
+            border-top: none; 
+            border-radius: 0 0 8px 8px; 
+            margin-top: -1px; 
+            z-index: 10; 
+            width: 100%; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07); 
+        }
+        .search-results.hidden { display: none; }
+        .search-result-item {
+            padding: 0.85rem 1.1rem; 
+            color: #495057; 
+            cursor: pointer;
+            font-size: 0.9rem; 
+            border-bottom: 1px solid #F1F3F5; 
+            transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+        }
+        .search-result-item:last-child { border-bottom: none; }
+        .search-result-item:hover { 
+            background-color: #E9F5FF; 
+            color: #0056b3; 
+        }
+        .search-result-item.selected-in-search { 
+            background-color: #F8F9FA;
+            color: #ADB5BD;
+            cursor: not-allowed;
+        }
+
+        /* File Input - THEMED */
+        .file-input-container { text-align: center; }
+        #jd-upload { 
+            color: #5A6A72; 
+            font-size: 0.9rem; 
+            display: block; 
+            margin-left: auto; margin-right: auto; max-width: max-content; margin-top: 0.5rem; 
+        }
+        #jd-upload::file-selector-button { 
+            background-color: #007BFF; /* Themed blue */
+            color: white; 
+            padding: 0.7rem 1.3rem; /* Themed padding */
+            border: none; 
+            border-radius: 8px; /* Themed radius */
+            cursor: pointer; 
+            transition: background-color 0.2s ease-in-out; 
+            margin-right: 1rem; 
+            font-weight: 500; 
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2); /* Themed shadow */
+        }
+        #jd-upload::file-selector-button:hover { background-color: #0056b3; /* Darker blue */ }
+        
+        /* Error Messages - THEMED */
+        .error-message { 
+             color: #D83A56; 
+             background-color: #FFE3E3; 
+             border: 1px solid #FFB5B5;
+             padding: 1rem; 
+             border-radius: 8px; 
+             margin-top: 1.5rem; 
+             text-align: center;
+             font-weight: 500; 
+             min-height: 1.5rem;
+             box-shadow: 0 2px 4px rgba(216, 58, 86, 0.1); 
+             transition: opacity 0.3s ease; opacity: 1; 
+        }
+        .error-message.hidden { opacity: 0; display: none !important; /* Ensure it's fully hidden */ }
+        #job-input-error { 
+            text-align: left;
+            margin-top: 0.75rem; /* Consistent with themed error messages */
+            font-size: 0.875rem;
+        }
+
+        /* Submit Button - THEMED */
+        #analyze-button {
+            margin-top: 2rem; 
+            padding: 0.9rem 2.2rem; 
+            background-image: linear-gradient(to right, #007BFF 0%, #00C6FF 100%); 
+            color: white;
+            font-size: 1.15rem; 
+            font-weight: 600; 
+            border-radius: 10px; 
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.25); 
+            transition: all 0.3s ease;
+        }
+        #analyze-button:hover {
+            background-image: linear-gradient(to right, #0069D9 0%, #00AEEB 100%); 
+            transform: translateY(-2px) scale(1.02); 
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.35); 
+        }
+        #analyze-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.3), 0 8px 20px rgba(0, 123, 255, 0.35);
+        }
+         #analyze-button:active {
+            transform: translateY(0px) scale(0.98); 
+            box-shadow: 0 2px 10px rgba(0, 123, 255, 0.2); 
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar fixed top-0 z-20 w-full"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="/" class="font-bold text-xl"> Knowledge Pass
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="/" class="px-3 py-2 rounded-md text-sm font-medium">Job Recommend</a>
+                        <a href="/learning_path_home" class="px-3 py-2 rounded-md text-sm font-medium">Learning Path</a>
+                        <a href="/graph_rag_home" class="active-link-style px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Gap Alignment</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/" class="block px-3 py-2 rounded-md text-base font-medium">Job Recommend</a>
+                <a href="/learning_path_home" class="block px-3 py-2 rounded-md text-base font-medium">Learning Path</a>
+                <a href="/graph_rag_home" class="active-link-mobile-style block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Gap Alignment</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="particles-js"></div>
+
+    <div class="content-container">
+
+        <h1 class="page-main-title">Job Skill Gap Alignment</h1>
+        <p class="page-main-subtitle">Managers: Select the target job role(s) and optionally upload the corresponding Job Description for a more detailed analysis. We'll identify key skills and align them to relevant courses to help bridge potential gaps.</p>
+
+        <form id="job-alignment-form" method="POST" action="/graph_rag/" enctype="multipart/form-data" class="w-full flex flex-col items-center">
+            {% csrf_token %} 
+            <div class="section-container w-full"> <span class="section-title">Target Job Role(s)</span>
+                <p class="section-description">Search for job titles and add them for analysis.</p>
+                
+                <input type="text" id="job-search-input" class="search-input" placeholder="e.g., Senior Software Engineer, Project Manager...">
+                <div id="job-search-results" class="search-results hidden"></div>
+                 
+                <div id="job-input-error" class="error-message hidden"></div> <div class="tag-area" id="jobs-tag-area">
+                    <span class="placeholder-text" id="jobs-placeholder">Loading job roles...</span>
+                </div>
+            </div>
+
+            <div class="section-container file-input-container w-full"> <span class="section-title">Upload Job Description (Optional)</span>
+                <p class="section-description">Provides more context for a detailed skill analysis.</p>
+                <input type="file" id="jd-upload" name="job_description_file" accept=".pdf,.doc,.docx,.txt">
+                <p class="section-description" style="font-size: 0.8rem; margin-top:0.5rem;">Accepted formats: PDF, DOC, DOCX, TXT</p>
+            </div>
+
+            <div id="hidden-inputs"></div>
+            <div id="form-error" class="error-message hidden"></div>
+
+            <button type="submit" id="analyze-button">
+                Analyze Job & Align Skills
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // --- Particles.js Initialization (Commented out) ---
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 10, "density": { "enable": true, "value_area": 900 } },
+                "color": { "value": ["#ff6b6b", "#4ecdc4", "#ffe66d", "#81ecec", "#6c5ce7"] },
+                "shape": { "type": "circle", "stroke": { "width": 1, "color": "#222" }, "polygon": { "nb_sides": 5 } },
+                "opacity": { "value": 0.8, "random": true, "anim": { "enable": true, "speed": 0.5, "opacity_min": 0.3, "sync": false } },
+                "size": { "value": 75, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 1, "sync": false } },
+                "line_linked": { "enable": true, "distance": 130, "color": "#aaa", "opacity": 0.3, "width": 1 },
+                "move": { "enable": true, "speed": 1.0, "direction": "none", "random": true, "straight": false, "out_mode": "out", "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                    "bubble": { "distance": 250, "size": 120, "duration": 0.6 },
+                    "repulse": { "distance": 250, "duration": 0.6 },
+                    "push": { "particles_nb": 6 },
+                    "remove": { "particles_nb": 3 }
+                }
+            },
+            "retina_detect": true
+        });
+
+        let allAvailableJobs = [];
+        const BACKEND_URL = "http://127.0.0.1:8081"; 
+        const selectedJobs = new Set();
+        let fetchDataFailed = false;
+
+        const jobSearchInput = document.getElementById('job-search-input');
+        const jobsTagArea = document.getElementById('jobs-tag-area');
+        const jobsPlaceholder = document.getElementById('jobs-placeholder');
+        const jobSearchResults = document.getElementById('job-search-results');
+        const jobAlignmentForm = document.getElementById('job-alignment-form');
+        const hiddenInputsContainer = document.getElementById('hidden-inputs');
+        const formErrorDiv = document.getElementById('form-error');
+        const jobInputErrorDiv = document.getElementById('job-input-error');
+
+        async function fetchData(endpoint, type, errorDisplayEl, placeholderEl) {
+            fetchDataFailed = false;
+            try {
+                if (placeholderEl && !placeholderEl.classList.contains('fetch-error-text')) {
+                    placeholderEl.textContent = `Loading ${type}...`;
+                    placeholderEl.classList.remove('hidden');
+                }
+                const response = await fetch(`${BACKEND_URL}${endpoint}`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                });
+                if (!response.ok) {
+                    fetchDataFailed = true;
+                    const errorData = await response.json().catch(() => ({ detail: "Unknown server error" }));
+                    throw new Error(`HTTP error! status: ${response.status}, Message: ${errorData.detail || response.statusText}`);
+                }
+                const data = await response.json();
+                if (type === 'jobs' && data.jobs && Array.isArray(data.jobs)) {
+                    if (placeholderEl) {
+                        if (data.jobs.length === 0) {
+                            placeholderEl.textContent = `No ${type} available.`;
+                            placeholderEl.classList.remove('hidden');
+                        } else { placeholderEl.classList.add('hidden'); }
+                    }
+                    return data.jobs;
+                } else {
+                    fetchDataFailed = true;
+                    throw new Error(`Invalid data structure received for ${type}. Expected an array of jobs.`);
+                }
+            } catch (error) {
+                fetchDataFailed = true;
+                console.error(`Error fetching ${type}:`, error);
+                const errorMsg = `Failed to load ${type}. Check connection or try again.`;
+                if (errorDisplayEl && errorDisplayEl !== placeholderEl) {
+                    errorDisplayEl.textContent = errorMsg;
+                    errorDisplayEl.classList.remove('hidden');
+                }
+                if (placeholderEl) {
+                    placeholderEl.innerHTML = `<span class="fetch-error-text">${errorMsg}</span>`; // To style error text
+                    placeholderEl.classList.remove('hidden');
+                }
+                return [];
+            }
+        }
+
+        function createJobTagElement(jobText) {
+            const tag = document.createElement('span');
+            tag.classList.add('tag');
+            tag.dataset.value = jobText;
+            const textNode = document.createTextNode(jobText); // Text only
+            const removeSpan = document.createElement('span');
+            removeSpan.classList.add('remove-icon');
+            removeSpan.innerHTML = '&nbsp;&times;'; // Non-breaking space and 'x'
+            tag.appendChild(textNode);
+            tag.appendChild(removeSpan);
+
+            removeSpan.addEventListener('click', (e) => { // Make only the 'x' clickable for removal
+                e.stopPropagation(); // Prevent tag click event if any
+                formErrorDiv.classList.add('hidden');
+                jobInputErrorDiv.classList.add('hidden');
+                selectedJobs.delete(jobText);
+                tag.remove();
+                updateHiddenInputs();
+                if (selectedJobs.size === 0 && jobsPlaceholder) {
+                    jobsPlaceholder.textContent = 'No job roles selected. Search above.';
+                    jobsPlaceholder.classList.remove('hidden');
+                    jobsPlaceholder.classList.remove('fetch-error-text');
+                }
+            });
+            return tag;
+        }
+
+        function setupSearch(searchInputEl, resultsContainerEl, getItemsArrayFn, selectedSet, tagAreaEl, placeholderEl, errorDisplayEl) {
+            searchInputEl.addEventListener('input', () => {
+                const currentItemsArray = getItemsArrayFn(); 
+                const searchTerm = searchInputEl.value.toLowerCase().trim();
+                resultsContainerEl.innerHTML = ''; 
+                resultsContainerEl.classList.add('hidden');
+                if(errorDisplayEl) errorDisplayEl.classList.add('hidden'); 
+
+                if (searchTerm.length === 0 || currentItemsArray.length === 0) return;
+                const filteredItems = currentItemsArray.filter(item => item.toLowerCase().includes(searchTerm));
+                if (filteredItems.length > 0) { resultsContainerEl.classList.remove('hidden'); }
+
+                filteredItems.forEach(item => {
+                    const resultItem = document.createElement('div');
+                    resultItem.classList.add('search-result-item');
+                    resultItem.textContent = item;
+                    if (selectedSet.has(item)) { resultItem.classList.add('selected-in-search'); }
+                    resultItem.addEventListener('click', () => {
+                        formErrorDiv.classList.add('hidden'); 
+                        if(errorDisplayEl) errorDisplayEl.classList.add('hidden');
+                        if (!selectedSet.has(item)) { 
+                            selectedSet.add(item);
+                            const newTagElement = createJobTagElement(item);
+                            tagAreaEl.appendChild(newTagElement);
+                            if (placeholderEl) placeholderEl.classList.add('hidden');
+                            updateHiddenInputs();
+                        }
+                        searchInputEl.value = ''; 
+                        resultsContainerEl.innerHTML = ''; 
+                        resultsContainerEl.classList.add('hidden');
+                    });
+                    resultsContainerEl.appendChild(resultItem);
+                });
+            });
+            document.addEventListener('click', (event) => {
+                if (!searchInputEl.contains(event.target) && !resultsContainerEl.contains(event.target)) {
+                    resultsContainerEl.classList.add('hidden');
+                }
+            });
+            searchInputEl.addEventListener('click', (event) => {
+                event.stopPropagation(); 
+                if (searchInputEl.value.trim().length > 0 && resultsContainerEl.children.length > 0) {
+                    resultsContainerEl.classList.remove('hidden');
+                }
+            });
+        }
+
+        function updateHiddenInputs() {
+             hiddenInputsContainer.innerHTML = '';
+             selectedJobs.forEach(job => {
+                 const input = document.createElement('input');
+                 input.type = 'hidden'; input.name = 'selected_jobs'; input.value = job;
+                 hiddenInputsContainer.appendChild(input);
+             });
+         }
+
+        jobAlignmentForm.addEventListener('submit', function(event) {
+            jobInputErrorDiv.classList.add('hidden');
+            formErrorDiv.classList.add('hidden');
+            if (selectedJobs.size === 0) {
+                jobInputErrorDiv.textContent = "Please add at least one target job role before submitting.";
+                jobInputErrorDiv.classList.remove('hidden');
+                jobInputErrorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                event.preventDefault(); 
+            } else { updateHiddenInputs(); }
+        });
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (jobsPlaceholder) {
+                 jobsPlaceholder.textContent = 'Loading job roles...';
+                 jobsPlaceholder.classList.remove('hidden');
+            }
+            jobInputErrorDiv.classList.add('hidden');
+            allAvailableJobs = await fetchData("/get_all_jobs", "jobs", jobInputErrorDiv, jobsPlaceholder);
+            setupSearch(jobSearchInput, jobSearchResults, () => allAvailableJobs, selectedJobs, jobsTagArea, jobsPlaceholder, jobInputErrorDiv);
+
+            if (jobsPlaceholder && !fetchDataFailed) {
+                if (allAvailableJobs.length > 0 && selectedJobs.size === 0) {
+                    jobsPlaceholder.textContent = 'No job roles selected. Search above to add.';
+                    jobsPlaceholder.classList.remove('hidden');
+                } else if (selectedJobs.size > 0 || (allAvailableJobs.length === 0 && !fetchDataFailed)) {
+                    jobsPlaceholder.classList.add('hidden');
+                }
+            }
+
+             const mobileMenuButton = document.getElementById('mobile-menu-button');
+             const mobileMenu = document.getElementById('mobile-menu');
+             const menuIconOpen = document.getElementById('menu-icon-open');
+             const menuIconClose = document.getElementById('menu-icon-close');
+
+             if (mobileMenuButton && mobileMenu && menuIconOpen && menuIconClose) {
+                 mobileMenuButton.addEventListener('click', () => {
+                     const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                     mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+                     mobileMenu.classList.toggle('hidden');
+                     menuIconOpen.classList.toggle('hidden');
+                     menuIconClose.classList.toggle('hidden');
+                 });
+             }
+            console.log("Job Skill Gap Alignment page initialized with themed styles.");
+        });
+    </script>
+
+</body>
+</html>
